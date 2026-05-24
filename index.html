@@ -2,8 +2,9 @@
 <html lang="en"> 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transcelestial Team Clock</title>
+    <meta name="description" content="Real‑time clock for France, Germany, Italy, Netherlands, Poland, Spain, Sweden, UK, Romania and all European time zones. Automatic DST adjustment.">
+    <meta name="keywords" content="Europe time, current time in Europe, what time in Europe, France time now, Germany time, live Europe clock">
+    <title>Europe Time – Live Current Local Time in France, Germany, Italy & 37+ European Countries</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -112,6 +113,27 @@
             }
          }
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Europe Time – Live World Clock",
+  "description": "Real‑time current local time for all Europe countries. Automatic DST support.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "url": "https://euclock.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://euclock.com/?city={city_name}",
+    "query-input": "required name=city_name"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 </head>
 <body>
     <div class="top-right-controls">
@@ -213,18 +235,14 @@
         const WORK_HOUR_END = 18; 
 
 
-        let displayedTimezones = [
-            { city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
-            { city: "Singapore", timezone: "Asia/Singapore" },
-            { city: "Mumbai", timezone: "Asia/Kolkata" },
-            { city: "Manila", timezone: "Asia/Manila" },
-            { city: "Jakarta", timezone: "Asia/Jakarta" },
-            { city: "Darwin", timezone: "Australia/Darwin" },
-            { city: "San Francisco", timezone: "America/Los_Angeles" },
-            { city: "Grand Rapids", timezone: "America/Detroit" },
-            { city: "Cape Town", timezone: "Africa/Johannesburg" },
-            { city: "Tokyo", timezone: "Asia/Tokyo" },
-        ];
+let displayedTimezones = [
+    { city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
+    { city: "France, Germany, Poland", timezone: "Europe/Paris" },
+    { city: "Spain, Netherlands, Italy", timezone: "Europe/Madrid" },
+    { city: "Sweden, Hungary, Czech", timezone: "Europe/Stockholm" },
+    { city: "UK, Portugal, Ireland", timezone: "Europe/London" },
+    { city: "Romania, Greece, Bulgaria", timezone: "Europe/Bucharest" }
+];
 
         const allTimezones = [
             "Africa/Abidjan", "Africa/Accra", "Africa/Algiers", "Africa/Cairo", "Africa/Casablanca", "Africa/Johannesburg", "Africa/Lagos", "Africa/Nairobi",
@@ -447,5 +465,21 @@
         }
         document.addEventListener('DOMContentLoaded', init);
     </script>
+    <div style="margin-top:30px; text-align:center; font-size:12px;">
+    <a href="#what-is-cet">What is CET?</a> | 
+    <a href="#dst-europe">When does DST start/end in Europe?</a> | 
+    <a href="#timezone-list">Full Europe time zone list</a>
+</div>
+    <noscript>
+    <div style="padding:20px;background:#f5f5f5;margin:10px;border-radius:8px;">
+        <p>Your browser does not support JavaScript. Below are reference times for major European countries:</p>
+        <ul>
+            <li>🇫🇷 France / 🇩🇪 Germany / 🇮🇹 Italy / 🇳🇱 Netherlands / 🇵🇱 Poland / 🇪🇸 Spain / 🇸🇪 Sweden — CET (UTC+1)</li>
+            <li>🇬🇧 United Kingdom — GMT (UTC+0)</li>
+            <li>🇷🇴 Romania — EET (UTC+2)</li>
+        </ul>
+        <p>Enable JavaScript to see real‑time updates.</p>
+    </div>
+</noscript>
 </body>
 </html>
