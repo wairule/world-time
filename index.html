@@ -9,16 +9,17 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Europe Time Live Clock",
-      "description": "Real-time current local time for 37+ European countries. Automatic DST support. Add any global timezone.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "All",
-      "url": "https://euclock.com",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+      "@type": "WebSite",
+      "name": "Europe Time - Live Clocks",
+      "url": "https://euclock.com/",
+      "description": "Real-time clocks for 37+ European countries including France, Germany, Italy, Spain, and UK. Automatic DST adjustment.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://euclock.com/?city={city_name}"
+        },
+        "query-input": "required name=city_name"
       }
     }
     </script>
