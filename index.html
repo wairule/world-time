@@ -128,24 +128,35 @@
             }
          }
 
-        /* 修复卡片背景色 - 强制定义 */
-        .bg-base-100 {
-            background-color: #ffffff !important;
-        }
-        .bg-base-200 {
-            background-color: #f3f4f6 !important;
-        }
+        /* 强化卡片样式，恢复原版外观 */
         .card {
             background-color: #ffffff !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
         }
-        [data-theme="night"] .bg-base-100 {
+        .card-body {
+            padding: 1.5rem !important;
+            gap: 0.5rem !important;
+        }
+        .clock-card-custom {
+            background-color: #ffffff !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+        }
+        /* 暗色主题适配 */
+        [data-theme="night"] .card,
+        [data-theme="night"] .clock-card-custom {
             background-color: #1f2937 !important;
         }
-        [data-theme="night"] .bg-base-200 {
-            background-color: #111827 !important;
+        [data-theme="night"] .city-name,
+        [data-theme="night"] .time,
+        [data-theme="night"] .date,
+        [data-theme="night"] .timezone-info {
+            color: #f3f4f6 !important;
         }
-        [data-theme="night"] .card {
-            background-color: #1f2937 !important;
+        /* 确保移除按钮在暗色下可见 */
+        [data-theme="night"] .remove-btn svg {
+            stroke: #f3f4f6;
         }
     </style>
     <meta name="baidu-site-verification" content="codeva-2bbso1mGox" />
