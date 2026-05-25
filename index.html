@@ -127,6 +127,26 @@
                  width: auto;
             }
          }
+
+        /* 修复卡片背景色 - 强制定义 */
+        .bg-base-100 {
+            background-color: #ffffff !important;
+        }
+        .bg-base-200 {
+            background-color: #f3f4f6 !important;
+        }
+        .card {
+            background-color: #ffffff !important;
+        }
+        [data-theme="night"] .bg-base-100 {
+            background-color: #1f2937 !important;
+        }
+        [data-theme="night"] .bg-base-200 {
+            background-color: #111827 !important;
+        }
+        [data-theme="night"] .card {
+            background-color: #1f2937 !important;
+        }
     </style>
     <meta name="baidu-site-verification" content="codeva-2bbso1mGox" />
 </head>
