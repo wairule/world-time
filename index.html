@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕒%3C/text%3E%3C/svg%3E">
-    <title>Europe Time | Live Time in France, Germany, UK & 37+ European Countries</title>
+    <title>Europe Time | Local Time in France, Germany, UK & Europe</title>
     <meta name="description" content="Real-time clocks for 37+ European countries including France, Germany, Italy, Spain, and UK. Automatic DST adjustment. Dark mode and time-travel slider included. Perfect for distributed teams.">
     <meta name="keywords" content="Europe time, current time in Europe, what time in Europe, France time now, Germany time, UK time, live Europe clock, European time zones">
     
@@ -158,7 +158,9 @@
             <svg class="swap-off fill-current w-5 h-5 sm:w-6 sm:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22a10.14,10.14,0,0,0,9.56,15.7A8.12,8.12,0,0,1,12.14,19.73Z"/></svg>
         </label>
     </div>
-    <h1>Europe Time | Live Time in France, Germany, UK & 37+ European Countries</h1>
+    
+    <h1 class="text-xl sm:text-2xl font-bold text-center my-4 px-4 text-base-content">Europe Time & Live European Clocks</h1>
+    
     <div class="clocksContainerWrapper">
         <div id="clocksContainer" class="flex flex-wrap justify-center gap-3 w-full"></div>
     </div>
@@ -180,11 +182,30 @@
         </div>
     </div>
     
-    <!-- Footer: Europe Time SEO Content Block -->
-    <div style="max-width:1200px; margin:20px auto 10px auto; padding:20px; background:#f5f5f5; border-radius:12px; text-align:center; font-size:14px; color:#333;">
-        <h2 style="font-size:18px; margin-bottom:10px;">About Europe Time</h2>
-        <p>Europe spans four time zones: UTC+0, UTC+1, UTC+2, and UTC+3. <strong>France, Germany, Italy, Netherlands, Poland, Spain, and Sweden</strong> belong to the CET time zone (UTC+1, switching to UTC+2 during DST). The <strong>United Kingdom</strong> follows WET (UTC+0). <strong>Romania, Finland, and Greece</strong> follow EET (UTC+2). All European countries observe Daylight Saving Time (last Sunday of March to last Sunday of October).</p>
-        <p style="margin-top:10px;">📌 Real-time updates | Automatic DST adjustment | Dark/Light theme | Support for 240+ countries worldwide</p>
+    <div style="max-width:1200px; margin:20px auto 10px auto; padding:25px; background:#f5f5f5; border-radius:12px; font-size:14px; color:#333; line-height: 1.6;">
+        <h2 style="font-size:20px; font-weight: 700; margin-bottom:15px; text-align: center;">Frequently Asked Questions About European Time Zones</h2>
+        
+        <div style="margin-bottom: 15px; text-align: left;">
+            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">What are the main time zones in Europe?</h3>
+            <p>Europe primarily spans four standard time zones: Western European Time (WET, UTC+0), Central European Time (CET, UTC+1), Eastern European Time (EET, UTC+2), and Further-eastern European Time (FET, UTC+3).</p>
+        </div>
+
+        <div style="margin-bottom: 15px; text-align: left;">
+            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">Which time zone do France and Germany use?</h3>
+            <p>Major European countries like <strong>France, Germany, Italy, Spain, the Netherlands, Poland, and Sweden</strong> follow Central European Time (CET). During Daylight Saving Time (DST), they transition to Central European Summer Time (CEST, UTC+2) for optimal daylight hours.</p>
+        </div>
+
+        <div style="margin-bottom: 15px; text-align: left;">
+            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">What time zone does the United Kingdom follow?</h3>
+            <p>The <strong>United Kingdom</strong> and Ireland follow Greenwich Mean Time (GMT / WET, UTC+0) during the winter months and switch to British Summer Time (BST, UTC+1) during the summer period.</p>
+        </div>
+
+        <div style="margin-bottom: 15px; text-align: left;">
+            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">When does Europe change its clocks for Daylight Saving Time?</h3>
+            <p>All modern European countries observe Daylight Saving Time concurrently, moving clocks forward on the last Sunday of March and transitioning back one hour on the last Sunday of October. Eastern nations like <strong>Romania, Finland, and Greece</strong> follow EET (UTC+2) and adjust automatically.</p>
+        </div>
+        
+        <p style="margin-top:20px; text-align: center; border-top: 1px solid #ddd; padding-top: 15px;">📌 Real-time updates | Automatic DST adjustment | Dark/Light theme | Support for 240+ countries worldwide</p>
     </div>
 
     <script>
@@ -249,7 +270,7 @@
             { name: "🇷🇴 Romania", timezone: "Europe/Bucharest" },
             { name: "🇧🇬 Bulgaria", timezone: "Europe/Sofia" },
             { name: "🇬🇷 Greece", timezone: "Europe/Athens" },
-            { name: "🇭🇷 Croatia", timezone: "Europe/Zagreb" },
+            { name: "🇭🇺 Croatia", timezone: "Europe/Zagreb" },
             { name: "🇷🇸 Serbia", timezone: "Europe/Belgrade" },
             { name: "🇸🇮 Slovenia", timezone: "Europe/Ljubljana" },
             { name: "🇸🇰 Slovakia", timezone: "Europe/Bratislava" },
