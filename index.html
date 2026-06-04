@@ -33,24 +33,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        /* 卡片标题自动折行 */
+        body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; }
         .card-body .city-name {
             white-space: normal;
             word-break: break-word;
             line-height: 1.4;
-            font-size: 1rem; 
+            font-size: 0.875rem;
+            font-weight: 500;
         }
-        /* 保持底部轻微留白，既小巧又不紧绷 */
+        .clock-card-custom {
+            width: 100%;
+            max-width: 280px;
+            min-height: 145px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .clock-card-custom:hover {
+            transform: translateY(-3px);
+        }
+        .time {
+            font-size: 2.25rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+        .date {
+            font-size: 0.8rem;
+        }
+        .timezone-info {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            line-height: 1.2;
+        }
         footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
         }
     </style>
 </head>
-<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center p-6 select-none">
+<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center pt-3 px-6 pb-6 select-none">
 
-    <div class="w-full max-w-6xl flex justify-between items-center mb-6 border-b border-base-200 pb-4">
+    <div class="w-full max-w-6xl flex justify-between items-center mb-2 border-b border-base-200 pb-2">
         <h1 class="text-xl font-bold tracking-tight text-base-content">
             🕒 Europe Time
         </h1>
@@ -75,7 +96,7 @@
         </div>
     </div>
 
-    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-2 mb-8">
+    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-3 mb-8">
     </div>
 
     <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300 mb-6">
@@ -92,7 +113,7 @@
         </div>
     </div>
 
-    <footer class="w-full max-w-4xl text-xs opacity-60 leading-relaxed">
+    <footer class="w-full max-w-4xl text-xs opacity-60 leading-relaxed border-t border-base-200 pt-4">
         <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
         <p class="mb-2">
             This real-time world clock app helps you track the exact <strong>Europe time</strong> across major regions. Whether you need to synchronize business call schedules with clients or verify local working hours, our live interface updates every second to guarantee zero delay.
@@ -166,18 +187,18 @@
 
         function generateStructure() {
             nodes.grid.innerHTML = state.clocks.map(c => `
-                <div id="card_${c.id}" class="card border border-base-200 shadow-sm bg-base-100 text-base-content transition-all duration-200">
+                <div id="card_${c.id}" class="card clock-card-custom border shadow-sm transition-all duration-200">
                     <div class="card-body p-4 justify-between min-h-[130px]">
                         <div class="flex justify-between items-start gap-2">
                             <div>
-                                <h4 class="font-semibold text-sm city-name">${c.city}</h4>
-                                <p class="text-[10px] opacity-60 font-mono tracking-tight mt-0.5">${c.timezone}</p>
+                                <h4 class="city-name">${c.city}</h4>
+                                <p class="timezone-info mt-1 opacity-80 font-mono text-[10px] tracking-tight">${c.timezone}</p>
                             </div>
                             ${!c.isLocal ? `<button class="btn btn-ghost btn-xs btn-circle text-error/70 hover:text-error" onclick="removeClock('${c.id}')">✕</button>` : ''}
                         </div>
-                        <div class="text-right">
-                            <span data-target="time" class="text-3xl font-bold font-mono tracking-tight block">--:--</span>
-                            <span data-target="date" class="text-[11px] opacity-70 block mt-0.5">--</span>
+                        <div class="text-right mt-2">
+                            <span data-target="time" class="time block">--:--</span>
+                            <span data-target="date" class="date block mt-0.5">--</span>
                         </div>
                     </div>
                 </div>
@@ -203,12 +224,11 @@
                     const currentHour = parseInt(baseDate.toLocaleTimeString('en-US', { timeZone: c.timezone, hour: '2-digit', hourCycle: 'h23' }));
                     const isWorkHour = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
 
+                    // 核心修复：采用规范的渲染逻辑注入基础底色或高亮色，彻底解决 CSS 类名被写死无法变色的 Bug
                     if (isWorkHour) {
-                        card.classList.remove('bg-base-100', 'text-base-content', 'border-base-200');
-                        card.classList.add('bg-primary', 'text-primary-content', 'border-primary');
+                        card.className = "card clock-card-custom border shadow-sm transition-all duration-200 bg-primary text-primary-content border-primary";
                     } else {
-                        card.classList.remove('bg-primary', 'text-primary-content', 'border-primary');
-                        card.classList.add('bg-base-100', 'text-base-content', 'border-base-200');
+                        card.className = "card clock-card-custom border shadow-sm transition-all duration-200 bg-base-100 text-base-content border-base-200";
                     }
                 } catch(e) { }
             });
