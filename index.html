@@ -34,17 +34,19 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; }
+        /* 核心修复：1rem大字号下的卡片标题自动折行与上下高度完美弹性对齐 */
         .card-body .city-name {
             white-space: normal;
             word-break: break-word;
             line-height: 1.4;
             font-size: 1rem;
             font-weight: 500;
+            min-height: 4.2em; /* 预留出3行文字的安全高度，确保单行和多行标题的卡片100%等高，且绝不挤压底部时间 */
         }
         .clock-card-custom {
             width: 100%;
             max-width: 280px;
-            min-height: 145px;
+            min-height: 180px; /* 相应微调了基础最小高度，适配1rem字号后的卡片体积 */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
         }
         .clock-card-custom:hover {
@@ -69,9 +71,9 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center pt-3 px-6 pb-6 select-none">
+<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center pt-0 px-6 pb-6 select-none">
 
-    <div class="w-full max-w-6xl flex justify-between items-center mb-2 border-b border-base-200 pb-2">
+    <div class="w-full max-w-6xl flex justify-between items-center mb-0 border-b border-base-200 pb-1">
         <h1 class="text-xl font-bold tracking-tight text-base-content">
             🕒 Europe Time
         </h1>
@@ -96,7 +98,7 @@
         </div>
     </div>
 
-    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-3 mb-8">
+    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-1 mb-8">
     </div>
 
     <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300 mb-6">
@@ -145,7 +147,7 @@
 
         let state = {
             offset: 0,
-            clocks: [
+            clocks = [
                 { id: "local", city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
                 { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", timezone: "Europe/London" },
                 { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary", timezone: "Europe/Paris" },
@@ -224,7 +226,6 @@
                     const currentHour = parseInt(baseDate.toLocaleTimeString('en-US', { timeZone: c.timezone, hour: '2-digit', hourCycle: 'h23' }));
                     const isWorkHour = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
 
-                    // 核心修复：采用规范的渲染逻辑注入基础底色或高亮色，彻底解决 CSS 类名被写死无法变色的 Bug
                     if (isWorkHour) {
                         card.className = "card clock-card-custom border shadow-sm transition-all duration-200 bg-primary text-primary-content border-primary";
                     } else {
