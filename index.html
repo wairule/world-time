@@ -9,19 +9,19 @@
     <meta name="description" content="Check accurate Europe time with our live world clock. Track real-time local time across European time zones (GMT, CET, EET) to perfectly schedule your business client calls without delay.">
     <meta name="keywords" content="Europe time, current Europe time, CET time, London time, Paris time, world clock, live time">
     
-    <link rel="canonical" href="https://euclock.com/" />
+    <link rel="canonical" href="https://europetime.net/" />
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Europe Time | Live Local Time Converter">
     <meta property="og:description" content="Check accurate Europe time with our live world clock. Track real-time local time across European time zones.">
-    <meta property="og:url" content="https://euclock.com/">
+    <meta property="og:url" content="https://europetime.net/">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Europe Time Live Clock",
-      "url": "https://euclock.com/",
+      "url": "https://europetime.net/",
       "description": "A precise, lightweight world clock application tracking live Europe time and multiple European time zones for professional call scheduling.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All"
@@ -40,7 +40,7 @@
 
     <div class="w-full max-w-6xl flex justify-between items-center mb-8 border-b border-base-200 pb-4">
         <h1 class="text-xl font-bold tracking-tight text-base-content">
-            🕒 World Time
+            🕒 Europe Time
         </h1>
         <div class="flex items-center gap-2">
             <div class="dropdown dropdown-end">
@@ -64,9 +64,9 @@
     </div>
 
     <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mb-8">
-        </div>
+    </div>
 
-    <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300">
+    <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300 mb-12">
         <div class="flex justify-between items-center mb-3">
             <span class="text-sm font-medium opacity-80">Timeline Calibration</span>
             <span id="sliderValue" class="badge badge-primary font-mono font-bold">Live Time</span>
@@ -79,6 +79,16 @@
             <button id="resetSliderBtn" class="btn btn-xs btn-outline btn-secondary px-4 rounded-full hidden">Sync to Current Time</button>
         </div>
     </div>
+
+    <footer class="w-full max-w-4xl border-t border-base-200 pt-8 mt-4 text-xs opacity-60 leading-relaxed">
+        <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
+        <p class="mb-2">
+            This real-time world clock app helps you track the exact <strong>Europe time</strong> across major regions. Whether you need to synchronize business call schedules with clients or verify local working hours, our live interface updates every second to guarantee zero delay.
+        </p>
+        <p>
+            European countries operate across three primary time zones: <strong>Western European Time (WET/GMT)</strong> utilized by the United Kingdom and Portugal; <strong>Central European Time (CET)</strong> covering France, Germany, Spain, and Italy; and <strong>Eastern European Time (EET)</strong> used in Romania, Greece, and Finland. All zones feature automatic adjustments for standard and summer periods.
+        </p>
+    </footer>
 
     <div id="toastContainer" class="toast toast-top toast-center z-[100] hidden">
         <div class="alert alert-info py-2 px-4 shadow-lg rounded-xl">
@@ -104,9 +114,9 @@
             offset: 0,
             clocks: [
                 { id: "local", city: "My Local Location", zone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
-                { id: "uk", city: "United Kingdom", zone: "Europe/London" },
-                { id: "france", city: "France & Germany", zone: "Europe/Paris" },
-                { id: "eet", city: "Eastern Europe", zone: "Europe/Bucharest" }
+                { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", zone: "Europe/London" },
+                { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇮🇹 Italy", zone: "Europe/Paris" },
+                { id: "eet", city: "🇷🇴 Romania · 🇬🇷 Greece · 🇫🇮 Finland", zone: "Europe/Bucharest" }
             ]
         };
 
