@@ -39,8 +39,9 @@
             white-space: normal;
             word-break: break-word;
             line-height: 1.4;
+            font-size: 1rem; 
         }
-        /* 调整底部 footer 的上边距，减小空白 */
+        /* 保持底部轻微留白，既小巧又不紧绷 */
         footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -49,7 +50,7 @@
 </head>
 <body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center p-6 select-none">
 
-    <div class="w-full max-w-6xl flex justify-between items-center mb-8 border-b border-base-200 pb-4">
+    <div class="w-full max-w-6xl flex justify-between items-center mb-6 border-b border-base-200 pb-4">
         <h1 class="text-xl font-bold tracking-tight text-base-content">
             🕒 Europe Time
         </h1>
@@ -74,7 +75,7 @@
         </div>
     </div>
 
-    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mb-8">
+    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-2 mb-8">
     </div>
 
     <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300 mb-6">
