@@ -34,11 +34,16 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* 修复卡片标题显示不全的问题 */
+        /* 卡片标题自动折行 */
         .card-body .city-name {
             white-space: normal;
-            word-wrap: break-word;
-            line-height: 1.3;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+        /* 调整底部 footer 的上边距，减小空白 */
+        footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
         }
     </style>
 </head>
@@ -72,7 +77,7 @@
     <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mb-8">
     </div>
 
-    <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300 mb-12">
+    <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300 mb-6">
         <div class="flex justify-between items-center mb-3">
             <span class="text-sm font-medium opacity-80">Timeline Calibration</span>
             <span id="sliderValue" class="badge badge-primary font-mono font-bold">Live Time</span>
@@ -86,7 +91,7 @@
         </div>
     </div>
 
-    <footer class="w-full max-w-4xl border-t border-base-200 pt-8 mt-4 text-xs opacity-60 leading-relaxed">
+    <footer class="w-full max-w-4xl text-xs opacity-60 leading-relaxed">
         <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
         <p class="mb-2">
             This real-time world clock app helps you track the exact <strong>Europe time</strong> across major regions. Whether you need to synchronize business call schedules with clients or verify local working hours, our live interface updates every second to guarantee zero delay.
@@ -119,10 +124,10 @@
         let state = {
             offset: 0,
             clocks: [
-                { id: "local", city: "My Local Location", zone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
-                { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", zone: "Europe/London" },
-                { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇮🇹 Italy · 🇳🇱 Netherlands · 🇵🇱 Poland · 🇸🇪 Sweden", zone: "Europe/Paris" },
-                { id: "eet", city: "🇷🇴 Romania · 🇬🇷 Greece · 🇫🇮 Finland", zone: "Europe/Bucharest" }
+                { id: "local", city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
+                { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", timezone: "Europe/London" },
+                { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇸🇪 Sweden · 🇭🇺 Hungary · 🇦🇹 Austria", timezone: "Europe/Paris" },
+                { id: "eet", city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus", timezone: "Europe/Bucharest" }
             ]
         };
 
@@ -165,7 +170,7 @@
                         <div class="flex justify-between items-start gap-2">
                             <div>
                                 <h4 class="font-semibold text-sm city-name">${c.city}</h4>
-                                <p class="text-[10px] opacity-60 font-mono tracking-tight mt-0.5">${c.zone}</p>
+                                <p class="text-[10px] opacity-60 font-mono tracking-tight mt-0.5">${c.timezone}</p>
                             </div>
                             ${!c.isLocal ? `<button class="btn btn-ghost btn-xs btn-circle text-error/70 hover:text-error" onclick="removeClock('${c.id}')">✕</button>` : ''}
                         </div>
@@ -187,14 +192,14 @@
                 if (!card) return;
 
                 try {
-                    const timeStr = baseDate.toLocaleTimeString('en-US', { timeZone: c.zone, hour: '2-digit', minute: '2-digit', hour12: false });
-                    const dateStr = baseDate.toLocaleDateString('en-US', { timeZone: c.zone, weekday: 'short', day: '2-digit', month: 'short' });
-                    const offsetStr = new Intl.DateTimeFormat('en-US', { timeZone: c.zone, timeZoneName: 'shortOffset' }).formatToParts(baseDate).find(p => p.type === 'timeZoneName').value;
+                    const timeStr = baseDate.toLocaleTimeString('en-US', { timeZone: c.timezone, hour: '2-digit', minute: '2-digit', hour12: false });
+                    const dateStr = baseDate.toLocaleDateString('en-US', { timeZone: c.timezone, weekday: 'short', day: '2-digit', month: 'short' });
+                    const offsetStr = new Intl.DateTimeFormat('en-US', { timeZone: c.timezone, timeZoneName: 'shortOffset' }).formatToParts(baseDate).find(p => p.type === 'timeZoneName').value;
 
                     card.querySelector('[data-target="time"]').textContent = timeStr;
                     card.querySelector('[data-target="date"]').textContent = `${dateStr} (${offsetStr})`;
 
-                    const currentHour = parseInt(baseDate.toLocaleTimeString('en-US', { timeZone: c.zone, hour: '2-digit', hourCycle: 'h23' }));
+                    const currentHour = parseInt(baseDate.toLocaleTimeString('en-US', { timeZone: c.timezone, hour: '2-digit', hourCycle: 'h23' }));
                     const isWorkHour = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
 
                     if (isWorkHour) {
@@ -227,7 +232,19 @@
             initTheme();
             
             const cached = localStorage.getItem('__user_clocks');
-            if (cached) { try { state.clocks = JSON.parse(cached); } catch(e){} }
+            if (cached) { 
+                try { 
+                    const parsed = JSON.parse(cached);
+                    if (parsed && parsed.length) {
+                        state.clocks = parsed.map(c => ({
+                            id: c.id,
+                            city: c.city,
+                            timezone: c.timezone || c.zone,
+                            isLocal: c.isLocal
+                        }));
+                    }
+                } catch(e){} 
+            }
 
             generateStructure();
             populateSelect();
@@ -251,10 +268,10 @@
             nodes.addBtn.addEventListener('click', () => {
                 const zone = nodes.selectTz.value;
                 if(!zone) return;
-                if(state.clocks.some(c => c.zone === zone)) return notify("Already exists.");
+                if(state.clocks.some(c => c.timezone === zone)) return notify("Already exists.");
                 
                 const optionText = nodes.selectTz.options[nodes.selectTz.selectedIndex].text;
-                state.clocks.push({ id: 'custom_' + Date.now(), city: optionText, zone });
+                state.clocks.push({ id: 'custom_' + Date.now(), city: optionText, timezone: zone });
                 localStorage.setItem('__user_clocks', JSON.stringify(state.clocks));
                 
                 generateStructure();
