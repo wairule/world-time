@@ -7,27 +7,22 @@
     <meta name="description" content="Real-time clocks for 37+ European countries including France, Germany, Italy, Spain, and UK. Automatic DST adjustment. Dark mode and time-travel slider included. Perfect for distributed teams.">
     <meta name="keywords" content="Europe time, current time in Europe, what time in Europe, France time now, Germany time, UK time, live Europe clock, European time zones">
     
+    <link class="seo-canonical" rel="canonical" href="https://europetime.net/" />
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Europe Time - Live Clocks",
       "url": "https://europetime.net/",
-      "description": "Real-time clocks for 37+ European countries including France, Germany, Italy, Spain, and UK. Automatic DST adjustment.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://europetime.net/?city={city_name}"
-        },
-        "query-input": "required name=city_name"
-      }
+      "description": "Real-time clocks for 37+ European countries including France, Germany, Italy, Spain, and UK. Automatic DST adjustment."
     }
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -38,6 +33,17 @@
             padding: 10px;
             box-sizing: border-box;
             background-color: #FFFFFF;
+        }
+        .seo-h1 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
         .clocksContainerWrapper {
             width: 100%;
@@ -127,10 +133,45 @@
                  width: auto;
             }
          }
+        /* FAQ 区块样式 */
+        .faq-section {
+            max-width: 1200px;
+            margin: 20px auto 10px auto;
+            padding: 25px;
+            background: #f5f5f5;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .faq-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 15px;
+            color: #111;
+            margin-bottom: 4px;
+        }
+        .faq-answer {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .faq-note {
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        }
     </style>
-    <meta name="baidu-site-verification" content="codeva-2bbso1mGox" />
 </head>
-<body>
+<body class="bg-base-100 text-base-content">
+
+    <h1 class="seo-h1">Europe Time - Live Current Time in France, Germany, UK & 37+ European Countries</h1>
+
     <div class="top-right-controls">
         <div class="dropdown dropdown-end">
             <button tabindex="0" role="button" class="btn btn-ghost btn-xs sm:btn-sm btn-circle" aria-label="Add City">
@@ -159,8 +200,6 @@
         </label>
     </div>
     
-    <h1 class="text-xl sm:text-2xl font-bold text-center my-4 px-4 text-base-content">Europe Time & Live European Clocks</h1>
-    
     <div class="clocksContainerWrapper">
         <div id="clocksContainer" class="flex flex-wrap justify-center gap-3 w-full"></div>
     </div>
@@ -182,30 +221,30 @@
         </div>
     </div>
     
-    <div style="max-width:1200px; margin:20px auto 10px auto; padding:25px; background:#f5f5f5; border-radius:12px; font-size:14px; color:#333; line-height: 1.6;">
-        <h2 style="font-size:20px; font-weight: 700; margin-bottom:15px; text-align: center;">Frequently Asked Questions About European Time Zones</h2>
+    <div class="faq-section">
+        <h2>Frequently Asked Questions About European Time Zones</h2>
         
-        <div style="margin-bottom: 15px; text-align: left;">
-            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">What are the main time zones in Europe?</h3>
+        <div class="faq-answer">
+            <div class="faq-question">What are the main time zones in Europe?</div>
             <p>Europe primarily spans four standard time zones: Western European Time (WET, UTC+0), Central European Time (CET, UTC+1), Eastern European Time (EET, UTC+2), and Further-eastern European Time (FET, UTC+3).</p>
         </div>
 
-        <div style="margin-bottom: 15px; text-align: left;">
-            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">Which time zone do France and Germany use?</h3>
-            <p>Major European countries like <strong>France, Germany, Italy, Spain, the Netherlands, Poland, and Sweden</strong> follow Central European Time (CET). During Daylight Saving Time (DST), they transition to Central European Summer Time (CEST, UTC+2) for optimal daylight hours.</p>
+        <div class="faq-answer">
+            <div class="faq-question">Which time zone do France and Germany use?</div>
+            <p>Major European countries like <strong>France, Germany, Italy, Spain, the Netherlands, Poland, and Sweden</strong> follow Central European Time (CET). During Daylight Saving Time (DST), they transition to Central European Summer Time (CEST, UTC+2).</p>
         </div>
 
-        <div style="margin-bottom: 15px; text-align: left;">
-            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">What time zone does the United Kingdom follow?</h3>
-            <p>The <strong>United Kingdom</strong> and Ireland follow Greenwich Mean Time (GMT / WET, UTC+0) during the winter months and switch to British Summer Time (BST, UTC+1) during the summer period.</p>
+        <div class="faq-answer">
+            <div class="faq-question">What time zone does the United Kingdom follow?</div>
+            <p>The <strong>United Kingdom</strong> and Ireland follow Greenwich Mean Time (GMT / WET, UTC+0) during winter and switch to British Summer Time (BST, UTC+1) during summer.</p>
         </div>
 
-        <div style="margin-bottom: 15px; text-align: left;">
-            <h3 style="font-weight: 600; font-size: 15px; color: #111; margin-bottom: 4px;">When does Europe change its clocks for Daylight Saving Time?</h3>
-            <p>All modern European countries observe Daylight Saving Time concurrently, moving clocks forward on the last Sunday of March and transitioning back one hour on the last Sunday of October. Eastern nations like <strong>Romania, Finland, and Greece</strong> follow EET (UTC+2) and adjust automatically.</p>
+        <div class="faq-answer">
+            <div class="faq-question">When does Europe change its clocks for Daylight Saving Time?</div>
+            <p>All modern European countries observe Daylight Saving Time concurrently, moving clocks forward on the last Sunday of March and back on the last Sunday of October. Eastern nations like <strong>Romania, Finland, and Greece</strong> follow EET (UTC+2) and adjust automatically.</p>
         </div>
         
-        <p style="margin-top:20px; text-align: center; border-top: 1px solid #ddd; padding-top: 15px;">📌 Real-time updates | Automatic DST adjustment | Dark/Light theme | Support for 240+ countries worldwide</p>
+        <div class="faq-note">📌 Real-time updates | Automatic DST adjustment | Dark/Light theme | Support for 240+ countries worldwide</div>
     </div>
 
     <script>
@@ -221,10 +260,10 @@
         function toggleTheme() {
             const newTheme = themeToggleCheckbox.checked ? lightTheme : darkTheme;
             applyTheme(newTheme);
-            localStorage.setItem('transcelestialTheme', newTheme);
+            localStorage.setItem('euroTimeTheme', newTheme);
         }
         themeToggleCheckbox.addEventListener('change', toggleTheme);
-        const savedTheme = localStorage.getItem('transcelestialTheme') || lightTheme;
+        const savedTheme = localStorage.getItem('euroTimeTheme') || lightTheme;
         applyTheme(savedTheme);
 
         // --- DOM Elements ---
@@ -239,16 +278,14 @@
         const messageBoxAlert = document.getElementById('messageBoxAlert');
         const messageText = document.getElementById('messageText');
 
-        // --- State ---
         let timeOffsetHours = 0;
         let intervalId;
         let messageTimeout;
         const WORK_HOUR_START = 8;
         const WORK_HOUR_END = 18;
 
-        // ================= Global Country List =================
+        // Global Countries List
         const allCountries = [
-            // Europe (priority for "Europe time" keyword)
             { name: "🇫🇷 France", timezone: "Europe/Paris" },
             { name: "🇩🇪 Germany", timezone: "Europe/Berlin" },
             { name: "🇮🇹 Italy", timezone: "Europe/Rome" },
@@ -270,7 +307,7 @@
             { name: "🇷🇴 Romania", timezone: "Europe/Bucharest" },
             { name: "🇧🇬 Bulgaria", timezone: "Europe/Sofia" },
             { name: "🇬🇷 Greece", timezone: "Europe/Athens" },
-            { name: "🇭🇺 Croatia", timezone: "Europe/Zagreb" },
+            { name: "🇭🇷 Croatia", timezone: "Europe/Zagreb" },
             { name: "🇷🇸 Serbia", timezone: "Europe/Belgrade" },
             { name: "🇸🇮 Slovenia", timezone: "Europe/Ljubljana" },
             { name: "🇸🇰 Slovakia", timezone: "Europe/Bratislava" },
@@ -285,7 +322,7 @@
             { name: "🇱🇮 Liechtenstein", timezone: "Europe/Vaduz" },
             { name: "🇸🇲 San Marino", timezone: "Europe/San_Marino" },
             { name: "🇻🇦 Vatican City", timezone: "Europe/Vatican" },
-            { name: "🇺🇦 Ukraine", timezone: "Europe/Kiev" },
+            { name: "🇺🇦 Ukraine", timezone: "Europe/Kyiv" },
             { name: "🇧🇾 Belarus", timezone: "Europe/Minsk" },
             { name: "🇲🇩 Moldova", timezone: "Europe/Chisinau" },
             { name: "🇹🇷 Turkey", timezone: "Europe/Istanbul" },
@@ -295,8 +332,7 @@
             { name: "🇧🇦 Bosnia and Herzegovina", timezone: "Europe/Sarajevo" },
             { name: "🇲🇪 Montenegro", timezone: "Europe/Podgorica" },
             { name: "🇽🇰 Kosovo", timezone: "Europe/Belgrade" },
-            
-            // Asia
+            { name: "🇨🇾 Cyprus", timezone: "Asia/Nicosia" },
             { name: "🇨🇳 China", timezone: "Asia/Shanghai" },
             { name: "🇨🇳 Taiwan", timezone: "Asia/Taipei" },
             { name: "🇭🇰 Hong Kong", timezone: "Asia/Hong_Kong" },
@@ -315,37 +351,27 @@
             { name: "🇮🇶 Iraq", timezone: "Asia/Baghdad" },
             { name: "🇸🇦 Saudi Arabia", timezone: "Asia/Riyadh" },
             { name: "🇦🇪 UAE", timezone: "Asia/Dubai" },
-            
-            // North America
             { name: "🇺🇸 United States", timezone: "America/New_York" },
             { name: "🇨🇦 Canada", timezone: "America/Toronto" },
             { name: "🇲🇽 Mexico", timezone: "America/Mexico_City" },
-            
-            // South America
             { name: "🇧🇷 Brazil", timezone: "America/Sao_Paulo" },
             { name: "🇦🇷 Argentina", timezone: "America/Argentina/Buenos_Aires" },
             { name: "🇨🇱 Chile", timezone: "America/Santiago" },
-            
-            // Africa
             { name: "🇿🇦 South Africa", timezone: "Africa/Johannesburg" },
             { name: "🇪🇬 Egypt", timezone: "Africa/Cairo" },
             { name: "🇳🇬 Nigeria", timezone: "Africa/Lagos" },
             { name: "🇰🇪 Kenya", timezone: "Africa/Nairobi" },
-            
-            // Oceania
             { name: "🇦🇺 Australia", timezone: "Australia/Sydney" },
             { name: "🇳🇿 New Zealand", timezone: "Pacific/Auckland" }
         ];
 
-        // Default displayed timezone cards (focus on Europe)
         let displayedTimezones = [
             { city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
-            { city: "🇬🇧 United Kingdom 🇵🇹 Portugal 🇮🇪 Ireland", timezone: "Europe/London" },
-            { city: "🇫🇷 France 🇩🇪 Germany 🇪🇸 Spain 🇳🇱 Netherlands 🇮🇹 Italy 🇵🇱 Poland 🇸🇪 Sweden 🇭🇺 Hungary 🇦🇹 Austria", timezone: "Europe/Paris" },
-            { city: "🇷🇴 Romania 🇧🇬 Bulgaria 🇬🇷 Greece 🇫🇮 Finland 🇨🇾 Cyprus", timezone: "Europe/Bucharest" },
+            { city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", timezone: "Europe/London" },
+            { city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇸🇪 Sweden · 🇭🇺 Hungary · 🇦🇹 Austria", timezone: "Europe/Paris" },
+            { city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus", timezone: "Europe/Bucharest" }
         ];
 
-        // Filter and populate dropdown
         function filterAndPopulateTimezoneSelect(searchTerm = '') {
             const filtered = allCountries.filter(country =>
                 country.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -370,7 +396,6 @@
             filterAndPopulateTimezoneSelect(e.target.value);
         });
 
-        // --- Utility Functions ---
         function showMessage(text, type = 'info', duration = 2500) {
             messageText.textContent = text;
             messageBoxAlert.className = 'alert alert-sm sm:alert-md py-2 px-3';
@@ -388,9 +413,7 @@
                 const parts = formatter.formatToParts(dateObject);
                 const hourPart = parts.find(part => part.type === 'hour');
                 return hourPart ? parseInt(hourPart.value) : -1;
-            } catch (e) {
-                return -1;
-            }
+            } catch (e) { return -1; }
         }
 
         function getFormattedDateTime(date, timeZone) {
@@ -409,15 +432,8 @@
                 const parts = formatter.formatToParts(now);
                 const gmtOffsetPart = parts.find(part => part.type === 'timeZoneName');
                 if (gmtOffsetPart && gmtOffsetPart.value) return gmtOffsetPart.value;
-                const dateInTZ = new Date(now.toLocaleString('en-US', {timeZone}));
-                if (isNaN(dateInTZ.getTime())) return "N/A";
-                const offsetMinutes = -dateInTZ.getTimezoneOffset();
-                const sign = offsetMinutes >= 0 ? '+' : '-';
-                const absOffsetMinutes = Math.abs(offsetMinutes);
-                const hours = Math.floor(absOffsetMinutes / 60);
-                const minutes = absOffsetMinutes % 60;
-                return `GMT${sign}${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
-            } catch (e) { return "N/A"; }
+                return "UTC";
+            } catch (e) { return "UTC"; }
         }
 
         function renderClocks() {
@@ -473,22 +489,18 @@
         }
 
         function saveTimezonesToLocalStorage() {
-            localStorage.setItem('transcelestialClocks', JSON.stringify(displayedTimezones));
+            localStorage.setItem('euroTimeClocks', JSON.stringify(displayedTimezones));
         }
 
         function loadTimezonesFromLocalStorage() {
-            const saved = localStorage.getItem('transcelestialClocks');
+            const saved = localStorage.getItem('euroTimeClocks');
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
-                    if(Array.isArray(parsed) && parsed.every(item => typeof item === 'object' && item.city && item.timezone)) {
+                    if(Array.isArray(parsed) && parsed.length > 0) {
                         displayedTimezones = parsed;
-                    } else {
-                        localStorage.removeItem('transcelestialClocks');
                     }
-                } catch (e) {
-                    localStorage.removeItem('transcelestialClocks');
-                }
+                } catch (e) { localStorage.removeItem('euroTimeClocks'); }
             }
         }
 
@@ -525,7 +537,6 @@
             }
         }
 
-        // --- Event Listeners ---
         timeTravelSlider.addEventListener('input', (e) => {
             timeOffsetHours = parseFloat(e.target.value);
             timeTravelValueDisplay.textContent = `${timeOffsetHours} hours`;
@@ -540,9 +551,7 @@
         });
         addTimezoneBtn.addEventListener('click', addTimezoneHandler);
 
-        // --- Initialization ---
         function init() {
-            applyTheme(localStorage.getItem('transcelestialTheme') || lightTheme);
             loadTimezonesFromLocalStorage();
             initTimezoneSelector();
             updateClocks();
@@ -550,15 +559,15 @@
         document.addEventListener('DOMContentLoaded', init);
     </script>
     <noscript>
-    <div style="padding:20px;background:#f5f5f5;margin:10px;border-radius:8px;">
-        <p>Your browser does not support JavaScript. Below are reference times for major European countries:</p>
-        <ul>
-            <li>🇫🇷 France / 🇩🇪 Germany / 🇮🇹 Italy / 🇳🇱 Netherlands / 🇵🇱 Poland / 🇪🇸 Spain / 🇸🇪 Sweden — CET (UTC+1)</li>
-            <li>🇬🇧 United Kingdom — GMT (UTC+0)</li>
-            <li>🇷🇴 Romania — EET (UTC+2)</li>
-        </ul>
-        <p>Enable JavaScript to see real‑time updates.</p>
-    </div>
-</noscript>
+        <div style="padding:20px;background:#f5f5f5;margin:10px;border-radius:8px;">
+            <p>Your browser does not support JavaScript. Below are reference times for major European countries:</p>
+            <ul>
+                <li>🇫🇷 France / 🇩🇪 Germany / 🇮🇹 Italy / 🇳🇱 Netherlands / 🇵🇱 Poland / 🇪🇸 Spain / 🇸🇪 Sweden — CET (UTC+1)</li>
+                <li>🇬🇧 United Kingdom — GMT (UTC+0)</li>
+                <li>🇷🇴 Romania — EET (UTC+2)</li>
+            </ul>
+            <p>Enable JavaScript to see real-time updates.</p>
+        </div>
+    </noscript>
 </body>
 </html>
