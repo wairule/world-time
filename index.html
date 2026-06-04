@@ -1,573 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cupcake">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕒%3C/text%3E%3C/svg%3E">
-    <title>Europe Time | Local Time in France, Germany, UK & Europe</title>
-    <meta name="description" content="Real-time clocks for 37+ European countries including France, Germany, Italy, Spain, and UK. Automatic DST adjustment. Dark mode and time-travel slider included. Perfect for distributed teams.">
-    <meta name="keywords" content="Europe time, current time in Europe, what time in Europe, France time now, Germany time, UK time, live Europe clock, European time zones">
-    
-    <link class="seo-canonical" rel="canonical" href="https://europetime.net/" />
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Europe Time - Live Clocks",
-      "url": "https://europetime.net/",
-      "description": "Real-time clocks for 37+ European countries including France, Germany, Italy, Spain, and UK. Automatic DST adjustment."
-    }
-    </script>
-    
+    <title>Time Zones</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 10px;
-            box-sizing: border-box;
-            background-color: #FFFFFF;
-        }
-        .seo-h1 {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        .clocksContainerWrapper {
-            width: 100%;
-            padding-bottom: 1rem;
-            margin-top: 1.5rem;
-        }
-        .clock-card-custom {
-            width: 260px;
-            min-height: 155px;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
-        }
-        .clock-card-custom:hover {
-            transform: translateY(-3px);
-        }
-        .time {
-            font-size: 2.25rem;
-            font-weight: 600;
-            line-height: 1;
-        }
-        .date {
-            font-size: 0.8rem;
-        }
-        .city-name {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .timezone-info {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            line-height: 1.2;
-        }
-        .alert-custom-pos {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-20px);
-            z-index: 1020;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            min-width: 280px;
-        }
-        .alert-custom-pos.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        .select option {
-            background-color: hsl(var(--b1));
-            color: hsl(var(--bc));
-        }
-        .top-right-controls {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1010;
-            display: flex;
-            gap: 0.5rem;
-        }
-        .add-city-dropdown-content {
-            width: 280px;
-            padding: 1rem;
-        }
-        .add-city-dropdown-content .form-control {
-            margin-bottom: 0.75rem;
-        }
-        .add-city-dropdown-content .btn {
-            margin-top: 0.5rem;
-        }
-        @media (max-width: 767px) {
-             .clock-card-custom {
-                width: 100%;
-                max-width: 300px;
-            }
-            .time { font-size: 2rem; }
-            .city-name { font-size: 0.95rem; }
-            #timeControlsContainer {
-                padding: 0.75rem;
-            }
-        }
-         @media (max-width: 480px) {
-            .clocksContainerWrapper {
-                margin-top: 3.5rem;
-            }
-            #timeControlsContainer .form-control, #timeControlsContainer .text-center {
-                 width: 100%;
-            }
-             #timeControlsContainer .btn {
-                 width: auto;
-            }
-         }
-        /* FAQ 区块样式 */
-        .faq-section {
-            max-width: 1200px;
-            margin: 20px auto 10px auto;
-            padding: 25px;
-            background: #f5f5f5;
-            border-radius: 12px;
-            font-size: 14px;
-            color: #333;
-            line-height: 1.6;
-        }
-        .faq-section h2 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .faq-question {
-            font-weight: 600;
-            font-size: 15px;
-            color: #111;
-            margin-bottom: 4px;
-        }
-        .faq-answer {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .faq-note {
-            margin-top: 20px;
-            text-align: center;
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-base-100 text-base-content">
+<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center p-6 select-none">
 
-    <h1 class="seo-h1">Europe Time - Live Current Time in France, Germany, UK & 37+ European Countries</h1>
-
-    <div class="top-right-controls">
-        <div class="dropdown dropdown-end">
-            <button tabindex="0" role="button" class="btn btn-ghost btn-xs sm:btn-sm btn-circle" aria-label="Add City">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div tabindex="0" class="dropdown-content z-[1] menu p-4 shadow bg-base-100 rounded-box w-72 add-city-dropdown-content">
-                <h3 class="text-lg font-semibold mb-3">Add New Clock</h3>
-                <div class="form-control">
-                    <label class="label py-0.5 sm:py-1" for="customCityName"><span class="label-text text-xs">Search Country / Region</span></label>
-                    <input type="text" id="customCityName" placeholder="e.g., France, China, United States" class="input input-xs sm:input-sm input-bordered input-primary w-full">
+    <div class="w-full max-w-6xl flex justify-between items-center mb-8 border-b border-base-200 pb-4">
+        <h1 class="text-xl font-bold tracking-tight text-base-content">
+            🕒 World Time
+        </h1>
+        <div class="flex items-center gap-2">
+            <div class="dropdown dropdown-end">
+                <button tabindex="0" role="button" class="btn btn-circle btn-ghost btn-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </button>
+                <div tabindex="0" class="dropdown-content z-[50] card card-compact w-72 p-4 shadow bg-base-100 border border-base-200 mt-2">
+                    <h3 class="font-bold text-sm mb-2">Add Timezone</h3>
+                    <input type="text" id="searchTzInput" placeholder="Search country..." class="input input-bordered input-sm w-full mb-2">
+                    <select id="tzSelect" class="select select-bordered select-sm w-full mb-3"></select>
+                    <button id="addTzBtn" class="btn btn-primary btn-sm w-full">Add</button>
                 </div>
-                <div class="form-control">
-                    <label class="label py-0.5 sm:py-1" for="timezoneSelect"><span class="label-text text-xs">Select Country</span></label>
-                    <select id="timezoneSelect" class="select select-xs sm:select-sm select-bordered select-primary w-full">
-                        </select>
-                </div>
-                <button id="addTimezoneBtn" class="btn btn-secondary btn-xs sm:btn-sm w-full">Add Clock</button>
             </div>
-        </div>
-        <label class="swap swap-rotate btn btn-ghost btn-xs sm:btn-sm btn-circle" aria-label="Toggle Theme">
-            <input type="checkbox" id="themeToggleCheckbox" />
-            <svg class="swap-on fill-current w-5 h-5 sm:w-6 sm:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29l.71-.71a1,1,0,0,0,-1.41-1.41l-.71.71A1,1,0,0,0,5.64,7.05ZM12,15a3,3,0,1,0,3-3A3,3,0,0,0,12,15Zm12.71,1.29a1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM20,12a1,1,0,0,0-1-1H19a1,1,0,0,0,0,2h1A1,1,0,0,0,20,12ZM18.36,7.05a1,1,0,0,0-.7-.29,1,1,0,0,0-.71.29l-.71.71a1,1,0,1,0,1.41,1.41l.71-.71A1,1,0,0,0,18.36,7.05ZM12,9a1,1,0,0,0,1-1V7a1,1,0,0,0-2,0V8A1,1,0,0,0,12,9Z"/></svg>
-            <svg class="swap-off fill-current w-5 h-5 sm:w-6 sm:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22a10.14,10.14,0,0,0,9.56,15.7A8.12,8.12,0,0,1,12.14,19.73Z"/></svg>
-        </label>
-    </div>
-    
-    <div class="clocksContainerWrapper">
-        <div id="clocksContainer" class="flex flex-wrap justify-center gap-3 w-full"></div>
-    </div>
-    <div id="timeControlsContainer" class="w-full max-w-md mx-auto my-6 p-3 bg-base-200 rounded-box shadow-lg">
-        <div class="form-control flex-grow">
-            <label for="timeTravelSlider" class="label py-0.5">
-                <span class="label-text text-xs sm:text-sm">Time Travel: <span id="timeTravelValue" class="font-semibold">0 hours</span></span>
+            
+            <label class="swap swap-rotate btn btn-circle btn-ghost btn-sm">
+                <input type="checkbox" id="themeToggle" />
+                <svg class="swap-on fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29l.71-.71a1,1,0,0,0,-1.41-1.41l-.71.71A1,1,0,0,0,5.64,7.05ZM12,15a3,3,0,1,0,3-3A3,3,0,0,0,12,15Zm12.71,1.29a1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM20,12a1,1,0,0,0-1-1H19a1,1,0,0,0,0,2h1A1,1,0,0,0,20,12ZM18.36,7.05a1,1,0,0,0-.7-.29,1,1,0,0,0-.71.29l-.71.71a1,1,0,1,0,1.41,1.41l.71-.71A1,1,0,0,0,18.36,7.05ZM12,9a1,1,0,0,0,1-1V7a1,1,0,0,0-2,0V8A1,1,0,0,0,12,9Z"/></svg>
+                <svg class="swap-off fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22a10.14,10.14,0,0,0,9.56,15.7A8.12,8.12,0,0,1,12.14,19.73Z"/></svg>
             </label>
-            <input type="range" id="timeTravelSlider" min="-24" max="24" value="0" step="0.5" class="range range-primary range-xs sm:range-sm">
-        </div>
-        <div class="text-center mt-3">
-            <button id="resetTimeBtn" class="btn btn-primary btn-xs sm:btn-sm">Set to Now</button>
         </div>
     </div>
-    <div id="messageBoxContainer" class="alert-custom-pos">
-        <div role="alert" id="messageBoxAlert" class="alert alert-sm sm:alert-md py-2 px-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-4 h-4 sm:w-5 sm:h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span id="messageText" class="text-xs sm:text-sm"></span>
+
+    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mb-8">
+        </div>
+
+    <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300">
+        <div class="flex justify-between items-center mb-3">
+            <span class="text-sm font-medium opacity-80">Timeline Calibration</span>
+            <span id="sliderValue" class="badge badge-primary font-mono font-bold">Live Time</span>
+        </div>
+        <input type="range" id="timeSlider" min="-24" max="24" value="0" step="0.5" class="range range-primary range-sm">
+        <div class="flex justify-between text-xs px-2 mt-1 opacity-50 font-mono">
+            <span>-24h</span><span>-12h</span><span>Now</span><span>+12h</span><span>+24h</span>
+        </div>
+        <div class="text-center mt-4">
+            <button id="resetSliderBtn" class="btn btn-xs btn-outline btn-secondary px-4 rounded-full hidden">Sync to Current Time</button>
         </div>
     </div>
-    
-    <div class="faq-section">
-        <h2>Frequently Asked Questions About European Time Zones</h2>
-        
-        <div class="faq-answer">
-            <div class="faq-question">What are the main time zones in Europe?</div>
-            <p>Europe primarily spans four standard time zones: Western European Time (WET, UTC+0), Central European Time (CET, UTC+1), Eastern European Time (EET, UTC+2), and Further-eastern European Time (FET, UTC+3).</p>
-        </div>
 
-        <div class="faq-answer">
-            <div class="faq-question">Which time zone do France and Germany use?</div>
-            <p>Major European countries like <strong>France, Germany, Italy, Spain, the Netherlands, Poland, and Sweden</strong> follow Central European Time (CET). During Daylight Saving Time (DST), they transition to Central European Summer Time (CEST, UTC+2).</p>
+    <div id="toastContainer" class="toast toast-top toast-center z-[100] hidden">
+        <div class="alert alert-info py-2 px-4 shadow-lg rounded-xl">
+            <span id="toastText" class="text-xs font-medium"></span>
         </div>
-
-        <div class="faq-answer">
-            <div class="faq-question">What time zone does the United Kingdom follow?</div>
-            <p>The <strong>United Kingdom</strong> and Ireland follow Greenwich Mean Time (GMT / WET, UTC+0) during winter and switch to British Summer Time (BST, UTC+1) during summer.</p>
-        </div>
-
-        <div class="faq-answer">
-            <div class="faq-question">When does Europe change its clocks for Daylight Saving Time?</div>
-            <p>All modern European countries observe Daylight Saving Time concurrently, moving clocks forward on the last Sunday of March and back on the last Sunday of October. Eastern nations like <strong>Romania, Finland, and Greece</strong> follow EET (UTC+2) and adjust automatically.</p>
-        </div>
-        
-        <div class="faq-note">📌 Real-time updates | Automatic DST adjustment | Dark/Light theme | Support for 240+ countries worldwide</div>
     </div>
 
     <script>
-        // --- Theme Management ---
-        const themeToggleCheckbox = document.getElementById('themeToggleCheckbox');
-        const htmlElement = document.documentElement;
-        const lightTheme = 'cupcake';
-        const darkTheme = 'night';
-        function applyTheme(theme) {
-            htmlElement.setAttribute('data-theme', theme);
-            themeToggleCheckbox.checked = theme === lightTheme;
-        }
-        function toggleTheme() {
-            const newTheme = themeToggleCheckbox.checked ? lightTheme : darkTheme;
-            applyTheme(newTheme);
-            localStorage.setItem('euroTimeTheme', newTheme);
-        }
-        themeToggleCheckbox.addEventListener('change', toggleTheme);
-        const savedTheme = localStorage.getItem('euroTimeTheme') || lightTheme;
-        applyTheme(savedTheme);
-
-        // --- DOM Elements ---
-        const clocksContainer = document.getElementById('clocksContainer');
-        const timeTravelSlider = document.getElementById('timeTravelSlider');
-        const timeTravelValueDisplay = document.getElementById('timeTravelValue');
-        const resetTimeBtn = document.getElementById('resetTimeBtn');
-        const timezoneSelect = document.getElementById('timezoneSelect');
-        const customCityNameInput = document.getElementById('customCityName');
-        const addTimezoneBtn = document.getElementById('addTimezoneBtn');
-        const messageBoxContainer = document.getElementById('messageBoxContainer');
-        const messageBoxAlert = document.getElementById('messageBoxAlert');
-        const messageText = document.getElementById('messageText');
-
-        let timeOffsetHours = 0;
-        let intervalId;
-        let messageTimeout;
-        const WORK_HOUR_START = 8;
-        const WORK_HOUR_END = 18;
-
-        // Global Countries List
-        const allCountries = [
-            { name: "🇫🇷 France", timezone: "Europe/Paris" },
-            { name: "🇩🇪 Germany", timezone: "Europe/Berlin" },
-            { name: "🇮🇹 Italy", timezone: "Europe/Rome" },
-            { name: "🇪🇸 Spain", timezone: "Europe/Madrid" },
-            { name: "🇬🇧 United Kingdom", timezone: "Europe/London" },
-            { name: "🇵🇹 Portugal", timezone: "Europe/Lisbon" },
-            { name: "🇳🇱 Netherlands", timezone: "Europe/Amsterdam" },
-            { name: "🇧🇪 Belgium", timezone: "Europe/Brussels" },
-            { name: "🇵🇱 Poland", timezone: "Europe/Warsaw" },
-            { name: "🇸🇪 Sweden", timezone: "Europe/Stockholm" },
-            { name: "🇳🇴 Norway", timezone: "Europe/Oslo" },
-            { name: "🇩🇰 Denmark", timezone: "Europe/Copenhagen" },
-            { name: "🇫🇮 Finland", timezone: "Europe/Helsinki" },
-            { name: "🇮🇪 Ireland", timezone: "Europe/Dublin" },
-            { name: "🇨🇭 Switzerland", timezone: "Europe/Zurich" },
-            { name: "🇦🇹 Austria", timezone: "Europe/Vienna" },
-            { name: "🇨🇿 Czech Republic", timezone: "Europe/Prague" },
-            { name: "🇭🇺 Hungary", timezone: "Europe/Budapest" },
-            { name: "🇷🇴 Romania", timezone: "Europe/Bucharest" },
-            { name: "🇧🇬 Bulgaria", timezone: "Europe/Sofia" },
-            { name: "🇬🇷 Greece", timezone: "Europe/Athens" },
-            { name: "🇭🇷 Croatia", timezone: "Europe/Zagreb" },
-            { name: "🇷🇸 Serbia", timezone: "Europe/Belgrade" },
-            { name: "🇸🇮 Slovenia", timezone: "Europe/Ljubljana" },
-            { name: "🇸🇰 Slovakia", timezone: "Europe/Bratislava" },
-            { name: "🇱🇹 Lithuania", timezone: "Europe/Vilnius" },
-            { name: "🇱🇻 Latvia", timezone: "Europe/Riga" },
-            { name: "🇪🇪 Estonia", timezone: "Europe/Tallinn" },
-            { name: "🇮🇸 Iceland", timezone: "Atlantic/Reykjavik" },
-            { name: "🇲🇹 Malta", timezone: "Europe/Malta" },
-            { name: "🇱🇺 Luxembourg", timezone: "Europe/Luxembourg" },
-            { name: "🇲🇨 Monaco", timezone: "Europe/Monaco" },
-            { name: "🇦🇩 Andorra", timezone: "Europe/Andorra" },
-            { name: "🇱🇮 Liechtenstein", timezone: "Europe/Vaduz" },
-            { name: "🇸🇲 San Marino", timezone: "Europe/San_Marino" },
-            { name: "🇻🇦 Vatican City", timezone: "Europe/Vatican" },
-            { name: "🇺🇦 Ukraine", timezone: "Europe/Kyiv" },
-            { name: "🇧🇾 Belarus", timezone: "Europe/Minsk" },
-            { name: "🇲🇩 Moldova", timezone: "Europe/Chisinau" },
-            { name: "🇹🇷 Turkey", timezone: "Europe/Istanbul" },
-            { name: "🇷🇺 Russia", timezone: "Europe/Moscow" },
-            { name: "🇦🇱 Albania", timezone: "Europe/Tirane" },
-            { name: "🇲🇰 North Macedonia", timezone: "Europe/Skopje" },
-            { name: "🇧🇦 Bosnia and Herzegovina", timezone: "Europe/Sarajevo" },
-            { name: "🇲🇪 Montenegro", timezone: "Europe/Podgorica" },
-            { name: "🇽🇰 Kosovo", timezone: "Europe/Belgrade" },
-            { name: "🇨🇾 Cyprus", timezone: "Asia/Nicosia" },
-            { name: "🇨🇳 China", timezone: "Asia/Shanghai" },
-            { name: "🇨🇳 Taiwan", timezone: "Asia/Taipei" },
-            { name: "🇭🇰 Hong Kong", timezone: "Asia/Hong_Kong" },
-            { name: "🇲🇴 Macau", timezone: "Asia/Macau" },
-            { name: "🇯🇵 Japan", timezone: "Asia/Tokyo" },
-            { name: "🇰🇷 South Korea", timezone: "Asia/Seoul" },
-            { name: "🇮🇳 India", timezone: "Asia/Kolkata" },
-            { name: "🇸🇬 Singapore", timezone: "Asia/Singapore" },
-            { name: "🇲🇾 Malaysia", timezone: "Asia/Kuala_Lumpur" },
-            { name: "🇮🇩 Indonesia", timezone: "Asia/Jakarta" },
-            { name: "🇵🇭 Philippines", timezone: "Asia/Manila" },
-            { name: "🇻🇳 Vietnam", timezone: "Asia/Ho_Chi_Minh" },
-            { name: "🇹🇭 Thailand", timezone: "Asia/Bangkok" },
-            { name: "🇵🇰 Pakistan", timezone: "Asia/Karachi" },
-            { name: "🇮🇷 Iran", timezone: "Asia/Tehran" },
-            { name: "🇮🇶 Iraq", timezone: "Asia/Baghdad" },
-            { name: "🇸🇦 Saudi Arabia", timezone: "Asia/Riyadh" },
-            { name: "🇦🇪 UAE", timezone: "Asia/Dubai" },
-            { name: "🇺🇸 United States", timezone: "America/New_York" },
-            { name: "🇨🇦 Canada", timezone: "America/Toronto" },
-            { name: "🇲🇽 Mexico", timezone: "America/Mexico_City" },
-            { name: "🇧🇷 Brazil", timezone: "America/Sao_Paulo" },
-            { name: "🇦🇷 Argentina", timezone: "America/Argentina/Buenos_Aires" },
-            { name: "🇨🇱 Chile", timezone: "America/Santiago" },
-            { name: "🇿🇦 South Africa", timezone: "Africa/Johannesburg" },
-            { name: "🇪🇬 Egypt", timezone: "Africa/Cairo" },
-            { name: "🇳🇬 Nigeria", timezone: "Africa/Lagos" },
-            { name: "🇰🇪 Kenya", timezone: "Africa/Nairobi" },
-            { name: "🇦🇺 Australia", timezone: "Australia/Sydney" },
-            { name: "🇳🇿 New Zealand", timezone: "Pacific/Auckland" }
+        const CONFIG = { themes: { light: 'cupcake', dark: 'night' }, workHour: { start: 8, end: 18 } };
+        
+        const countryDB = [
+            { n: "🇫🇷 France", t: "Europe/Paris" }, { n: "🇩🇪 Germany", t: "Europe/Berlin" },
+            { n: "🇮🇹 Italy", t: "Europe/Rome" }, { n: "🇪🇸 Spain", t: "Europe/Madrid" },
+            { n: "🇬🇧 United Kingdom", t: "Europe/London" }, { n: "🇵🇹 Portugal", t: "Europe/Lisbon" },
+            { n: "🇳🇱 Netherlands", t: "Europe/Amsterdam" }, { n: "🇧🇪 Belgium", t: "Europe/Brussels" },
+            { n: "🇵🇱 Poland", t: "Europe/Warsaw" }, { n: "🇸🇪 Sweden", t: "Europe/Stockholm" },
+            { n: "🇨🇭 Switzerland", t: "Europe/Zurich" }, { n: "🇷🇴 Romania", t: "Europe/Bucharest" },
+            { n: "🇨🇳 China", t: "Asia/Shanghai" }, { n: "🇺🇸 United States (NY)", t: "America/New_York" },
+            { n: "🇯🇵 Japan", t: "Asia/Tokyo" }, { n: "🇦🇺 Australia (Sydney)", t: "Australia/Sydney" }
         ];
 
-        let displayedTimezones = [
-            { city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
-            { city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", timezone: "Europe/London" },
-            { city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇸🇪 Sweden · 🇭🇺 Hungary · 🇦🇹 Austria", timezone: "Europe/Paris" },
-            { city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus", timezone: "Europe/Bucharest" }
-        ];
+        let state = {
+            offset: 0,
+            clocks: [
+                { id: "local", city: "My Local Location", zone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
+                { id: "uk", city: "United Kingdom", zone: "Europe/London" },
+                { id: "france", city: "France & Germany", zone: "Europe/Paris" },
+                { id: "eet", city: "Eastern Europe", zone: "Europe/Bucharest" }
+            ]
+        };
 
-        function filterAndPopulateTimezoneSelect(searchTerm = '') {
-            const filtered = allCountries.filter(country =>
-                country.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            timezoneSelect.innerHTML = '';
-            if (filtered.length === 0) {
-                const option = document.createElement('option');
-                option.textContent = 'No matching country found';
-                option.disabled = true;
-                timezoneSelect.appendChild(option);
-                return;
-            }
-            filtered.forEach(country => {
-                const option = document.createElement('option');
-                option.value = country.timezone;
-                option.textContent = country.name;
-                timezoneSelect.appendChild(option);
+        const nodes = {
+            grid: document.getElementById('clocksGrid'),
+            slider: document.getElementById('timeSlider'),
+            sliderVal: document.getElementById('sliderValue'),
+            resetBtn: document.getElementById('resetSliderBtn'),
+            themeBox: document.getElementById('themeToggle'),
+            searchInp: document.getElementById('searchTzInput'),
+            selectTz: document.getElementById('tzSelect'),
+            addBtn: document.getElementById('addTzBtn'),
+            toast: document.getElementById('toastContainer'),
+            toastMsg: document.getElementById('toastText')
+        };
+
+        function initTheme() {
+            const saved = localStorage.getItem('__pref_theme') || CONFIG.themes.light;
+            document.documentElement.setAttribute('data-theme', saved);
+            nodes.themeBox.checked = (saved === CONFIG.themes.dark);
+            nodes.themeBox.addEventListener('change', () => {
+                const target = nodes.themeBox.checked ? CONFIG.themes.dark : CONFIG.themes.light;
+                document.documentElement.setAttribute('data-theme', target);
+                localStorage.setItem('__pref_theme', target);
             });
         }
 
-        customCityNameInput.addEventListener('input', (e) => {
-            filterAndPopulateTimezoneSelect(e.target.value);
-        });
-
-        function showMessage(text, type = 'info', duration = 2500) {
-            messageText.textContent = text;
-            messageBoxAlert.className = 'alert alert-sm sm:alert-md py-2 px-3';
-            if (type === 'success') messageBoxAlert.classList.add('alert-success');
-            else if (type === 'error') messageBoxAlert.classList.add('alert-error');
-            else messageBoxAlert.classList.add('alert-info');
-            messageBoxContainer.classList.add('show');
-            clearTimeout(messageTimeout);
-            messageTimeout = setTimeout(() => messageBoxContainer.classList.remove('show'), duration);
+        let toastLock;
+        function notify(msg) {
+            nodes.toastMsg.textContent = msg;
+            nodes.toast.classList.remove('hidden');
+            clearTimeout(toastLock);
+            toastLock = setTimeout(() => nodes.toast.classList.add('hidden'), 2200);
         }
 
-        function getHourInTimezone(dateObject, timeZone) {
-            try {
-                const formatter = new Intl.DateTimeFormat('en-US', { timeZone, hour: 'numeric', hourCycle: 'h23' });
-                const parts = formatter.formatToParts(dateObject);
-                const hourPart = parts.find(part => part.type === 'hour');
-                return hourPart ? parseInt(hourPart.value) : -1;
-            } catch (e) { return -1; }
-        }
-
-        function getFormattedDateTime(date, timeZone) {
-            try {
-                const time = date.toLocaleTimeString('en-US', { timeZone, hour: '2-digit', minute: '2-digit', hour12: false });
-                const day = date.toLocaleDateString('en-US', { timeZone, weekday: 'short' });
-                const fullDate = date.toLocaleDateString('en-GB', { timeZone, day: '2-digit', month: '2-digit', year: 'numeric' });
-                return { time, date: `${day}, ${fullDate}` };
-            } catch (e) { return { time: "Error", date: "Invalid TZ" }; }
-        }
-
-        function getGMTOffset(timeZone) {
-             try {
-                const now = new Date();
-                const formatter = new Intl.DateTimeFormat('en-US', { timeZone, timeZoneName: 'longOffset' });
-                const parts = formatter.formatToParts(now);
-                const gmtOffsetPart = parts.find(part => part.type === 'timeZoneName');
-                if (gmtOffsetPart && gmtOffsetPart.value) return gmtOffsetPart.value;
-                return "UTC";
-            } catch (e) { return "UTC"; }
-        }
-
-        function renderClocks() {
-            clocksContainer.innerHTML = '';
-            const baseDate = new Date(Date.now() + timeOffsetHours * 60 * 60 * 1000);
-            displayedTimezones.forEach((tzData, index) => {
-                const { time, date } = getFormattedDateTime(baseDate, tzData.timezone);
-                const gmtOffset = getGMTOffset(tzData.timezone);
-                const clockCard = document.createElement('div');
-                let cardClasses = 'card clock-card-custom shadow-md hover:shadow-lg';
-                if (!tzData.isLocal) {
-                    const hour = getHourInTimezone(baseDate, tzData.timezone);
-                    if (hour >= WORK_HOUR_START && hour < WORK_HOUR_END) {
-                        cardClasses += ' bg-accent text-accent-content';
-                    } else {
-                        cardClasses += ' bg-base-100';
-                    }
-                } else {
-                    cardClasses += ' bg-base-100';
-                }
-                clockCard.className = cardClasses;
-                clockCard.innerHTML = `
-                    <div class="card-body p-3 sm:p-4">
-                        <div class="flex justify-between items-start mb-1">
+        function generateStructure() {
+            nodes.grid.innerHTML = state.clocks.map(c => `
+                <div id="card_${c.id}" class="card border border-base-200 shadow-sm bg-base-100 text-base-content transition-all duration-200">
+                    <div class="card-body p-4 justify-between min-h-[130px]">
+                        <div class="flex justify-between items-start gap-2">
                             <div>
-                                <h3 class="city-name">${tzData.city}</h3>
-                                <p class="timezone-info">${tzData.timezone.replace(/_/g, ' ')} <br class="sm:hidden">(${gmtOffset})</p>
+                                <h4 class="font-semibold text-sm line-clamp-1">${c.city}</h4>
+                                <p class="text-[10px] opacity-60 font-mono tracking-tight mt-0.5">${c.zone}</p>
                             </div>
-                            ${!tzData.isLocal ? `<button class="btn btn-xs btn-circle btn-ghost text-error remove-btn" data-index="${index}" title="Remove clock">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                            </button>` : ''}
+                            ${!c.isLocal ? `<button class="btn btn-ghost btn-xs btn-circle text-error/70 hover:text-error" onclick="removeClock('${c.id}')">✕</button>` : ''}
                         </div>
-                        <div class="text-right mt-auto pt-1">
-                            <div class="time">${time}</div>
-                            <div class="date mt-0.5">${date}</div>
+                        <div class="text-right">
+                            <span data-target="time" class="text-3xl font-bold font-mono tracking-tight block">--:--</span>
+                            <span data-target="date" class="text-[11px] opacity-70 block mt-0.5">--</span>
                         </div>
                     </div>
-                `;
-                clocksContainer.appendChild(clockCard);
-                if (!tzData.isLocal) {
-                    clockCard.querySelector('.remove-btn').addEventListener('click', (e) => {
-                        const button = e.target.closest('.remove-btn');
-                        if (button) removeTimezone(parseInt(button.dataset.index));
-                    });
-                }
+                </div>
+            `).join('');
+        }
+
+        function tick() {
+            const baseMs = Date.now() + (state.offset * 3600000);
+            const baseDate = new Date(baseMs);
+
+            state.clocks.forEach(c => {
+                const card = document.getElementById(`card_${c.id}`);
+                if (!card) return;
+
+                try {
+                    const timeStr = baseDate.toLocaleTimeString('en-US', { timeZone: c.zone, hour: '2-digit', minute: '2-digit', hour12: false });
+                    const dateStr = baseDate.toLocaleDateString('en-US', { timeZone: c.zone, weekday: 'short', day: '2-digit', month: 'short' });
+                    const offsetStr = new Intl.DateTimeFormat('en-US', { timeZone: c.zone, timeZoneName: 'shortOffset' }).formatToParts(baseDate).find(p => p.type === 'timeZoneName').value;
+
+                    card.querySelector('[data-target="time"]').textContent = timeStr;
+                    card.querySelector('[data-target="date"]').textContent = `${dateStr} (${offsetStr})`;
+
+                    const currentHour = parseInt(baseDate.toLocaleTimeString('en-US', { timeZone: c.zone, hour: '2-digit', hourCycle: 'h23' }));
+                    const isWorkHour = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
+
+                    if (isWorkHour) {
+                        card.classList.remove('bg-base-100', 'text-base-content', 'border-base-200');
+                        card.classList.add('bg-primary', 'text-primary-content', 'border-primary');
+                    } else {
+                        card.classList.remove('bg-primary', 'text-primary-content', 'border-primary');
+                        card.classList.add('bg-base-100', 'text-base-content', 'border-base-200');
+                    }
+                } catch(e) { }
             });
         }
 
-        function updateClocks() {
-            if (intervalId) clearInterval(intervalId);
-            renderClocks();
-            intervalId = setInterval(renderClocks, 1000);
+        window.removeClock = function(id) {
+            state.clocks = state.clocks.filter(c => c.id !== id);
+            localStorage.setItem('__user_clocks', JSON.stringify(state.clocks));
+            generateStructure();
+            tick();
+            notify("Removed.");
+        };
+
+        function populateSelect(filter = '') {
+            const query = filter.toLowerCase();
+            const matched = countryDB.filter(item => item.n.toLowerCase().includes(query));
+            nodes.selectTz.innerHTML = matched.map(i => `<option value="${i.t}">${i.n}</option>`).join('');
+            if(!matched.length) nodes.selectTz.innerHTML = '<option disabled>No variations found</option>';
         }
 
-        function saveTimezonesToLocalStorage() {
-            localStorage.setItem('euroTimeClocks', JSON.stringify(displayedTimezones));
+        function bootstrap() {
+            initTheme();
+            
+            const cached = localStorage.getItem('__user_clocks');
+            if (cached) { try { state.clocks = JSON.parse(cached); } catch(e){} }
+
+            generateStructure();
+            populateSelect();
+
+            nodes.slider.addEventListener('input', (e) => {
+                state.offset = parseFloat(e.target.value);
+                nodes.sliderVal.textContent = state.offset === 0 ? 'Live Time' : `${state.offset > 0 ? '+' : ''}${state.offset} hours`;
+                state.offset === 0 ? nodes.resetBtn.classList.add('hidden') : nodes.resetBtn.classList.remove('hidden');
+                tick();
+            });
+
+            nodes.resetBtn.addEventListener('click', () => {
+                nodes.slider.value = 0;
+                state.offset = 0;
+                nodes.sliderVal.textContent = 'Live Time';
+                nodes.resetBtn.classList.add('hidden');
+                tick();
+            });
+
+            nodes.searchInp.addEventListener('input', (e) => populateSelect(e.target.value));
+            nodes.addBtn.addEventListener('click', () => {
+                const zone = nodes.selectTz.value;
+                if(!zone) return;
+                if(state.clocks.some(c => c.zone === zone)) return notify("Already exists.");
+                
+                const optionText = nodes.selectTz.options[nodes.selectTz.selectedIndex].text;
+                state.clocks.push({ id: 'custom_' + Date.now(), city: optionText, zone });
+                localStorage.setItem('__user_clocks', JSON.stringify(state.clocks));
+                
+                generateStructure();
+                tick();
+                notify("Added.");
+            });
+
+            tick();
+            setInterval(tick, 1000);
         }
 
-        function loadTimezonesFromLocalStorage() {
-            const saved = localStorage.getItem('euroTimeClocks');
-            if (saved) {
-                try {
-                    const parsed = JSON.parse(saved);
-                    if(Array.isArray(parsed) && parsed.length > 0) {
-                        displayedTimezones = parsed;
-                    }
-                } catch (e) { localStorage.removeItem('euroTimeClocks'); }
-            }
-        }
-
-        function initTimezoneSelector() {
-            filterAndPopulateTimezoneSelect('');
-        }
-
-        function addTimezoneHandler() {
-            const selectedTz = timezoneSelect.value;
-            const selectedOption = timezoneSelect.options[timezoneSelect.selectedIndex];
-            let cityName = selectedOption ? selectedOption.textContent : '';
-            if (!selectedTz) { showMessage("Please select a country.", 'error'); return; }
-            if (!cityName || cityName === 'No matching country found') {
-                cityName = selectedTz.substring(selectedTz.lastIndexOf('/') + 1).replace(/_/g, ' ');
-            }
-            if (displayedTimezones.some(tz => tz.timezone === selectedTz)) {
-                showMessage(`${cityName} already exists.`, 'info'); return;
-            }
-            try { new Date().toLocaleTimeString('en-US', { timeZone: selectedTz }); }
-            catch (e) { showMessage(`Invalid timezone: ${selectedTz.replace(/_/g, ' ')}.`, 'error'); return; }
-
-            displayedTimezones.push({ city: cityName, timezone: selectedTz });
-            saveTimezonesToLocalStorage();
-            updateClocks();
-            showMessage(`${cityName} clock added.`, 'success');
-        }
-
-        function removeTimezone(index) {
-            if (index >= 0 && index < displayedTimezones.length && !displayedTimezones[index].isLocal) {
-                const removed = displayedTimezones.splice(index, 1);
-                saveTimezonesToLocalStorage();
-                updateClocks();
-                showMessage(`${removed[0].city} clock removed.`, 'info');
-            }
-        }
-
-        timeTravelSlider.addEventListener('input', (e) => {
-            timeOffsetHours = parseFloat(e.target.value);
-            timeTravelValueDisplay.textContent = `${timeOffsetHours} hours`;
-            updateClocks();
-        });
-        resetTimeBtn.addEventListener('click', () => {
-            timeOffsetHours = 0;
-            timeTravelSlider.value = 0;
-            timeTravelValueDisplay.textContent = `0 hours`;
-            updateClocks();
-            showMessage("Time reset to current.", 'info');
-        });
-        addTimezoneBtn.addEventListener('click', addTimezoneHandler);
-
-        function init() {
-            loadTimezonesFromLocalStorage();
-            initTimezoneSelector();
-            updateClocks();
-        }
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', bootstrap);
     </script>
-    <noscript>
-        <div style="padding:20px;background:#f5f5f5;margin:10px;border-radius:8px;">
-            <p>Your browser does not support JavaScript. Below are reference times for major European countries:</p>
-            <ul>
-                <li>🇫🇷 France / 🇩🇪 Germany / 🇮🇹 Italy / 🇳🇱 Netherlands / 🇵🇱 Poland / 🇪🇸 Spain / 🇸🇪 Sweden — CET (UTC+1)</li>
-                <li>🇬🇧 United Kingdom — GMT (UTC+0)</li>
-                <li>🇷🇴 Romania — EET (UTC+2)</li>
-            </ul>
-            <p>Enable JavaScript to see real-time updates.</p>
-        </div>
-    </noscript>
 </body>
 </html>
