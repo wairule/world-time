@@ -34,6 +34,12 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; }
+        /* 修复卡片标题显示不全的问题 */
+        .card-body .city-name {
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.3;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center p-6 select-none">
@@ -115,7 +121,7 @@
             clocks: [
                 { id: "local", city: "My Local Location", zone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
                 { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", zone: "Europe/London" },
-                { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇮🇹 Italy", zone: "Europe/Paris" },
+                { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇮🇹 Italy · 🇳🇱 Netherlands · 🇵🇱 Poland · 🇸🇪 Sweden", zone: "Europe/Paris" },
                 { id: "eet", city: "🇷🇴 Romania · 🇬🇷 Greece · 🇫🇮 Finland", zone: "Europe/Bucharest" }
             ]
         };
@@ -158,7 +164,7 @@
                     <div class="card-body p-4 justify-between min-h-[130px]">
                         <div class="flex justify-between items-start gap-2">
                             <div>
-                                <h4 class="font-semibold text-sm line-clamp-1">${c.city}</h4>
+                                <h4 class="font-semibold text-sm city-name">${c.city}</h4>
                                 <p class="text-[10px] opacity-60 font-mono tracking-tight mt-0.5">${c.zone}</p>
                             </div>
                             ${!c.isLocal ? `<button class="btn btn-ghost btn-xs btn-circle text-error/70 hover:text-error" onclick="removeClock('${c.id}')">✕</button>` : ''}
