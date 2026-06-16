@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕒%3C/text%3E%3C/svg%3E">
     
-    <title>Europe Time | Live Local Time Converter & World Clock</title>
-    <meta name="description" content="Check accurate Europe time with our live world clock. Track real-time local time across European time zones (GMT, CET, EET) to perfectly schedule your business client calls without delay.">
-    <meta name="keywords" content="Europe time, current Europe time, CET time, London time, Paris time, world clock, live time">
+    <title>Europe Time | Live Business Converter & Clock</title>
+    <!-- 2. 修正：meta description 与 og:description 统一 -->
+    <meta name="description" content="Check accurate Europe time across major European time zones (GMT, CET, EET). Perfect for scheduling business calls with France, Germany, UK, Italy & Spain.">
+    <meta name="keywords" content="Europe time, current Europe time, Europe business time, Europe time converter, CET time, UK time, France time, Germany time">
     
     <link rel="canonical" href="https://europetime.net/" />
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Europe Time | Live Local Time Converter">
-    <meta property="og:description" content="Check accurate Europe time with our live world clock. Track real-time local time across European time zones.">
+    <meta property="og:title" content="Europe Time | Live Business Converter & Clock">
+    <meta property="og:description" content="Check accurate Europe time across major European time zones (GMT, CET, EET). Perfect for scheduling business calls with France, Germany, UK, Italy & Spain.">
     <meta property="og:url" content="https://europetime.net/">
 
+    <!-- 4. 修正：light weight → lightweight -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Europe Time Live Clock",
       "url": "https://europetime.net/",
-      "description": "A precise, lightweight world clock application tracking live Europe time and multiple European time zones for professional call scheduling.",
+      "description": "A precise, lightweight European time clock tracking live Europe time and multiple European time zones for professional call scheduling in Germany, France, UK, and beyond.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All"
     }
@@ -112,7 +114,7 @@
     <footer class="w-full max-w-4xl text-xs opacity-60 leading-relaxed border-t border-base-200 pt-4 mt-auto">
         <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
         <p class="mb-2">
-            This real-time world clock app helps you track the exact <strong>Europe time</strong> across major regions. Whether you need to synchronize business call schedules with clients or verify local working hours, our live interface updates every second to guarantee zero delay.
+            This real-time <strong>Europe time</strong> converter helps you track the exact time across all European time zones. Whether you need to synchronize business meetings with international clients or verify local working hours in Germany, France, and the UK, our live interface updates every second to guarantee precision for your scheduling.
         </p>
         <p>
             European countries operate across three primary time zones: <strong>Western European Time (WET/GMT)</strong> utilized by the United Kingdom and Portugal; <strong>Central European Time (CET)</strong> covering France, Germany, Spain, and Italy; and <strong>Eastern European Time (EET)</strong> used in Romania, Greece, and Finland. All zones feature automatic adjustments for standard and summer periods.
@@ -221,7 +223,6 @@
                     const isWorkHour = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
 
                     if (isWorkHour) {
-                        // 保留原主题色系，仅降低不透明度：背景使用 primary 的 30% 透明度
                         card.className = "card clock-card-custom border shadow-sm transition-all duration-200 bg-primary/50 text-base-content border-primary/50";
                     } else {
                         card.className = "card clock-card-custom border shadow-sm transition-all duration-200 bg-base-100 text-base-content border-base-200";
