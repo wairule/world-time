@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A4A8A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5A8CF6;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#8AB4F8;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#1A4A8A;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="600" cy="315" r="400" fill="url(#glow)" />
+
+  <g transform="translate(600, 180)">
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#FFFFFF" stroke-width="8" opacity="0.9" />
+    <line x1="0" y1="-60" x2="0" y2="-48" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+    <line x1="60" y1="0" x2="48" y2="0" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+    <line x1="0" y1="60" x2="0" y2="48" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+    <line x1="-60" y1="0" x2="-48" y2="0" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+    <line x1="0" y1="0" x2="0" y2="-32" stroke="#FBBF24" stroke-width="8" stroke-linecap="round" />
+    <line x1="0" y1="0" x2="38" y2="-10" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" />
+    <circle cx="0" cy="0" r="10" fill="#FBBF24" />
+  </g>
+
+  <text x="600" y="430" font-family="'Inter', 'Segoe UI', sans-serif" font-size="72" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">
+    Europe Time
+  </text>
+  <text x="600" y="490" font-family="'Inter', 'Segoe UI', sans-serif" font-size="28" font-weight="400" fill="#E0E7FF" text-anchor="middle" letter-spacing="1">
+    Live Clock &amp; Converter for 37+ European Countries
+  </text>
+  <text x="600" y="570" font-family="'Inter', 'Segoe UI', sans-serif" font-size="16" font-weight="300" fill="#93A3C8" text-anchor="middle" letter-spacing="0.5">
+    EuropeTime.net · Real-time · DST aware
+  </text>
+</svg>
