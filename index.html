@@ -180,14 +180,58 @@
         const CONFIG = { themes: { light: 'cupcake', dark: 'night' }, workHour: { start: 8, end: 18 } };
         
         const countryDB = [
-            { n: "🇫🇷 France", t: "Europe/Paris" }, { n: "🇩🇪 Germany", t: "Europe/Berlin" },
-            { n: "🇮🇹 Italy", t: "Europe/Rome" }, { n: "🇪🇸 Spain", t: "Europe/Madrid" },
-            { n: "🇬🇧 United Kingdom", t: "Europe/London" }, { n: "🇵🇹 Portugal", t: "Europe/Lisbon" },
-            { n: "🇳🇱 Netherlands", t: "Europe/Amsterdam" }, { n: "🇧🇪 Belgium", t: "Europe/Brussels" },
-            { n: "🇵🇱 Poland", t: "Europe/Warsaw" }, { n: "🇸🇪 Sweden", t: "Europe/Stockholm" },
-            { n: "🇨🇭 Switzerland", t: "Europe/Zurich" }, { n: "🇷🇴 Romania", t: "Europe/Bucharest" },
-            { n: "🇨🇳 China", t: "Asia/Shanghai" }, { n: "🇺🇸 United States (NY)", t: "America/New_York" },
-            { n: "🇯🇵 Japan", t: "Asia/Tokyo" }, { n: "🇦🇺 Australia (Sydney)", t: "Australia/Sydney" }
+    { n: "🇦🇱 Albania", t: "Europe/Tirane" },
+    { n: "🇦🇩 Andorra", t: "Europe/Andorra" },
+    { n: "🇦🇹 Austria", t: "Europe/Vienna" },
+    { n: "🇧🇾 Belarus", t: "Europe/Minsk" },
+    { n: "🇧🇪 Belgium", t: "Europe/Brussels" },
+    { n: "🇧🇦 Bosnia & Herzegovina", t: "Europe/Sarajevo" },
+    { n: "🇧🇬 Bulgaria", t: "Europe/Sofia" },
+    { n: "🇭🇷 Croatia", t: "Europe/Zagreb" },
+    { n: "🇨🇾 Cyprus", t: "Asia/Nicosia" },  
+    { n: "🇨🇿 Czechia", t: "Europe/Prague" },
+    { n: "🇩🇰 Denmark", t: "Europe/Copenhagen" },
+    { n: "🇪🇪 Estonia", t: "Europe/Tallinn" },
+    { n: "🇫🇮 Finland", t: "Europe/Helsinki" },
+    { n: "🇫🇷 France", t: "Europe/Paris" },
+    { n: "🇩🇪 Germany", t: "Europe/Berlin" },
+    { n: "🇬🇷 Greece", t: "Europe/Athens" },
+    { n: "🇭🇺 Hungary", t: "Europe/Budapest" },
+    { n: "🇮🇸 Iceland", t: "Atlantic/Reykjavik" },
+    { n: "🇮🇪 Ireland", t: "Europe/Dublin" },
+    { n: "🇮🇹 Italy", t: "Europe/Rome" },
+    { n: "🇽🇰 Kosovo", t: "Europe/Belgrade" },
+    { n: "🇱🇻 Latvia", t: "Europe/Riga" },
+    { n: "🇱🇮 Liechtenstein", t: "Europe/Vaduz" },
+    { n: "🇱🇹 Lithuania", t: "Europe/Vilnius" },
+    { n: "🇱🇺 Luxembourg", t: "Europe/Luxembourg" },
+    { n: "🇲🇹 Malta", t: "Europe/Malta" },
+    { n: "🇲🇩 Moldova", t: "Europe/Chisinau" },
+    { n: "🇲🇨 Monaco", t: "Europe/Monaco" },
+    { n: "🇲🇪 Montenegro", t: "Europe/Podgorica" },
+    { n: "🇳🇱 Netherlands", t: "Europe/Amsterdam" },
+    { n: "🇲🇰 North Macedonia", t: "Europe/Skopje" },
+    { n: "🇳🇴 Norway", t: "Europe/Oslo" },
+    { n: "🇵🇱 Poland", t: "Europe/Warsaw" },
+    { n: "🇵🇹 Portugal", t: "Europe/Lisbon" },
+    { n: "🇷🇴 Romania", t: "Europe/Bucharest" },
+    { n: "🇷🇺 Russia (Moscow)", t: "Europe/Moscow" },
+    { n: "🇸🇲 San Marino", t: "Europe/San_Marino" },
+    { n: "🇷🇸 Serbia", t: "Europe/Belgrade" },
+    { n: "🇸🇰 Slovakia", t: "Europe/Bratislava" },
+    { n: "🇸🇮 Slovenia", t: "Europe/Ljubljana" },
+    { n: "🇪🇸 Spain", t: "Europe/Madrid" },
+    { n: "🇸🇪 Sweden", t: "Europe/Stockholm" },
+    { n: "🇨🇭 Switzerland", t: "Europe/Zurich" },
+    { n: "🇹🇷 Turkey (Istanbul)", t: "Europe/Istanbul" },
+    { n: "🇺🇦 Ukraine", t: "Europe/Kyiv" },
+    { n: "🇬🇧 United Kingdom", t: "Europe/London" },
+    { n: "🇻🇦 Vatican City", t: "Europe/Vatican" },
+    { n: "🇨🇳 China", t: "Asia/Shanghai" },
+    { n: "🇺🇸 United States (NY)", t: "America/New_York" },
+    { n: "🇯🇵 Japan", t: "Asia/Tokyo" },
+    { n: "🇦🇺 Australia (Sydney)", t: "Australia/Sydney" }
+];
         ];
 
         let state = {
@@ -196,7 +240,7 @@
                 { id: "local", city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
                 { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", timezone: "Europe/London" },
                 { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary", timezone: "Europe/Paris" },
-                { id: "eet", city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus", timezone: "Europe/Bucharest" }
+                { id: "eet", city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia", timezone: "Europe/Bucharest" }
             ]
         };
 
