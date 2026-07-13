@@ -283,7 +283,7 @@
                     <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
                         <div class="flex justify-between items-start gap-2">
                             <div>
-                                <p class="city-name text-lg font-semibold">London</p>
+                                <p class="city-name text-lg font-semibold">${c.city}</p>
                                 <p class="timezone-info mt-1 opacity-80 font-mono text-[10px] tracking-tight">${c.timezone}</p>
                             </div>
                             ${!c.isLocal ? `<button class="btn btn-ghost btn-xs btn-circle text-error/70 hover:text-error shrink-0" onclick="removeClock('${c.id}')">✕</button>` : ''}
