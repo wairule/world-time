@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cupcake">
+<html lang="en-US" data-theme="cupcake">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,14 @@
     <title>Europe Time | Live Clock & Converter for 37+ European Countries</title>
     <meta name="author" content="Europe Time">
     <meta name="copyright" content="Europe Time">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="description" content="Track Europe time across major time zones (GMT, CET, EET). Use our live clock and converter to schedule meetings with the UK, Germany, France, and 37+ countries.">
     <meta name="keywords" content="Europe time, current Europe time, Europe time converter, Europe business time, UK time, France time, Germany time, time zones Europe, live European clock, CET time">
     
     <link rel="canonical" href="https://www.europetime.net/" />
+    <link rel="alternate" hreflang="zh" href="https://www.euclock.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.europetime.net/" />
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Europe Time | Live Clock & Converter for 37+ European Countries">
@@ -58,7 +60,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; }
@@ -93,7 +95,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center pt-0 px-6 pb-20 select-none">
+<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center pt-0 px-6 pb-20 select-none"><main>
 
     <div class="w-full max-w-6xl flex justify-between items-center mb-0 border-b border-base-200 pb-1">
         <h1 class="text-xl font-bold tracking-tight text-base-content">
@@ -101,7 +103,7 @@
         </h1>
         <div class="flex items-center gap-2">
             <div class="dropdown dropdown-end">
-                <button tabindex="0" role="button" class="btn btn-circle btn-ghost btn-sm">
+                <button tabindex="0" role="button" aria-label="Add Timezone" class="btn btn-circle btn-ghost btn-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                 </button>
                 <div tabindex="0" class="dropdown-content z-[50] card card-compact w-72 p-4 shadow bg-base-100 border border-base-200 mt-2">
@@ -138,7 +140,7 @@
     </div>
 
     <div class="my-12"></div>
-    
+    </main>
     <footer class="w-full max-w-4xl text-xs opacity-60 leading-relaxed border-t border-base-200 pt-4 mt-auto">
         <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
         <p class="mb-2">
