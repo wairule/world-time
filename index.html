@@ -115,7 +115,7 @@
             </div>
             
             <label class="swap swap-rotate btn btn-circle btn-ghost btn-sm">
-                <input type="checkbox" id="themeToggle" />
+                <input type="checkbox" id="themeToggle" aria-label="Toggle Theme" />
                 <svg class="swap-on fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29l.71-.71a1,1,0,0,0,-1.41-1.41l-.71.71A1,1,0,0,0,5.64,7.05ZM12,15a3,3,0,1,0,3-3A3,3,0,0,0,12,15Zm12.71,1.29a1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM20,12a1,1,0,0,0-1-1H19a1,1,0,0,0,0,2h1A1,1,0,0,0,20,12ZM18.36,7.05a1,1,0,0,0-.7-.29,1,1,0,0,0-.71.29l-.71.71a1,1,0,1,0,1.41,1.41l.71-.71A1,1,0,0,0,18.36,7.05ZM12,9a1,1,0,0,0,1-1V7a1,1,0,0,0-2,0V8A1,1,0,0,0,12,9Z"/></svg>
                 <svg class="swap-off fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22a10.14,10.14,0,0,0,9.56,15.7A8.12,8.12,0,0,1,12.14,19.73Z"/></svg>
             </label>
@@ -125,14 +125,14 @@
     <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-1 mb-8 items-stretch">
     </div>
 
-    <div class="w-full max-w-xl bg-base-200 rounded-2xl p-5 border border-base-300 mb-6">
+    <div class="w-full max-w-xl mx-auto bg-base-200 rounded-2xl p-5 border border-base-300 mb-6">
         <div class="flex justify-between items-center mb-3">
             <span class="text-sm font-medium opacity-80">Timeline Calibration</span>
             <span id="sliderValue" class="badge badge-primary font-mono font-bold">Live Time</span>
         </div>
-        <input type="range" id="timeSlider" min="-24" max="24" value="0" step="0.5" class="range range-primary range-sm">
-        <div class="flex justify-between text-xs px-2 mt-1 opacity-50 font-mono">
-            <span>-24h</span><span>-12h</span><span>Now</span><span>+12h</span><span>+24h</span>
+        <<input type="range" id="timeSlider" aria-label="Time Travel Slider" min="-24" max="24" value="0" step="0.5" class="range range-primary range-sm">
+        <div class="flex justify-between text-xs px-2 mt-1 opacity-80 text-base-content font-mono">
+             <span>-24h</span><span>-12h</span><span>Now</span><span>+12h</span><span>+24h</span>
         </div>
         <div class="text-center mt-4">
             <button id="resetSliderBtn" class="btn btn-xs btn-outline btn-secondary px-4 rounded-full hidden">Sync to Current Time</button>
@@ -283,7 +283,7 @@
                     <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
                         <div class="flex justify-between items-start gap-2">
                             <div>
-                                <h4 class="city-name">${c.city}</h4>
+                                <p class="city-name text-lg font-semibold">London</p>
                                 <p class="timezone-info mt-1 opacity-80 font-mono text-[10px] tracking-tight">${c.timezone}</p>
                             </div>
                             ${!c.isLocal ? `<button class="btn btn-ghost btn-xs btn-circle text-error/70 hover:text-error shrink-0" onclick="removeClock('${c.id}')">✕</button>` : ''}
