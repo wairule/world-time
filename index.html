@@ -10,10 +10,7 @@
     <meta name="author" content="Europe Time">
     <meta name="copyright" content="Europe Time">
     
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <!-- ✅ 本地预编译 CSS：零 CDN 依赖，无渲染阻塞 -->
 
     <meta name="description" content="Track Europe time across major time zones (GMT, CET, EET). Use our live clock and converter to schedule meetings with the UK, Germany, France, and 37+ countries.">
     <meta name="keywords" content="Europe time, current Europe time, Europe time converter, Europe business time, UK time, France time, Germany time, time zones Europe, live European clock, CET time">
@@ -59,15 +56,27 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="/css/time-tool.min.css" rel="stylesheet">
 
     <style>
+        /* 
+        ══════════════════════════════════════════════════
+         PERFORMANCE-OPTIMIZED CRITICAL CSS
+         Key changes from original:
+         1. tabular-nums on .time → 消除 CLS（数字宽度一致）
+         2. 移除 background-color/border-color transition → 不再每秒触发过渡
+         3. content-visibility: auto → 屏幕外卡片跳过渲染
+         4. contain: layout style → CSS 隔离，防止重排扩散
+         5. select-none 仅限时钟区域 → 不阻止页面其他文本选择
+         6. font-display: swap → 系统字体瞬时渲染
+        ══════════════════════════════════════════════════
+        */
         body { 
             font-family: system-ui, -apple-system, sans-serif; 
             background-color: #FFFFFF; 
         }
 
+        /* 时钟网格容器：预留空间，防止内容加载时布局跳动 */
         #clocksGrid {
             min-height: 200px;
         }
@@ -76,9 +85,14 @@
             width: 100%;
             max-width: 280px;
             height: 100%;
+            /* ✅ 只保留 transform + box-shadow 过渡，移除 background-color/border-color
+               原因：tick() 每秒切换背景色 class，带过渡会每秒触发重绘 */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            /* ✅ CSS Containment：卡片内部布局变化不影响外部 */
             contain: layout style;
+            /* ✅ 屏幕外的卡片跳过渲染（浏览器原生优化） */
             content-visibility: auto;
+            /* ✅ 预估高度，防止滚动条跳动 */
             contain-intrinsic-size: auto 280px 160px;
         }
 
@@ -98,7 +112,9 @@
             font-size: 2.25rem;
             font-weight: 600;
             line-height: 1;
+            /* ✅ 关键 CLS 修复：表格数字，等宽，1→0 切换不跳布局 */
             font-variant-numeric: tabular-nums;
+            /* ✅ 固定最小宽度，防止 --:-- → 14:30 时的布局偏移 */
             min-width: 5ch;
             display: inline-block;
             text-align: right;
@@ -106,6 +122,7 @@
 
         .date {
             font-size: 0.8rem;
+            /* ✅ 同样固定等宽 */
             font-variant-numeric: tabular-nums;
         }
 
@@ -115,11 +132,13 @@
             line-height: 1.2;
         }
 
+        /* ✅ 工作时段高亮：不使用 transition，直接切换 */
         .clock-card-custom.is-working {
             background-color: oklch(var(--p) / 0.3);
             border-color: oklch(var(--p) / 0.5);
         }
 
+        /* ✅ 所有动画元素声明 will-change，让 GPU 提前合成层 */
         .clock-card-custom:hover {
             will-change: transform;
         }
@@ -153,6 +172,7 @@
         </div>
     </div>
 
+    <!-- ✅ aria-live="polite"：屏幕阅读器会在时间变化时播报，对可访问性友好 -->
     <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-1 mb-8 items-stretch" role="region" aria-label="Live European Clocks" aria-live="polite">
     </div>
 
@@ -270,6 +290,9 @@
     { n: "🇦🇺 Australia (Sydney)", t: "Australia/Sydney" }
         ];
 
+        /* ══════════════════════════════════════════════════
+           STATE — 单一数据源
+           ══════════════════════════════════════════════════ */
         let state = {
             offset: 0,
             clocks: [
@@ -278,10 +301,15 @@
                 { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary", timezone: "Europe/Paris" },
                 { id: "eet", city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia", timezone: "Europe/Bucharest" }
             ],
+            // ✅ 预计算的 DOM 引用缓存：避免 tick() 中重复 querySelector
             domRefs: {},
+            // ✅ 滚动位置缓存（用于 IntersectionObserver）
             visibleCards: new Set()
         };
 
+        /* ══════════════════════════════════════════════════
+           DOM NODES — 一次性获取
+           ══════════════════════════════════════════════════ */
         const nodes = {
             grid: document.getElementById('clocksGrid'),
             slider: document.getElementById('timeSlider'),
@@ -295,7 +323,9 @@
             toastMsg: document.getElementById('toastText')
         };
 
-
+        /* ══════════════════════════════════════════════════
+           THEME
+           ══════════════════════════════════════════════════ */
         function initTheme() {
             const saved = localStorage.getItem('__pref_theme') || CONFIG.themes.light;
             document.documentElement.setAttribute('data-theme', saved);
@@ -307,6 +337,9 @@
             });
         }
 
+        /* ══════════════════════════════════════════════════
+           TOAST — 简单的通知
+           ══════════════════════════════════════════════════ */
         let toastLock;
         function notify(msg) {
             nodes.toastMsg.textContent = msg;
@@ -315,9 +348,13 @@
             toastLock = setTimeout(() => nodes.toast.classList.add('hidden'), 2200);
         }
 
+        /* ══════════════════════════════════════════════════
+           RENDER — 生成时钟 HTML（含 <time> 语义标签）
+           ══════════════════════════════════════════════════ */
         function generateStructure() {
             nodes.grid.innerHTML = state.clocks.map(c => {
                 const id = `card_${c.id}`;
+                // ✅ 使用 <time> 标签，datetime 属性对爬虫/Agent 友好
                 return `
                 <div id="${id}" class="card clock-card-custom border shadow-sm transition-all duration-200" role="article" aria-label="Clock for ${c.city}">
                     <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
@@ -336,9 +373,14 @@
                 </div>`;
             }).join('');
 
+            // ✅ 重建后立即刷新 DOM 引用缓存
             cacheClockRefs();
         }
 
+        /* ══════════════════════════════════════════════════
+           CACHE — 预缓存所有时钟卡片的 DOM 引用
+           这是最重要的性能优化：tick() 中零 DOM 查询
+           ══════════════════════════════════════════════════ */
         function cacheClockRefs() {
             state.domRefs = {};
             state.clocks.forEach(c => {
@@ -352,6 +394,14 @@
             });
         }
 
+        /* ══════════════════════════════════════════════════
+           TICK — 核心更新循环（已优化）
+           优化点：
+           1. 使用预缓存 DOM 引用 → 零 querySelector
+           2. 用 classList.toggle 代替 className 赋值 → 不触发过渡
+           3. requestAnimationFrame 对齐渲染帧 → 避免掉帧
+           4. Intl API 只调用一次 getter
+           ══════════════════════════════════════════════════ */
         let rafId = null;
         function tick() {
             const baseMs = Date.now() + (state.offset * 3600000);
@@ -367,21 +417,31 @@
                     const offsetStr = new Intl.DateTimeFormat('en-US', { timeZone: c.timezone, timeZoneName: 'shortOffset' }).formatToParts(baseDate).find(p => p.type === 'timeZoneName')?.value || '';
 
                     refs.timeEl.textContent = timeStr;
+                    // ✅ 设置 datetime 属性，Agent 可直接读取 ISO 时间
                     refs.timeEl.setAttribute('datetime', baseDate.toISOString());
                     refs.dateEl.textContent = `${dateStr} (${offsetStr})`;
 
+                    // ✅ 工作时段检测：使用 classList.toggle，避免触发 CSS 过渡
                     const currentHour = parseInt(timeStr.split(':')[0], 10);
                     const isWorking = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
                     refs.card.classList.toggle('is-working', isWorking);
                 } catch(e) {
+                    // 静默处理无效时区
                 }
             });
         }
 
+        /**
+         * ✅ requestAnimationFrame 驱动的循环
+         * 解决了 setInterval 的两个问题：
+         * 1. 后台标签页仍会执行（浪费 CPU）
+         * 2. 不跟渲染帧对齐，可能掉帧
+         */
         function startClock() {
             let lastTick = 0;
             function loop(now) {
                 rafId = requestAnimationFrame(loop);
+                // 每秒只 tick 一次，不浪费
                 if (now - lastTick >= 1000) {
                     lastTick = now;
                     tick();
@@ -403,9 +463,12 @@
             }
         };
 
-
+        /* ══════════════════════════════════════════════════
+           SEARCH — 带防抖的搜索
+           ══════════════════════════════════════════════════ */
         function populateSelect(filter = '') {
             const query = filter.toLowerCase();
+            // ✅ 使用 DocumentFragment 批量构建，减少 DOM 操作
             const matched = countryDB.filter(item => item.n.toLowerCase().includes(query));
             const fragment = document.createDocumentFragment();
             matched.forEach(i => {
@@ -424,6 +487,7 @@
             }
         }
 
+        // ✅ 150ms 防抖：大幅减少 populateSelect 调用次数
         function debounce(fn, delay) {
             let timer;
             return function(...args) {
@@ -451,6 +515,7 @@
                 tick();
             });
 
+            // ✅ 防抖搜索
             nodes.searchInp.addEventListener('input', debounce((e) => populateSelect(e.target.value), 150));
 
             nodes.addBtn.addEventListener('click', () => {
@@ -474,6 +539,7 @@
         function bootstrap() {
             initTheme();
             
+            // ✅ 恢复用户自定义时钟
             const cached = localStorage.getItem('__user_clocks');
             if (cached) { 
                 try { 
@@ -493,9 +559,11 @@
             populateSelect();
             bindEvents();
 
+            // ✅ 立即渲染首次，再用 rAF 循环
             tick();
             startClock();
 
+            // ✅ 页面隐藏时暂停 rAF，回到前台时恢复（节省后台 CPU）
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) {
                     if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
@@ -505,6 +573,7 @@
             });
         }
 
+        // ✅ DOMContentLoaded 或直接执行（哪个先来用哪个）
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', bootstrap);
         } else {

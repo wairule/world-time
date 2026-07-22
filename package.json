@@ -1,0 +1,14 @@
+{
+  "name": "europe-time",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npx tailwindcss -i ./css/time-tool-input.css -o ./css/time-tool.min.css --minify",
+    "build:css": "npx tailwindcss -i ./css/time-tool-input.css -o ./css/time-tool.min.css --minify",
+    "watch:css": "npx tailwindcss -i ./css/time-tool-input.css -o ./css/time-tool.min.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "daisyui": "^4.12.0"
+  }
+}
