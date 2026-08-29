@@ -1,585 +1,628 @@
 <!DOCTYPE html>
-<html lang="en-US" data-theme="cupcake">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕒%3C/text%3E%3C/svg%3E">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
-    
-    <title>Europe Time | Live Clock & Converter for 37+ European Countries</title>
-    <meta name="author" content="Europe Time">
-    <meta name="copyright" content="Europe Time">
-    
-    <!-- ✅ 本地预编译 CSS：零 CDN 依赖，无渲染阻塞 -->
+    <title>European Time Now | Europe Time Zone Converter & Real-Time Clocks</title>
+    <meta name="description" content="Check exact real-time local current time across European countries and time zones including GMT, BST, CET, CEST, EET, EEST, and MSK. Fast, accurate, and interactive.">
+    <link rel="canonical" href="https://www.europetime.net/">
 
-    <meta name="description" content="Track Europe time across major time zones (GMT, CET, EET). Use our live clock and converter to schedule meetings with the UK, Germany, France, and 37+ countries.">
-    <meta name="keywords" content="Europe time, current Europe time, Europe time converter, Europe business time, UK time, France time, Germany time, time zones Europe, live European clock, CET time">
-    
-    <link rel="canonical" href="https://www.europetime.net/" />
-    <link rel="alternate" hreflang="zh" href="https://www.euclock.com/" />
-    <link rel="alternate" hreflang="en" href="https://www.europetime.net/" />
-
+    <!-- Open Graph / Facebook / LinkedIn / WeChat -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Europe Time | Live Clock & Converter for 37+ European Countries">
-    <meta property="og:description" content="Check accurate Europe time across major time zones (GMT, CET, EET). Our live clock and business converter with automatic DST handling is perfect for scheduling seamless business calls with France, Germany, UK, Italy, Spain, and 37+ other countries.">
+    <meta property="og:title" content="European Time Now | Real-Time Europe Clocks">
+    <meta property="og:description" content="Accurate local time across all major European cities and time zones with live daylight saving tracking.">
     <meta property="og:url" content="https://www.europetime.net/">
-    <meta property="og:image" content="https://www.europetime.net/og-image.svg">
+    <meta property="og:image" content="https://www.europetime.net/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:type" content="image/svg+xml">
-    
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="European Time Now">
+    <meta name="twitter:description" content="Real-time European time zone tracking and interactive clocks.">
+    <meta name="twitter:image" content="https://www.europetime.net/og-image.png">
+
+    <!-- Tailwind CSS & DaisyUI CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains+Mono', monospace; }
+        .clock-card-custom {
+            contain-intrinsic-size: 160px;
+            content-visibility: auto;
+        }
+        [data-target="time"] {
+            font-family: 'JetBrains+Mono', monospace;
+            font-size: 2.125rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        [data-target="date"] {
+            font-size: 0.85rem;
+        }
+    </style>
+
+    <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Europe Time Live Clock",
-      "url": "https://www.europetime.net/",
-      "description": "A precise, lightweight European time clock tracking live Europe time and multiple European time zones for professional call scheduling in Germany, France, UK, and beyond.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "All",
-      "provider": {
-        "@type": "Organization",
-        "name": "Europe Time"
-      },
-      "copyrightYear": "2026",
-      "mainEntity": {
-        "@type": "FAQPage",
-        "mainEntity": [{
-          "@type": "Question",
-          "name": "How does Daylight Saving Time affect European business meetings?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Europe's semi-annual clock changes can cause scheduling conflicts. Our tool automatically handles DST, allowing you to use the Time Travel simulation feature to verify local times across different European zones for seamless collaboration."
-          }
-        }]
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.europetime.net/#website",
+          "url": "https://www.europetime.net/",
+          "name": "Europe Time",
+          "description": "Real-time European Time Zone Tracking & Clock Utility",
+          "dateModified": "2026-08-29"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.europetime.net/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What are the main time zones in Europe?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Europe mainly spans four primary standard time zones: Western European Time (WET/UTC+0, daylight saving WEST/UTC+1), Central European Time (CET/UTC+1, daylight saving CEST/UTC+2), Eastern European Time (EET/UTC+2, daylight saving EEST/UTC+3), and Moscow Time (MSK/UTC+3)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Europe practice Daylight Saving Time (DST)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most European countries change their clocks for Daylight Saving Time (Summer Time) on the last Sunday of March and change back to Standard Time on the last Sunday of October."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
-
-    <link href="/css/time-tool.min.css" rel="stylesheet">
-
-    <style>
-        /* 
-        ══════════════════════════════════════════════════
-         PERFORMANCE-OPTIMIZED CRITICAL CSS
-         Key changes from original:
-         1. tabular-nums on .time → 消除 CLS（数字宽度一致）
-         2. 移除 background-color/border-color transition → 不再每秒触发过渡
-         3. content-visibility: auto → 屏幕外卡片跳过渲染
-         4. contain: layout style → CSS 隔离，防止重排扩散
-         5. select-none 仅限时钟区域 → 不阻止页面其他文本选择
-         6. font-display: swap → 系统字体瞬时渲染
-        ══════════════════════════════════════════════════
-        */
-        body { 
-            font-family: system-ui, -apple-system, sans-serif; 
-            background-color: #FFFFFF; 
-        }
-
-        /* 时钟网格容器：预留空间，防止内容加载时布局跳动 */
-        #clocksGrid {
-            min-height: 200px;
-        }
-
-        .clock-card-custom {
-            width: 100%;
-            max-width: 280px;
-            height: 100%;
-            /* ✅ 只保留 transform + box-shadow 过渡，移除 background-color/border-color
-               原因：tick() 每秒切换背景色 class，带过渡会每秒触发重绘 */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            /* ✅ CSS Containment：卡片内部布局变化不影响外部 */
-            contain: layout style;
-            /* ✅ 屏幕外的卡片跳过渲染（浏览器原生优化） */
-            content-visibility: auto;
-            /* ✅ 预估高度，防止滚动条跳动 */
-            contain-intrinsic-size: auto 280px 160px;
-        }
-
-        .clock-card-custom:hover {
-            transform: translateY(-3px);
-        }
-
-        .card-body .city-name {
-            white-space: normal;
-            word-break: break-word;
-            line-height: 1.4;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .time {
-            font-size: 2.25rem;
-            font-weight: 600;
-            line-height: 1;
-            /* ✅ 关键 CLS 修复：表格数字，等宽，1→0 切换不跳布局 */
-            font-variant-numeric: tabular-nums;
-            /* ✅ 固定最小宽度，防止 --:-- → 14:30 时的布局偏移 */
-            min-width: 5ch;
-            display: inline-block;
-            text-align: right;
-        }
-
-        .date {
-            font-size: 0.8rem;
-            /* ✅ 同样固定等宽 */
-            font-variant-numeric: tabular-nums;
-        }
-
-        .timezone-info {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            line-height: 1.2;
-        }
-
-        /* ✅ 工作时段高亮：不使用 transition，直接切换 */
-        .clock-card-custom.is-working {
-            background-color: oklch(var(--p) / 0.3);
-            border-color: oklch(var(--p) / 0.5);
-        }
-
-        /* ✅ 所有动画元素声明 will-change，让 GPU 提前合成层 */
-        .clock-card-custom:hover {
-            will-change: transform;
-        }
-    </style>
 </head>
-<body class="min-h-screen bg-base-100 text-base-content flex flex-col items-center pt-0 px-6 pb-20">
+<body class="bg-base-200 min-h-screen flex flex-col text-base-content antialiased">
 
-    <main class="flex flex-col items-center">
-    <div class="w-full max-w-6xl flex justify-between items-center mb-0 border-b border-base-200 pb-1">
-        <h1 class="text-xl font-bold tracking-tight text-base-content">
-            🕒 Europe Time
-        </h1>
-        <div class="flex items-center gap-2">
-            <div class="dropdown dropdown-end">
-                <button tabindex="0" role="button" aria-label="Add Timezone" class="btn btn-circle btn-ghost btn-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                </button>
-                <div tabindex="0" class="dropdown-content z-[50] card card-compact w-72 p-4 shadow bg-base-100 border border-base-200 mt-2" role="dialog" aria-label="Add Timezone Dialog">
-                    <h3 class="font-bold text-sm mb-2">Add Timezone</h3>
-                    <input type="text" id="searchTzInput" placeholder="Search country..." class="input input-bordered input-sm w-full mb-2" aria-label="Search country or city">
-                    <select id="tzSelect" class="select select-bordered select-sm w-full mb-3" aria-label="Select timezone"></select>
-                    <button id="addTzBtn" class="btn btn-primary btn-sm w-full">Add</button>
+    <!-- Header / Navbar -->
+    <header class="bg-base-100 border-b border-base-300 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-primary text-primary-content flex items-center justify-center font-bold text-lg">
+                    🇪🇺
+                </div>
+                <a href="/" class="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity">
+                    Europe Time <span class="text-xs font-medium text-primary px-2 py-0.5 rounded bg-primary/10">NET</span>
+                </a>
+            </div>
+
+            <!-- Controls: Add Timezone Dropdown -->
+            <div class="flex items-center gap-2">
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-sm btn-primary flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        Add Timezone
+                    </div>
+                    <div tabindex="0" class="dropdown-content z-50 menu p-4 shadow-xl bg-base-100 rounded-box w-80 sm:w-96 border border-base-300 mt-2 space-y-3">
+                        <p class="font-semibold text-sm">Select a European City / Timezone</p>
+                        <input id="searchInp" type="text" placeholder="Search city (e.g. Vienna, Madrid)..." class="input input-sm input-bordered w-full" />
+                        <select id="selectTz" class="select select-sm select-bordered w-full font-mono text-xs">
+                            <!-- Options populated dynamically by JS -->
+                        </select>
+                        <button id="addBtn" class="btn btn-sm btn-primary w-full">Add Clock to Dashboard</button>
+                    </div>
                 </div>
             </div>
-            
-            <label for="themeToggle" class="swap swap-rotate btn btn-circle btn-ghost btn-sm" aria-label="Toggle Theme">
-              <input type="checkbox" id="themeToggle" />
-              <span class="swap-on" aria-hidden="true">🌙</span>
-              <span class="swap-off" aria-hidden="true">☀️</span>
-            </label>
         </div>
-    </div>
+    </header>
 
-    <!-- ✅ aria-live="polite"：屏幕阅读器会在时间变化时播报，对可访问性友好 -->
-    <div id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-1 mb-8 items-stretch" role="region" aria-label="Live European Clocks" aria-live="polite">
-    </div>
-
-    <div class="w-full max-w-xl mx-auto bg-base-200 rounded-2xl p-5 border border-base-300 mb-6 select-none">
-        <div class="flex justify-between items-center mb-3">
-            <span class="text-sm font-medium opacity-80">Timeline Calibration</span>
-            <span id="sliderValue" class="badge badge-primary font-mono font-bold">Live Time</span>
-        </div>
-        <input type="range" id="timeSlider" aria-label="Time Travel Slider" min="-24" max="24" value="0" step="0.5" class="range range-primary range-sm">
-        <div class="flex justify-between text-xs px-2 mt-1 opacity-80 text-base-content font-mono" aria-hidden="true">
-             <span>-24h</span><span>-12h</span><span>Now</span><span>+12h</span><span>+24h</span>
-        </div>
-        <div class="text-center mt-4">
-            <button id="resetSliderBtn" class="btn btn-xs btn-outline btn-secondary px-4 rounded-full hidden">Sync to Current Time</button>
-        </div>
-    </div>
-
-    <div class="my-12"></div>
-    </main>
-
-    <footer class="w-full max-w-4xl text-xs opacity-60 leading-relaxed border-t border-base-200 pt-4 mt-auto" role="contentinfo">
-        <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
-        <p class="mb-2">
-            This real-time <strong>Europe time</strong> converter helps you track the exact time across all European time zones. Whether you need to synchronize business meetings with international clients or verify local working hours in Germany, France, and the UK, our live interface updates every second to guarantee precision for your scheduling.
-        </p>
-        <p>
-            European countries operate across three primary time zones: <strong>Western European Time (WET/GMT)</strong> utilized by the United Kingdom and Portugal; <strong>Central European Time (CET)</strong> covering France, Germany, Spain, and Italy; and <strong>Eastern European Time (EET)</strong> used in Romania, Greece, and Finland. All zones feature automatic adjustments for standard and summer periods.
-        </p>
-    </footer>
-
-<div class="mt-8 w-full max-w-4xl p-6 bg-base-200 rounded-2xl border border-base-300">
-    <h3 class="text-sm font-bold text-base-content mb-3">📖 Impact of Daylight Saving on <span class="text-primary">Europe Time</span> and Cross-Border Business</h3>
-    <div class="text-xs text-base-content/70 leading-relaxed space-y-2">
-        <p>For professionals tracking <strong>Europe time</strong> across e-commerce, remote work, and international logistics, Europe's semi-annual clock changes can lead to scheduling conflicts.</p>
-        <p>We recommend proactively confirming meeting times with your European partners during the transition weeks. Use our "Time Travel" simulation feature to verify local times across different zones to ensure seamless collaboration.</p>
-        <p>Understanding local business hours significantly improves operational efficiency. Our tool automatically handles DST, keeping you in sync with your European counterparts.</p>
-    </div>
-</div>
-    
-<div class="w-full max-w-4xl text-center mt-8 pt-4 border-t border-base-200 text-xs opacity-70">
-    <p>
-        Suggestions to improve experience? 
-        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#64;&#101;&#117;&#114;&#111;&#112;&#101;&#116;&#105;&#109;&#101;&#46;&#110;&#101;&#116;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#70;&#101;&#101;&#100;&#98;&#97;&#99;&#107;&#37;&#50;&#48;&#102;&#111;&#114;&#37;&#50;&#48;&#69;&#117;&#114;&#111;&#112;&#101;&#37;&#50;&#48;&#84;&#105;&#109;&#101;" 
-           class="link link-primary font-medium hover:underline">
-           Email me
-        </a>
-        <span class="mx-2">|</span>
-        &copy; 2026 Europe Time. All rights reserved.
-    </p>
-</div>
-    
-    <div id="toastContainer" class="toast toast-top toast-center z-[100] hidden" role="alert" aria-live="assertive">
-        <div class="alert alert-info py-2 px-4 shadow-lg rounded-xl">
-            <span id="toastText" class="text-xs font-medium"></span>
-        </div>
-    </div>
-
-    <script>
-    (function() {
-        'use strict';
-
-        const CONFIG = { themes: { light: 'cupcake', dark: 'night' }, workHour: { start: 8, end: 18 } };
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
         
-        const countryDB = [
-    { n: "🇦🇱 Albania", t: "Europe/Tirane" },
-    { n: "🇦🇩 Andorra", t: "Europe/Andorra" },
-    { n: "🇦🇹 Austria", t: "Europe/Vienna" },
-    { n: "🇧🇾 Belarus", t: "Europe/Minsk" },
-    { n: "🇧🇪 Belgium", t: "Europe/Brussels" },
-    { n: "🇧🇦 Bosnia & Herzegovina", t: "Europe/Sarajevo" },
-    { n: "🇧🇬 Bulgaria", t: "Europe/Sofia" },
-    { n: "🇭🇷 Croatia", t: "Europe/Zagreb" },
-    { n: "🇨🇾 Cyprus", t: "Asia/Nicosia" },  
-    { n: "🇨🇿 Czechia", t: "Europe/Prague" },
-    { n: "🇩🇰 Denmark", t: "Europe/Copenhagen" },
-    { n: "🇪🇪 Estonia", t: "Europe/Tallinn" },
-    { n: "🇫🇮 Finland", t: "Europe/Helsinki" },
-    { n: "🇫🇷 France", t: "Europe/Paris" },
-    { n: "🇩🇪 Germany", t: "Europe/Berlin" },
-    { n: "🇬🇷 Greece", t: "Europe/Athens" },
-    { n: "🇭🇺 Hungary", t: "Europe/Budapest" },
-    { n: "🇮🇸 Iceland", t: "Atlantic/Reykjavik" },
-    { n: "🇮🇪 Ireland", t: "Europe/Dublin" },
-    { n: "🇮🇹 Italy", t: "Europe/Rome" },
-    { n: "🇽🇰 Kosovo", t: "Europe/Belgrade" },
-    { n: "🇱🇻 Latvia", t: "Europe/Riga" },
-    { n: "🇱🇮 Liechtenstein", t: "Europe/Vaduz" },
-    { n: "🇱🇹 Lithuania", t: "Europe/Vilnius" },
-    { n: "🇱🇺 Luxembourg", t: "Europe/Luxembourg" },
-    { n: "🇲🇹 Malta", t: "Europe/Malta" },
-    { n: "🇲🇩 Moldova", t: "Europe/Chisinau" },
-    { n: "🇲🇨 Monaco", t: "Europe/Monaco" },
-    { n: "🇲🇪 Montenegro", t: "Europe/Podgorica" },
-    { n: "🇳🇱 Netherlands", t: "Europe/Amsterdam" },
-    { n: "🇲🇰 North Macedonia", t: "Europe/Skopje" },
-    { n: "🇳🇴 Norway", t: "Europe/Oslo" },
-    { n: "🇵🇱 Poland", t: "Europe/Warsaw" },
-    { n: "🇵🇹 Portugal", t: "Europe/Lisbon" },
-    { n: "🇷🇴 Romania", t: "Europe/Bucharest" },
-    { n: "🇷🇺 Russia (Moscow)", t: "Europe/Moscow" },
-    { n: "🇸🇲 San Marino", t: "Europe/San_Marino" },
-    { n: "🇷🇸 Serbia", t: "Europe/Belgrade" },
-    { n: "🇸🇰 Slovakia", t: "Europe/Bratislava" },
-    { n: "🇸🇮 Slovenia", t: "Europe/Ljubljana" },
-    { n: "🇪🇸 Spain", t: "Europe/Madrid" },
-    { n: "🇸🇪 Sweden", t: "Europe/Stockholm" },
-    { n: "🇨🇭 Switzerland", t: "Europe/Zurich" },
-    { n: "🇹🇷 Turkey (Istanbul)", t: "Europe/Istanbul" },
-    { n: "🇺🇦 Ukraine", t: "Europe/Kyiv" },
-    { n: "🇬🇧 United Kingdom", t: "Europe/London" },
-    { n: "🇻🇦 Vatican City", t: "Europe/Vatican" },
-    { n: "🇨🇳 China", t: "Asia/Shanghai" },
-    { n: "🇺🇸 United States (NY)", t: "America/New_York" },
-    { n: "🇯🇵 Japan", t: "Asia/Tokyo" },
-    { n: "🇦🇺 Australia (Sydney)", t: "Australia/Sydney" }
-        ];
+        <!-- Hero Title Section -->
+        <section class="text-center sm:text-left space-y-2">
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Current European Time & Live Time Zone Clocks</h1>
+            <p class="text-base-content/70 text-sm max-w-3xl">
+                Real-time exact local standard and daylight saving time for countries across Europe. Synchronized live with your device performance.
+            </p>
+        </section>
 
-        /* ══════════════════════════════════════════════════
-           STATE — 单一数据源
-           ══════════════════════════════════════════════════ */
-        let state = {
-            offset: 0,
-            clocks: [
-                { id: "local", city: "My Local Time", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true },
-                { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", timezone: "Europe/London" },
-                { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary", timezone: "Europe/Paris" },
-                { id: "eet", city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia", timezone: "Europe/Bucharest" }
-            ],
-            // ✅ 预计算的 DOM 引用缓存：避免 tick() 中重复 querySelector
-            domRefs: {},
-            // ✅ 滚动位置缓存（用于 IntersectionObserver）
-            visibleCards: new Set()
-        };
-
-        /* ══════════════════════════════════════════════════
-           DOM NODES — 一次性获取
-           ══════════════════════════════════════════════════ */
-        const nodes = {
-            grid: document.getElementById('clocksGrid'),
-            slider: document.getElementById('timeSlider'),
-            sliderVal: document.getElementById('sliderValue'),
-            resetBtn: document.getElementById('resetSliderBtn'),
-            themeBox: document.getElementById('themeToggle'),
-            searchInp: document.getElementById('searchTzInput'),
-            selectTz: document.getElementById('tzSelect'),
-            addBtn: document.getElementById('addTzBtn'),
-            toast: document.getElementById('toastContainer'),
-            toastMsg: document.getElementById('toastText')
-        };
-
-        /* ══════════════════════════════════════════════════
-           THEME
-           ══════════════════════════════════════════════════ */
-        function initTheme() {
-            const saved = localStorage.getItem('__pref_theme') || CONFIG.themes.light;
-            document.documentElement.setAttribute('data-theme', saved);
-            nodes.themeBox.checked = (saved === CONFIG.themes.dark);
-            nodes.themeBox.addEventListener('change', () => {
-                const target = nodes.themeBox.checked ? CONFIG.themes.dark : CONFIG.themes.light;
-                document.documentElement.setAttribute('data-theme', target);
-                localStorage.setItem('__pref_theme', target);
-            });
-        }
-
-        /* ══════════════════════════════════════════════════
-           TOAST — 简单的通知
-           ══════════════════════════════════════════════════ */
-        let toastLock;
-        function notify(msg) {
-            nodes.toastMsg.textContent = msg;
-            nodes.toast.classList.remove('hidden');
-            clearTimeout(toastLock);
-            toastLock = setTimeout(() => nodes.toast.classList.add('hidden'), 2200);
-        }
-
-        /* ══════════════════════════════════════════════════
-           RENDER — 生成时钟 HTML（含 <time> 语义标签）
-           ══════════════════════════════════════════════════ */
-        function generateStructure() {
-            nodes.grid.innerHTML = state.clocks.map(c => {
-                const id = `card_${c.id}`;
-                // ✅ 使用 <time> 标签，datetime 属性对爬虫/Agent 友好
-                return `
-                <div id="${id}" class="card clock-card-custom border shadow-sm transition-all duration-200" role="article" aria-label="Clock for ${c.city}">
-                    <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                        <div class="flex justify-between items-start gap-2">
-                            <div>
-                                <p class="city-name text-lg font-semibold">${c.city}</p>
-                                <p class="timezone-info mt-1 opacity-80 font-mono text-[10px] tracking-tight">${c.timezone}</p>
-                            </div>
-                            ${!c.isLocal ? `<button class="btn btn-ghost btn-xs btn-circle text-error/70 hover:text-error shrink-0" onclick="CNQTime.removeClock('${c.id}')" aria-label="Remove ${c.city}">✕</button>` : ''}
-                        </div>
-                        <div class="text-right mt-auto pt-2">
-                            <time data-target="time" class="time block" datetime="">--:--</time>
-                            <span data-target="date" class="date block mt-0.5">--</span>
+        <!-- Clocks Grid -->
+        <section id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            
+            <!-- Local Time -->
+            <div id="card_local" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for My Local Time">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">My Local Time</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Local Time</p>
                         </div>
                     </div>
-                </div>`;
-            }).join('');
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block text-primary" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
 
-            // ✅ 重建后立即刷新 DOM 引用缓存
-            cacheClockRefs();
-        }
+            <!-- UTC -->
+            <div id="card_utc" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for UTC / GMT">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">UTC / GMT</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">UTC</p>
+                        </div>
+                    </div>
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
 
-        /* ══════════════════════════════════════════════════
-           CACHE — 预缓存所有时钟卡片的 DOM 引用
-           这是最重要的性能优化：tick() 中零 DOM 查询
-           ══════════════════════════════════════════════════ */
-        function cacheClockRefs() {
-            state.domRefs = {};
-            state.clocks.forEach(c => {
-                const card = document.getElementById(`card_${c.id}`);
-                if (!card) return;
-                state.domRefs[c.id] = {
-                    card: card,
-                    timeEl: card.querySelector('[data-target="time"]'),
-                    dateEl: card.querySelector('[data-target="date"]')
-                };
-            });
-        }
+            <!-- London -->
+            <div id="card_london" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for London (UK)">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">London (UK)</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/London</p>
+                        </div>
+                    </div>
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
 
-        /* ══════════════════════════════════════════════════
-           TICK — 核心更新循环（已优化）
-           优化点：
-           1. 使用预缓存 DOM 引用 → 零 querySelector
-           2. 用 classList.toggle 代替 className 赋值 → 不触发过渡
-           3. requestAnimationFrame 对齐渲染帧 → 避免掉帧
-           4. Intl API 只调用一次 getter
-           ══════════════════════════════════════════════════ */
-        let rafId = null;
-        function tick() {
-            const baseMs = Date.now() + (state.offset * 3600000);
-            const baseDate = new Date(baseMs);
+            <!-- Paris -->
+            <div id="card_paris" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Paris (France)">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Paris (France)</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Paris</p>
+                        </div>
+                    </div>
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
 
-            state.clocks.forEach(c => {
-                const refs = state.domRefs[c.id];
-                if (!refs) return;
+            <!-- Berlin -->
+            <div id="card_berlin" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Berlin (Germany)">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Berlin (Germany)</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Berlin</p>
+                        </div>
+                    </div>
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
 
-                try {
-                    const timeStr = baseDate.toLocaleTimeString('en-US', { timeZone: c.timezone, hour: '2-digit', minute: '2-digit', hour12: false });
-                    const dateStr = baseDate.toLocaleDateString('en-US', { timeZone: c.timezone, weekday: 'short', day: '2-digit', month: 'short' });
-                    const offsetStr = new Intl.DateTimeFormat('en-US', { timeZone: c.timezone, timeZoneName: 'shortOffset' }).formatToParts(baseDate).find(p => p.type === 'timeZoneName')?.value || '';
+            <!-- Rome -->
+            <div id="card_rome" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Rome (Italy)">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Rome (Italy)</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Rome</p>
+                        </div>
+                    </div>
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
 
-                    refs.timeEl.textContent = timeStr;
-                    // ✅ 设置 datetime 属性，Agent 可直接读取 ISO 时间
-                    refs.timeEl.setAttribute('datetime', baseDate.toISOString());
-                    refs.dateEl.textContent = `${dateStr} (${offsetStr})`;
+            <!-- Madrid -->
+            <div id="card_madrid" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Madrid (Spain)">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Madrid (Spain)</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Madrid</p>
+                        </div>
+                    </div>
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
 
-                    // ✅ 工作时段检测：使用 classList.toggle，避免触发 CSS 过渡
-                    const currentHour = parseInt(timeStr.split(':')[0], 10);
-                    const isWorking = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
-                    refs.card.classList.toggle('is-working', isWorking);
-                } catch(e) {
-                    // 静默处理无效时区
+            <!-- Athens -->
+            <div id="card_athens" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Athens (Greece)">
+                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Athens (Greece)</h2>
+                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Athens</p>
+                        </div>
+                    </div>
+                    <div class="text-right mt-auto pt-2">
+                        <time data-target="time" class="time block" datetime="">--:--</time>
+                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Static Knowledge / FAQ Section -->
+        <section class="bg-base-100 rounded-box p-6 border border-base-300 space-y-6">
+            <div class="space-y-2 border-b border-base-200 pb-4">
+                <h2 class="text-xl font-bold">European Time Zones Overview</h2>
+                <p class="text-sm text-base-content/80 leading-relaxed">
+                    European continent is divided into several standard time zones. Knowing the exact offset is essential for international business, travel, and virtual meetings across different countries.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                    <h3 class="font-semibold text-base flex items-center gap-2">
+                        <span>🌐</span> Western European Time (WET / GMT)
+                    </h3>
+                    <p class="text-base-content/70">
+                        Covers Western Europe, including the UK, Ireland, Portugal, and the Faroe Islands. During summer, these countries observe WEST (UTC+1) or BST (British Summer Time).
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-semibold text-base flex items-center gap-2">
+                        <span>🏛️</span> Central European Time (CET)
+                    </h3>
+                    <p class="text-base-content/70">
+                        The most widely used timezone in Europe (UTC+1). Spans France, Germany, Italy, Spain, Netherlands, Poland, Switzerland, Austria, and Scandinavia. Daylight Saving Time operates at CEST (UTC+2).
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-semibold text-base flex items-center gap-2">
+                        <span>🏛️</span> Eastern European Time (EET)
+                    </h3>
+                    <p class="text-base-content/70">
+                        Standard time zone (UTC+2) used in Greece, Finland, Ukraine, Romania, Bulgaria, Estonia, Latvia, and Lithuania. During Daylight Saving Time, offsets move to EEST (UTC+3).
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-semibold text-base flex items-center gap-2">
+                        <span>🕌</span> Moscow Time (MSK)
+                    </h3>
+                    <p class="text-base-content/70">
+                        Covers western parts of Russia including Moscow and Saint Petersburg (UTC+3). Russia does not currently observe Daylight Saving Time.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notification Toast Container -->
+    <div id="toast" class="toast toast-end z-50 transition-all duration-300 pointer-events-none opacity-0">
+        <div class="alert alert-info text-xs py-2 px-4 shadow-lg">
+            <span id="toastMsg">Notification message</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-base-100 border-t border-base-300 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-base-content/60 space-y-2">
+            <p>&copy; <span id="year">2026</span> EuropeTime.net — Accurate European Clock & Time Zone Tracker.</p>
+            <p class="font-mono text-[11px]">All times client-side synchronized with Intl API performance.</p>
+        </div>
+    </footer>
+
+    <!-- Vanilla JS Application Script -->
+    <script>
+        (function() {
+            'use strict';
+
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            const DEFAULT_CLOCKS = [
+                { id: 'card_local', city: 'My Local Time', timezone: 'LOCAL' },
+                { id: 'card_utc', city: 'UTC / GMT', timezone: 'UTC' },
+                { id: 'card_london', city: 'London (UK)', timezone: 'Europe/London' },
+                { id: 'card_paris', city: 'Paris (France)', timezone: 'Europe/Paris' },
+                { id: 'card_berlin', city: 'Berlin (Germany)', timezone: 'Europe/Berlin' },
+                { id: 'card_rome', city: 'Rome (Italy)', timezone: 'Europe/Rome' },
+                { id: 'card_madrid', city: 'Madrid (Spain)', timezone: 'Europe/Madrid' },
+                { id: 'card_athens', city: 'Athens (Greece)', timezone: 'Europe/Athens' }
+            ];
+
+            const ALL_TIMEZONES = [
+                { label: 'Amsterdam (Netherlands)', tz: 'Europe/Amsterdam' },
+                { label: 'Athens (Greece)', tz: 'Europe/Athens' },
+                { label: 'Belgrade (Serbia)', tz: 'Europe/Belgrade' },
+                { label: 'Berlin (Germany)', tz: 'Europe/Berlin' },
+                { label: 'Brussels (Belgium)', tz: 'Europe/Brussels' },
+                { label: 'Bucharest (Romania)', tz: 'Europe/Bucharest' },
+                { label: 'Budapest (Hungary)', tz: 'Europe/Budapest' },
+                { label: 'Copenhagen (Denmark)', tz: 'Europe/Copenhagen' },
+                { label: 'Dublin (Ireland)', tz: 'Europe/Dublin' },
+                { label: 'Helsinki (Finland)', tz: 'Europe/Helsinki' },
+                { label: 'Istanbul (Turkey)', tz: 'Europe/Istanbul' },
+                { label: 'Kyiv (Ukraine)', tz: 'Europe/Kyiv' },
+                { label: 'Lisbon (Portugal)', tz: 'Europe/Lisbon' },
+                { label: 'Ljubljana (Slovenia)', tz: 'Europe/Ljubljana' },
+                { label: 'London (UK)', tz: 'Europe/London' },
+                { label: 'Luxembourg', tz: 'Europe/Luxembourg' },
+                { label: 'Madrid (Spain)', tz: 'Europe/Madrid' },
+                { label: 'Minsk (Belarus)', tz: 'Europe/Minsk' },
+                { label: 'Monaco', tz: 'Europe/Monaco' },
+                { label: 'Moscow (Russia)', tz: 'Europe/Moscow' },
+                { label: 'Oslo (Norway)', tz: 'Europe/Oslo' },
+                { label: 'Paris (France)', tz: 'Europe/Paris' },
+                { label: 'Prague (Czech Republic)', tz: 'Europe/Prague' },
+                { label: 'Riga (Latvia)', tz: 'Europe/Riga' },
+                { label: 'Rome (Italy)', tz: 'Europe/Rome' },
+                { label: 'Sofia (Bulgaria)', tz: 'Europe/Sofia' },
+                { label: 'Stockholm (Sweden)', tz: 'Europe/Stockholm' },
+                { label: 'Tallinn (Estonia)', tz: 'Europe/Tallinn' },
+                { label: 'Vienna (Austria)', tz: 'Europe/Vienna' },
+                { label: 'Vilnius (Lithuania)', tz: 'Europe/Vilnius' },
+                { label: 'Warsaw (Poland)', tz: 'Europe/Warsaw' },
+                { label: 'Zagreb (Croatia)', tz: 'Europe/Zagreb' },
+                { label: 'Zurich (Switzerland)', tz: 'Europe/Zurich' },
+                { label: 'New York (USA)', tz: 'America/New_York' },
+                { label: 'Tokyo (Japan)', tz: 'Asia/Tokyo' }
+            ];
+
+            const formatterCache = new Map();
+
+            function getFormatter(timezone, type) {
+                const key = `${timezone}_${type}`;
+                if (formatterCache.has(key)) return formatterCache.get(key);
+
+                let options = {};
+                if (type === 'time') {
+                    // 已移除 second: '2-digit'，只保留时和分
+                    options = { hour: '2-digit', minute: '2-digit', hour12: false };
+                } else if (type === 'date') {
+                    options = { weekday: 'short', month: 'short', day: 'numeric' };
                 }
-            });
-        }
 
-        /**
-         * ✅ requestAnimationFrame 驱动的循环
-         * 解决了 setInterval 的两个问题：
-         * 1. 后台标签页仍会执行（浪费 CPU）
-         * 2. 不跟渲染帧对齐，可能掉帧
-         */
-        function startClock() {
-            let lastTick = 0;
-            function loop(now) {
-                rafId = requestAnimationFrame(loop);
-                // 每秒只 tick 一次，不浪费
-                if (now - lastTick >= 1000) {
-                    lastTick = now;
-                    tick();
+                if (timezone !== 'LOCAL' && timezone !== 'UTC') {
+                    options.timeZone = timezone;
                 }
-            }
-            rafId = requestAnimationFrame(loop);
-        }
 
-        /* ══════════════════════════════════════════════════
-           CLOCK MANAGEMENT
-           ══════════════════════════════════════════════════ */
-        window.CNQTime = {
-            removeClock: function(id) {
-                state.clocks = state.clocks.filter(c => c.id !== id);
-                localStorage.setItem('__user_clocks', JSON.stringify(state.clocks));
-                generateStructure();
-                tick();
-                notify("Removed.");
+                const fmt = new Intl.DateTimeFormat('en-GB', options);
+                formatterCache.set(key, fmt);
+                return fmt;
             }
-        };
 
-        /* ══════════════════════════════════════════════════
-           SEARCH — 带防抖的搜索
-           ══════════════════════════════════════════════════ */
-        function populateSelect(filter = '') {
-            const query = filter.toLowerCase();
-            // ✅ 使用 DocumentFragment 批量构建，减少 DOM 操作
-            const matched = countryDB.filter(item => item.n.toLowerCase().includes(query));
-            const fragment = document.createDocumentFragment();
-            matched.forEach(i => {
-                const opt = document.createElement('option');
-                opt.value = i.t;
-                opt.textContent = i.n;
-                fragment.appendChild(opt);
-            });
-            nodes.selectTz.innerHTML = '';
-            nodes.selectTz.appendChild(fragment);
-            if (!matched.length) {
-                const opt = document.createElement('option');
-                opt.disabled = true;
-                opt.textContent = 'No variations found';
-                nodes.selectTz.appendChild(opt);
+            let clocks = [...DEFAULT_CLOCKS];
+            
+            try {
+                const saved = localStorage.getItem('__user_clocks');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        clocks = parsed;
+                    }
+                }
+            } catch (e) {
+                console.warn('LocalStorage unavailable:', e);
             }
-        }
 
-        // ✅ 150ms 防抖：大幅减少 populateSelect 调用次数
-        function debounce(fn, delay) {
-            let timer;
-            return function(...args) {
-                clearTimeout(timer);
-                timer = setTimeout(() => fn.apply(this, args), delay);
+            const nodes = {
+                clocksGrid: document.getElementById('clocksGrid'),
+                selectTz: document.getElementById('selectTz'),
+                searchInp: document.getElementById('searchInp'),
+                addBtn: document.getElementById('addBtn'),
+                toast: document.getElementById('toast'),
+                toastMsg: document.getElementById('toastMsg')
             };
-        }
 
-        /* ══════════════════════════════════════════════════
-           EVENT BINDING
-           ══════════════════════════════════════════════════ */
-        function bindEvents() {
-            nodes.slider.addEventListener('input', (e) => {
-                state.offset = parseFloat(e.target.value);
-                nodes.sliderVal.textContent = state.offset === 0 ? 'Live Time' : `${state.offset > 0 ? '+' : ''}${state.offset} hours`;
-                nodes.resetBtn.classList.toggle('hidden', state.offset === 0);
+            let toastTimer = null;
+            function notify(msg) {
+                nodes.toastMsg.textContent = msg;
+                nodes.toast.classList.remove('opacity-0', 'pointer-events-none');
+                nodes.toast.classList.add('opacity-100');
+                if (toastTimer) clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    nodes.toast.classList.remove('opacity-100');
+                    nodes.toast.classList.add('opacity-0', 'pointer-events-none');
+                }, 2500);
+            }
+
+            function populateSelect(filter = '') {
+                nodes.selectTz.innerHTML = '';
+                const term = filter.toLowerCase();
+                const filtered = ALL_TIMEZONES.filter(item => 
+                    item.label.toLowerCase().includes(term) || item.tz.toLowerCase().includes(term)
+                );
+
+                if (filtered.length === 0) {
+                    const opt = document.createElement('option');
+                    opt.disabled = true;
+                    opt.textContent = 'No matching timezones';
+                    nodes.selectTz.appendChild(opt);
+                    return;
+                }
+
+                filtered.forEach(item => {
+                    const opt = document.createElement('option');
+                    opt.value = item.tz;
+                    opt.textContent = `${item.label}`;
+                    nodes.selectTz.appendChild(opt);
+                });
+            }
+
+            function generateStructure() {
+                nodes.clocksGrid.innerHTML = '';
+                
+                clocks.forEach(c => {
+                    const card = document.createElement('div');
+                    card.id = c.id;
+                    card.className = "card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100";
+                    card.setAttribute('role', 'article');
+                    card.setAttribute('aria-label', `Clock for ${c.city}`);
+
+                    const isDeletable = c.id.startsWith('custom_');
+
+                    card.innerHTML = `
+                        <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
+                            <div class="flex justify-between items-start gap-2">
+                                <div>
+                                    <h2 class="city-name text-lg font-semibold text-base-content leading-tight">${c.city}</h2>
+                                    <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">${c.timezone}</p>
+                                </div>
+                                ${isDeletable ? `
+                                    <button class="btn btn-ghost btn-xs btn-circle text-error hover:bg-error/10 remove-btn" data-id="${c.id}" aria-label="Remove ${c.city} clock">
+                                        ✕
+                                    </button>
+                                ` : ''}
+                            </div>
+                            <div class="text-right mt-auto pt-2">
+                                <time data-target="time" class="time block ${c.timezone === 'LOCAL' ? 'text-primary' : ''}" datetime="">--:--</time>
+                                <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                            </div>
+                        </div>
+                    `;
+                    nodes.clocksGrid.appendChild(card);
+                });
+
+                nodes.clocksGrid.querySelectorAll('.remove-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idToRemove = e.currentTarget.getAttribute('data-id');
+                        clocks = clocks.filter(item => item.id !== idToRemove);
+                        try {
+                            localStorage.setItem('__user_clocks', JSON.stringify(clocks));
+                        } catch(err) {}
+                        generateStructure();
+                        tick();
+                        notify("Clock removed.");
+                    });
+                });
+            }
+
+            function tick() {
+                const now = new Date();
+
+                clocks.forEach(c => {
+                    const el = document.getElementById(c.id);
+                    if (!el) return;
+
+                    const timeEl = el.querySelector('[data-target="time"]');
+                    const dateEl = el.querySelector('[data-target="date"]');
+
+                    if (timeEl && dateEl) {
+                        try {
+                            const timeFmt = getFormatter(c.timezone, 'time');
+                            const dateFmt = getFormatter(c.timezone, 'date');
+
+                            const timeStr = timeFmt.format(now);
+                            const dateStr = dateFmt.format(now);
+
+                            if (timeEl.textContent !== timeStr) {
+                                timeEl.textContent = timeStr;
+                                timeEl.setAttribute('datetime', now.toISOString());
+                            }
+                            if (dateEl.textContent !== dateStr) {
+                                dateEl.textContent = dateStr;
+                            }
+                        } catch (err) {
+                            timeEl.textContent = "Error";
+                        }
+                    }
+                });
+            }
+
+            // 轻量级定时器，每秒刷新一次检查分钟变更（低 CPU 占用）
+            let timerId = null;
+
+            function startTimer() {
                 tick();
-            });
+                if (!timerId) {
+                    timerId = setInterval(tick, 1000);
+                }
+            }
 
-            nodes.resetBtn.addEventListener('click', () => {
-                nodes.slider.value = 0;
-                state.offset = 0;
-                nodes.sliderVal.textContent = 'Live Time';
-                nodes.resetBtn.classList.add('hidden');
-                tick();
-            });
+            function stopTimer() {
+                if (timerId) {
+                    clearInterval(timerId);
+                    timerId = null;
+                }
+            }
 
-            // ✅ 防抖搜索
-            nodes.searchInp.addEventListener('input', debounce((e) => populateSelect(e.target.value), 150));
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stopTimer();
+                } else {
+                    startTimer();
+                }
+            });
 
             nodes.addBtn.addEventListener('click', () => {
                 const zone = nodes.selectTz.value;
                 if (!zone) return;
-                if (state.clocks.some(c => c.timezone === zone)) return notify("Already exists.");
-                
-                const optionText = nodes.selectTz.options[nodes.selectTz.selectedIndex].text;
-                state.clocks.push({ id: 'custom_' + Date.now(), city: optionText, timezone: zone });
-                localStorage.setItem('__user_clocks', JSON.stringify(state.clocks));
-                
+
+                if (clocks.some(c => c.timezone === zone)) {
+                    notify("Timezone already added.");
+                    return;
+                }
+
+                const selectedOption = nodes.selectTz.options[nodes.selectTz.selectedIndex];
+                const optionText = selectedOption ? selectedOption.text : zone;
+
+                clocks.push({
+                    id: 'custom_' + Date.now(),
+                    city: optionText,
+                    timezone: zone
+                });
+
+                try {
+                    localStorage.setItem('__user_clocks', JSON.stringify(clocks));
+                } catch(e) {}
+
                 generateStructure();
                 tick();
-                notify("Added.");
-            });
-        }
+                notify("Timezone added.");
 
-        /* ══════════════════════════════════════════════════
-           BOOTSTRAP
-           ══════════════════════════════════════════════════ */
-        function bootstrap() {
-            initTheme();
-            
-            // ✅ 恢复用户自定义时钟
-            const cached = localStorage.getItem('__user_clocks');
-            if (cached) { 
-                try { 
-                    const parsed = JSON.parse(cached);
-                    if (parsed && parsed.length) {
-                        state.clocks = parsed.map(c => ({
-                            id: c.id,
-                            city: c.city,
-                            timezone: c.timezone || c.zone,
-                            isLocal: c.isLocal
-                        }));
-                    }
-                } catch(e){} 
-            }
-
-            generateStructure();
-            populateSelect();
-            bindEvents();
-
-            // ✅ 立即渲染首次，再用 rAF 循环
-            tick();
-            startClock();
-
-            // ✅ 页面隐藏时暂停 rAF，回到前台时恢复（节省后台 CPU）
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-                } else {
-                    if (!rafId) startClock();
+                if (document.activeElement) {
+                    document.activeElement.blur();
                 }
-            });
-        }
 
-        // ✅ DOMContentLoaded 或直接执行（哪个先来用哪个）
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', bootstrap);
-        } else {
-            bootstrap();
-        }
-    })();
+                nodes.searchInp.value = '';
+                populateSelect();
+            });
+
+            nodes.searchInp.addEventListener('input', (e) => {
+                populateSelect(e.target.value);
+            });
+
+            populateSelect();
+            
+            try {
+                if (localStorage.getItem('__user_clocks')) {
+                    generateStructure();
+                }
+            } catch(e) {}
+
+            startTimer();
+
+        })();
     </script>
 </body>
 </html>
