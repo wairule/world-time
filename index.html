@@ -396,7 +396,6 @@
 
                 let options = {};
                 if (type === 'time') {
-                    // 已移除 second: '2-digit'，只保留时和分
                     options = { hour: '2-digit', minute: '2-digit', hour12: false };
                 } else if (type === 'date') {
                     options = { weekday: 'short', month: 'short', day: 'numeric' };
@@ -483,20 +482,20 @@
 
                     card.innerHTML = `
                         <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                            <div class="flex justify-between items-start gap-2">
-                                <div>
-                                    <h2 class="city-name text-lg font-semibold text-base-content leading-tight">${c.city}</h2>
-                                    <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">${c.timezone}</p>
-                                </div>
+                            <div>
+                                <h2 class="city-name text-lg font-semibold text-base-content leading-tight">${c.city}</h2>
+                                <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">${c.timezone}</p>
+                            </div>
+                            <div class="mt-auto pt-2 flex items-end ${isDeletable ? 'justify-between' : 'justify-end'} gap-2">
                                 ${isDeletable ? `
-                                    <button class="btn btn-ghost btn-xs btn-circle text-error hover:bg-error/10 remove-btn" data-id="${c.id}" aria-label="Remove ${c.city} clock">
+                                    <button class="btn btn-ghost btn-xs btn-circle text-error hover:bg-error/10 remove-btn shrink-0" data-id="${c.id}" aria-label="Remove ${c.city} clock">
                                         ✕
                                     </button>
                                 ` : ''}
-                            </div>
-                            <div class="text-right mt-auto pt-2">
-                                <time data-target="time" class="time block ${c.timezone === 'LOCAL' ? 'text-primary' : ''}" datetime="">--:--</time>
-                                <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                                <div class="text-right">
+                                    <time data-target="time" class="time block ${c.timezone === 'LOCAL' ? 'text-primary' : ''}" datetime="">--:--</time>
+                                    <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                                </div>
                             </div>
                         </div>
                     `;
