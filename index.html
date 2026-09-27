@@ -1,627 +1,609 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en-US" data-theme="cupcake">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>European Time Now | Europe Time Zone Converter & Real-Time Clocks</title>
-    <meta name="description" content="Check exact real-time local current time across European countries and time zones including GMT, BST, CET, CEST, EET, EEST, and MSK. Fast, accurate, and interactive.">
-    <link rel="canonical" href="https://www.europetime.net/">
-
-    <!-- Open Graph / Facebook / LinkedIn / WeChat -->
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕒%3C/text%3E%3C/svg%3E">
+    <title>Europe time — Current Live Clock & Converter for 37+ European Countries</title>
+    <meta name="author" content="Europe Time">
+    <meta name="copyright" content="Europe Time">
+    <meta name="date" content="2026-09-27">
+    <meta name="description" content="Check real‑time Europe time for business meetings and travel. Our free Europe time converter tracks GMT, CET, EET across 37+ European countries including UK, Germany, France, Italy and Spain, with automatic DST daylight saving support.">
+    <meta name="keywords" content="Europe time, current Europe time, Europe time converter, Europe business time, UK time, France time, Germany time, time zones Europe, live European clock, CET time">
+    <link rel="canonical" href="https://www.europetime.net/" />
+    <link rel="alternate" hreflang="zh" href="https://www.euclock.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.europetime.net/" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="European Time Now | Real-Time Europe Clocks">
-    <meta property="og:description" content="Accurate local time across all major European cities and time zones with live daylight saving tracking.">
+    <meta property="og:title" content="Europe time — Live Clock & Converter for 37+ European Countries">
+    <meta property="og:description" content="Check accurate Europe time across major time zones (GMT, CET, EET). Our live clock and business converter with automatic DST handling is perfect for scheduling seamless business calls with France, Germany, UK, Italy, Spain, and 37+ other countries.">
     <meta property="og:url" content="https://www.europetime.net/">
+    <meta property="og:site_name" content="Europe Time">
+    <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://www.europetime.net/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="European Time Now">
-    <meta name="twitter:description" content="Real-time European time zone tracking and interactive clocks.">
+    <meta name="twitter:title" content="Europe time | Live Clock & Converter">
+    <meta name="twitter:description" content="Real‑time tracking for Europe time zones and interactive clocks for 37+ countries.">
     <meta name="twitter:image" content="https://www.europetime.net/og-image.png">
 
-    <!-- Tailwind CSS & DaisyUI CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-mono { font-family: 'JetBrains+Mono', monospace; }
-        .clock-card-custom {
-            contain-intrinsic-size: 160px;
-            content-visibility: auto;
-        }
-        [data-target="time"] {
-            font-family: 'JetBrains+Mono', monospace;
-            font-size: 2.125rem;
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -0.02em;
-        }
-        [data-target="date"] {
-            font-size: 0.85rem;
-        }
-    </style>
-
-    <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "WebSite",
-          "@id": "https://www.europetime.net/#website",
+          "@type": "WebApplication",
+          "@id": "https://www.europetime.net/#webapp",
+          "name": "Europe time Live Clock",
           "url": "https://www.europetime.net/",
-          "name": "Europe Time",
-          "description": "Real-time European Time Zone Tracking & Clock Utility",
-          "dateModified": "2026-08-29"
+          "description": "A precise, lightweight tool tracking live Europe time and multiple European time zones for professional call scheduling in Germany, France, UK, and beyond.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript",
+          "dateModified": "2026-09-27",
+          "inLanguage": "en-US",
+          "keywords": "Europe time, current Europe time, Europe time converter, CET, GMT, EET, UK time, France time, Germany time",
+          "provider": {"@type": "Organization","name": "Europe Time","url": "https://www.europetime.net/"},
+          "copyrightYear": "2026"
         },
         {
           "@type": "FAQPage",
           "@id": "https://www.europetime.net/#faq",
           "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What are the main time zones in Europe?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Europe mainly spans four primary standard time zones: Western European Time (WET/UTC+0, daylight saving WEST/UTC+1), Central European Time (CET/UTC+1, daylight saving CEST/UTC+2), Eastern European Time (EET/UTC+2, daylight saving EEST/UTC+3), and Moscow Time (MSK/UTC+3)."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does Europe practice Daylight Saving Time (DST)?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Most European countries change their clocks for Daylight Saving Time (Summer Time) on the last Sunday of March and change back to Standard Time on the last Sunday of October."
-              }
-            }
+            {"@type": "Question","name": "How does Daylight Saving Time affect European business meetings?","acceptedAnswer": {"@type": "Answer","text": "Europe's semi-annual clock changes can cause scheduling conflicts when working with Europe time. Our tool automatically handles DST, allowing you to use the Time Travel simulation feature to verify local times across different European zones for seamless collaboration."}},
+            {"@type": "Question","name": "What are the main time zones in Europe?","acceptedAnswer": {"@type": "Answer","text": "Europe spans four primary standard time zones: Western European Time (WET/GMT, UTC+0), Central European Time (CET, UTC+1), Eastern European Time (EET, UTC+2), and Moscow Time (MSK, UTC+3). Use our tool to view Europe time for each zone."}},
+            {"@type": "Question","name": "When does Europe switch to Daylight Saving Time?","acceptedAnswer": {"@type": "Answer","text": "Most European countries switch to Daylight Saving Time (Summer Time) on the last Sunday of March and return to Standard Time on the last Sunday of October each year, which shifts Europe time offsets."}},
+            {"@type": "Question","name": "Which countries use Central European Time (CET)?","acceptedAnswer": {"@type": "Answer","text": "Central European Time (CET, UTC+1) covers France, Germany, Italy, Spain, Netherlands, Poland, Austria, Sweden, Hungary, Czechia, Belgium, Switzerland, and several other countries. During summer, it becomes CEST (UTC+2) and updates Europe time accordingly."}},
+            {"@type": "Question","name": "Is the Europe time tool free to use?","acceptedAnswer": {"@type": "Answer","text": "Yes, our Europe time clock and time zone converter is completely free. No registration required. Simply open the page to view live times across 37+ European countries with automatic Daylight Saving Time handling."}},
+            {"@type": "Question","name": "How can I check current Europe time?","acceptedAnswer": {"@type": "Answer","text": "You can view up-to-date Europe time directly on this page. The live clocks display real-time local time for dozens of European nations, automatically adjusted for daylight saving transitions."}},
+            {"@type": "Question","name": "How do I convert Europe time to my local time?","acceptedAnswer": {"@type": "Answer","text": "Compare Europe time against your local clock using our converter. Add extra time zones, or use the time-travel slider to preview times ahead or behind, perfect for planning cross-border meetings."}}
           ]
         }
       ]
     }
     </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            background-color: #FFFFFF;
+        }
+
+        /* ─── 时钟容器 ─── */
+        .clocks-wrapper {
+            width: 100%;
+            max-width: 1280px;
+            margin-top: 8px;
+        }
+
+        /* ─── 时钟卡片（参照中文站写法：固定宽度） ─── */
+        .clock-card {
+            width: 280px;
+            min-height: 180px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .clock-card:hover { transform: translateY(-3px); }
+
+        .clock-card .city-name {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+        .clock-card .timezone-label {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+        .clock-card .time-display {
+            font-size: 2.25rem;
+            font-weight: 600;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-variant-numeric: tabular-nums;
+            line-height: 1;
+        }
+        .clock-card .date-display {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        /* ─── 工作时段高亮 ─── */
+        .clock-card.is-working {
+            background-color: oklch(var(--p) / 0.15);
+            border-color: oklch(var(--p) / 0.4);
+        }
+
+        /* ─── 响应式 ─── */
+        @media (max-width: 640px) {
+            .clock-card { width: 100%; max-width: 340px; min-height: 160px; }
+            .clock-card .time-display { font-size: 1.75rem; }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .clock-card { width: 240px; }
+        }
+    </style>
 </head>
-<body class="bg-base-200 min-h-screen flex flex-col text-base-content antialiased">
+<body>
 
-    <!-- Header / Navbar -->
-    <header class="bg-base-100 border-b border-base-300 sticky top-0 z-30 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-primary text-primary-content flex items-center justify-center font-bold text-lg">
-                    🇪🇺
-                </div>
-                <a href="/" class="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity">
-                    Europe Time <span class="text-xs font-medium text-primary px-2 py-0.5 rounded bg-primary/10">NET</span>
-                </a>
-            </div>
+    <main class="flex flex-col items-center w-full">
 
-            <!-- Controls: Add Timezone Dropdown -->
+        <div class="w-full max-w-6xl flex justify-between items-center mb-0 border-b border-base-200 pb-1">
+            <h1 class="text-xl font-bold tracking-tight text-base-content">
+                Europe time — Live Clocks &amp; Converter
+            </h1>
             <div class="flex items-center gap-2">
                 <div class="dropdown dropdown-end">
-                    <div tabindex="0" role="button" class="btn btn-sm btn-primary flex items-center gap-1">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                        Add Timezone
-                    </div>
-                    <div tabindex="0" class="dropdown-content z-50 menu p-4 shadow-xl bg-base-100 rounded-box w-80 sm:w-96 border border-base-300 mt-2 space-y-3">
-                        <p class="font-semibold text-sm">Select a European City / Timezone</p>
-                        <input id="searchInp" type="text" placeholder="Search city (e.g. Vienna, Madrid)..." class="input input-sm input-bordered w-full" />
-                        <select id="selectTz" class="select select-sm select-bordered w-full font-mono text-xs">
-                            <!-- Options populated dynamically by JS -->
-                        </select>
-                        <button id="addBtn" class="btn btn-sm btn-primary w-full">Add Clock to Dashboard</button>
+                    <button tabindex="0" role="button" aria-label="Add Timezone" class="btn btn-circle btn-ghost btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                    </button>
+                    <div tabindex="0" class="dropdown-content z-[50] card card-compact w-72 p-4 shadow bg-base-100 border border-base-200 mt-2">
+                        <h3 class="font-bold text-sm mb-2">Add Timezone</h3>
+                        <input type="text" id="searchTzInput" placeholder="Search country..." class="input input-bordered input-sm w-full mb-2">
+                        <select id="tzSelect" class="select select-bordered select-sm w-full mb-3"></select>
+                        <button id="addTzBtn" class="btn btn-primary btn-sm w-full">Add</button>
                     </div>
                 </div>
+                <label class="swap swap-rotate btn btn-circle btn-ghost btn-sm">
+                    <input type="checkbox" id="themeToggle" aria-label="Toggle Theme" />
+                    <svg class="swap-on fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29l.71-.71a1,1,0,0,0,-1.41-1.41l-.71.71A1,1,0,0,0,5.64,7.05ZM12,15a3,3,0,1,0,3-3A3,3,0,0,0,12,15Zm12.71,1.29a1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM20,12a1,1,0,0,0-1-1H19a1,1,0,0,0,0,2h1A1,1,0,0,0,20,12ZM18.36,7.05a1,1,0,0,0-.7-.29,1,1,0,0,0-.71.29l-.71.71a1,1,0,1,0,1.41,1.41l.71-.71A1,1,0,0,0,18.36,7.05ZM12,9a1,1,0,0,0,1-1V7a1,1,0,0,0-2,0V8A1,1,0,0,0,12,9Z" /></svg>
+                    <svg class="swap-off fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22a10.14,10.14,0,0,0,9.56,15.7A8.12,8.12,0,0,1,12.14,19.73Z" /></svg>
+                </label>
             </div>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
-        
-        <!-- Hero Title Section -->
-        <section class="text-center sm:text-left space-y-2">
-            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Current European Time & Live Time Zone Clocks</h1>
-            <p class="text-base-content/70 text-sm max-w-3xl">
-                Real-time exact local standard and daylight saving time for countries across Europe. Synchronized live with your device performance.
-            </p>
-        </section>
 
         <!-- Clocks Grid -->
-        <section id="clocksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            
-            <!-- Local Time -->
-            <div id="card_local" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for My Local Time">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
+        <section class="clocks-wrapper">
+            <div id="clocksContainer" class="flex flex-wrap justify-center gap-4 w-full">
+
+                <!-- Card 1 -->
+                <div id="card_local" class="card clock-card shadow-md border border-base-300 bg-base-200" data-tz="LOCAL" data-is-local="true">
+                    <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">My Local Time</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Local Time</p>
+                            <h3 class="city-name">My Local Time</h3>
+                            <p class="timezone-label">Local Time</p>
+                        </div>
+                        <div class="mt-auto pt-2 flex items-end justify-between gap-2">
+                            <div class="w-6 shrink-0"></div>
+                            <div class="text-right">
+                                <div class="time-display" data-time="card_local">--:--</div>
+                                <div class="date-display" data-date="card_local">----/--/-- ---</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block text-primary" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
                 </div>
-            </div>
 
-            <!-- UTC -->
-            <div id="card_utc" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for UTC / GMT">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
+                <!-- Card 2 -->
+                <div id="card_uk" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/London">
+                    <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">UTC / GMT</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">UTC</p>
+                            <h3 class="city-name">🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland</h3>
+                            <p class="timezone-label">Europe/London</p>
+                        </div>
+                        <div class="mt-auto pt-2 flex items-end justify-between gap-2">
+                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="1" aria-label="删除">✕</button>
+                            <div class="text-right">
+                                <div class="time-display" data-time="card_uk">--:--</div>
+                                <div class="date-display" data-date="card_uk">----/--/-- ---</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
                 </div>
-            </div>
 
-            <!-- London -->
-            <div id="card_london" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for London (UK)">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
+                <!-- Card 3 -->
+                <div id="card_france" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/Paris">
+                    <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">London (UK)</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/London</p>
+                            <h3 class="city-name">🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary</h3>
+                            <p class="timezone-label">Europe/Paris</p>
+                        </div>
+                        <div class="mt-auto pt-2 flex items-end justify-between gap-2">
+                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="2" aria-label="删除">✕</button>
+                            <div class="text-right">
+                                <div class="time-display" data-time="card_france">--:--</div>
+                                <div class="date-display" data-date="card_france">----/--/-- ---</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
                 </div>
-            </div>
 
-            <!-- Paris -->
-            <div id="card_paris" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Paris (France)">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
+                <!-- Card 4 -->
+                <div id="card_eet" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/Bucharest">
+                    <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Paris (France)</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Paris</p>
+                            <h3 class="city-name">🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia</h3>
+                            <p class="timezone-label">Europe/Bucharest</p>
+                        </div>
+                        <div class="mt-auto pt-2 flex items-end justify-between gap-2">
+                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="3" aria-label="删除">✕</button>
+                            <div class="text-right">
+                                <div class="time-display" data-time="card_eet">--:--</div>
+                                <div class="date-display" data-date="card_eet">----/--/-- ---</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
                 </div>
-            </div>
 
-            <!-- Berlin -->
-            <div id="card_berlin" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Berlin (Germany)">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
-                        <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Berlin (Germany)</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Berlin</p>
-                        </div>
-                    </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
-                </div>
             </div>
-
-            <!-- Rome -->
-            <div id="card_rome" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Rome (Italy)">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
-                        <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Rome (Italy)</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Rome</p>
-                        </div>
-                    </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Madrid -->
-            <div id="card_madrid" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Madrid (Spain)">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
-                        <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Madrid (Spain)</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Madrid</p>
-                        </div>
-                    </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Athens -->
-            <div id="card_athens" class="card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100" role="article" aria-label="Clock for Athens (Greece)">
-                <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                    <div class="flex justify-between items-start gap-2">
-                        <div>
-                            <h2 class="city-name text-lg font-semibold text-base-content leading-tight">Athens (Greece)</h2>
-                            <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">Europe/Athens</p>
-                        </div>
-                    </div>
-                    <div class="text-right mt-auto pt-2">
-                        <time data-target="time" class="time block" datetime="">--:--</time>
-                        <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
-                    </div>
-                </div>
-            </div>
-
         </section>
 
-        <!-- Static Knowledge / FAQ Section -->
-        <section class="bg-base-100 rounded-box p-6 border border-base-300 space-y-6">
-            <div class="space-y-2 border-b border-base-200 pb-4">
-                <h2 class="text-xl font-bold">European Time Zones Overview</h2>
-                <p class="text-sm text-base-content/80 leading-relaxed">
-                    European continent is divided into several standard time zones. Knowing the exact offset is essential for international business, travel, and virtual meetings across different countries.
-                </p>
+        <!-- Timeline Calibration Slider -->
+        <section class="w-full max-w-xl mx-auto bg-base-200 rounded-2xl p-5 border border-base-300" style="margin-top: 35px; margin-bottom: 75px;">
+            <div class="flex justify-between items-center mb-3">
+                <span class="text-sm font-medium opacity-80">Timeline Calibration</span>
+                <span id="sliderValue" class="badge badge-primary font-mono font-bold">Live Time</span>
             </div>
+            <input type="range" id="timeSlider" aria-label="Time Travel Slider" min="-24" max="24" value="0" step="0.5" class="range range-primary range-sm">
+            <div class="flex justify-between text-xs px-2 mt-1 opacity-80 text-base-content font-mono">
+                 <span>-24h</span><span>-12h</span><span>Now</span><span>+12h</span><span>+24h</span>
+            </div>
+            <div class="text-center mt-4">
+                <button id="resetSliderBtn" class="btn btn-xs btn-outline btn-secondary px-4 rounded-full hidden">Sync to Current Time</button>
+            </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-                <div class="space-y-2">
-                    <h3 class="font-semibold text-base flex items-center gap-2">
-                        <span>🌐</span> Western European Time (WET / GMT)
-                    </h3>
-                    <p class="text-base-content/70">
-                        Covers Western Europe, including the UK, Ireland, Portugal, and the Faroe Islands. During summer, these countries observe WEST (UTC+1) or BST (British Summer Time).
-                    </p>
+        <!-- Europe time Introduction -->
+        <section class="w-full max-w-4xl my-6 text-sm leading-relaxed text-base-content/80 text-center">
+            <h2 class="text-base font-bold mb-2 text-base-content">Europe time - Live Clocks &amp; Time Zone Converter</h2>
+            <p>This free <strong>Europe time</strong> tool displays live local time across 37+ European countries including the UK, France, Germany, Italy, Spain, Netherlands, Poland, and Sweden. It automatically handles Daylight Saving Time (DST), making it easy to follow time in Europe for business, study, or travel planning.</p>
+        </section>
+
+        <section class="w-full max-w-4xl my-6 text-sm leading-relaxed text-base-content/80 text-center">
+            <h2 class="text-base font-bold mb-2 text-base-content">Check current Europe time for business & international calls</h2>
+            <p>Use this free utility to access accurate Europe time in real‑time. Whether you need current Europe time to schedule remote team calls, coordinate with overseas partners or plan travel, this converter automatically accounts for daylight saving changes. Compare time in Europe against your local clock to avoid scheduling mistakes for cross‑border work.</p>
+        </section>
+
+        <section class="w-full max-w-4xl mt-8 text-xs opacity-90">
+            <h2 class="text-base font-bold text-base-content mb-3 text-center">Major European Time Zones at a Glance</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                <div class="p-4 bg-base-200 rounded-xl border border-base-300">
+                    <h3 class="font-semibold text-sm mb-2 text-primary">Western European Time (WET)</h3>
+                    <p class="mb-1">UTC+0 (Standard) / UTC+1 (WEST in Summer)</p>
+                    <p class="opacity-70">Countries: UK, Ireland, Portugal</p>
                 </div>
-
-                <div class="space-y-2">
-                    <h3 class="font-semibold text-base flex items-center gap-2">
-                        <span>🏛️</span> Central European Time (CET)
-                    </h3>
-                    <p class="text-base-content/70">
-                        The most widely used timezone in Europe (UTC+1). Spans France, Germany, Italy, Spain, Netherlands, Poland, Switzerland, Austria, and Scandinavia. Daylight Saving Time operates at CEST (UTC+2).
-                    </p>
+                <div class="p-4 bg-base-200 rounded-xl border border-base-300">
+                    <h3 class="font-semibold text-sm mb-2 text-primary">Central European Time (CET)</h3>
+                    <p class="mb-1">UTC+1 (Standard) / UTC+2 (CEST in Summer)</p>
+                    <p class="opacity-70">Countries: Germany, France, Italy, Spain, Poland</p>
                 </div>
-
-                <div class="space-y-2">
-                    <h3 class="font-semibold text-base flex items-center gap-2">
-                        <span>🏛️</span> Eastern European Time (EET)
-                    </h3>
-                    <p class="text-base-content/70">
-                        Standard time zone (UTC+2) used in Greece, Finland, Ukraine, Romania, Bulgaria, Estonia, Latvia, and Lithuania. During Daylight Saving Time, offsets move to EEST (UTC+3).
-                    </p>
-                </div>
-
-                <div class="space-y-2">
-                    <h3 class="font-semibold text-base flex items-center gap-2">
-                        <span>🕌</span> Moscow Time (MSK)
-                    </h3>
-                    <p class="text-base-content/70">
-                        Covers western parts of Russia including Moscow and Saint Petersburg (UTC+3). Russia does not currently observe Daylight Saving Time.
-                    </p>
+                <div class="p-4 bg-base-200 rounded-xl border border-base-300">
+                    <h3 class="font-semibold text-sm mb-2 text-primary">Eastern European Time (EET)</h3>
+                    <p class="mb-1">UTC+2 (Standard) / UTC+3 (EEST in Summer)</p>
+                    <p class="opacity-70">Countries: Greece, Romania, Finland, Ukraine</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Notification Toast Container -->
-    <div id="toast" class="toast toast-end z-50 transition-all duration-300 pointer-events-none opacity-0">
-        <div class="alert alert-info text-xs py-2 px-4 shadow-lg">
-            <span id="toastMsg">Notification message</span>
+    <noscript>
+    <div class="w-full max-w-4xl mx-auto p-5 my-8 bg-base-200 rounded-xl text-sm">
+        <h3 class="font-bold mb-3">Europe time zones quick reference</h3>
+        <ul class="space-y-2">
+            <li>Western European Time (WET / GMT UTC+0): United Kingdom, Ireland, Portugal; summer shifts to UTC+1 WEST</li>
+            <li>Central European Time (CET UTC+1): Germany, France, Italy, Spain, Poland, Austria; summer shifts to UTC+2 CEST</li>
+            <li>Eastern European Time (EET UTC+2): Greece, Romania, Bulgaria, Finland; summer shifts to UTC+3 EEST</li>
+            <li>Moscow Time (MSK UTC+3): Moscow and surrounding regions</li>
+        </ul>
+    </div>
+    </noscript>
+
+    <footer class="w-full max-w-4xl text-xs opacity-70 leading-relaxed border-t border-base-200 pt-4 mt-auto">
+        <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
+        <p class="mb-2">
+            This real‑time converter helps you track exact local hours across all European time zones. Whether you need to synchronize business meetings with international clients or verify local working hours in Germany, France, and the UK, our live interface updates every minute to guarantee precision for your scheduling.
+        </p>
+        <p>
+            European countries operate across four primary time zones: <strong>Western European Time (WET/GMT, UTC+0)</strong> utilized by the United Kingdom, Ireland, and Portugal; <strong>Central European Time (CET, UTC+1)</strong> covering France, Germany, Spain, Italy, Netherlands, and Poland; <strong>Eastern European Time (EET, UTC+2)</strong> used in Romania, Greece, Finland, and Bulgaria; and <strong>Moscow Time (MSK, UTC+3)</strong>.
+        </p>
+    </footer>
+
+    <div class="mt-8 w-full max-w-4xl p-6 bg-base-200 rounded-2xl border border-base-300">
+        <h2 class="text-sm font-bold text-base-content mb-3">📖 Impact of Daylight Saving on <span class="text-primary">Europe time</span> and Cross‑Border Business</h2>
+        <div class="text-xs text-base-content/70 leading-relaxed space-y-2">
+            <p>For professionals working across e‑commerce, remote work, and international logistics, Europe's semi‑annual clock changes can create scheduling confusion when referencing Europe time.</p>
+            <p>We recommend proactively confirming meeting times with your European partners during the transition weeks. Use our "Time Travel" simulation feature to verify local times across different zones to ensure seamless collaboration.</p>
+            <p>Understanding local business hours significantly improves operational efficiency. Our tool automatically handles DST, keeping your clock aligned with European counterparts.</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-base-100 border-t border-base-300 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-base-content/60 space-y-2">
-            <p>&copy; <span id="year">2026</span> EuropeTime.net — Accurate European Clock & Time Zone Tracker.</p>
-            <p class="font-mono text-[11px]">All times client-side synchronized with Intl API performance.</p>
-        </div>
-    </footer>
+    <div class="w-full max-w-4xl text-center mt-8 pt-4 border-t border-base-200 text-xs opacity-70">
+        <p>
+            Suggestions to improve experience?
+            <a href="mailto:su@europetime.net?subject=Feedback%20for%20Europe%20Time" class="link link-primary font-medium hover:underline">Email me</a>
+            <span class="mx-2">|</span>
+            &copy; 2026 Europe Time. All rights reserved.
+        </p>
+    </div>
 
-    <!-- Vanilla JS Application Script -->
+    <div id="toastContainer" class="toast toast-top toast-center z-[100] hidden">
+        <div class="alert alert-info py-2 px-4 shadow-lg rounded-xl">
+            <span id="toastText" class="text-xs font-medium"></span>
+        </div>
+    </div>
+
     <script>
         (function() {
             'use strict';
-
-            document.getElementById('year').textContent = new Date().getFullYear();
-
+            const CONFIG = { themes: { light: 'cupcake', dark: 'night' }, workHour: { start: 8, end: 18 } };
+            const countryDB = [
+                { n: "🇦🇱 Albania", t: "Europe/Tirane" },
+                { n: "🇦🇩 Andorra", t: "Europe/Andorra" },
+                { n: "🇦🇹 Austria", t: "Europe/Vienna" },
+                { n: "🇧🇾 Belarus", t: "Europe/Minsk" },
+                { n: "🇧🇪 Belgium", t: "Europe/Brussels" },
+                { n: "🇧🇦 Bosnia & Herzegovina", t: "Europe/Sarajevo" },
+                { n: "🇧🇬 Bulgaria", t: "Europe/Sofia" },
+                { n: "🇭🇷 Croatia", t: "Europe/Zagreb" },
+                { n: "🇨🇾 Cyprus", t: "Asia/Nicosia" },
+                { n: "🇨🇿 Czechia", t: "Europe/Prague" },
+                { n: "🇩🇰 Denmark", t: "Europe/Copenhagen" },
+                { n: "🇪🇪 Estonia", t: "Europe/Tallinn" },
+                { n: "🇫🇮 Finland", t: "Europe/Helsinki" },
+                { n: "🇫🇷 France", t: "Europe/Paris" },
+                { n: "🇩🇪 Germany", t: "Europe/Berlin" },
+                { n: "🇬🇷 Greece", t: "Europe/Athens" },
+                { n: "🇭🇺 Hungary", t: "Europe/Budapest" },
+                { n: "🇮🇸 Iceland", t: "Atlantic/Reykjavik" },
+                { n: "🇮🇪 Ireland", t: "Europe/Dublin" },
+                { n: "🇮🇹 Italy", t: "Europe/Rome" },
+                { n: "🇽🇰 Kosovo", t: "Europe/Belgrade" },
+                { n: "🇱🇻 Latvia", t: "Europe/Riga" },
+                { n: "🇱🇮 Liechtenstein", t: "Europe/Vaduz" },
+                { n: "🇱🇹 Lithuania", t: "Europe/Vilnius" },
+                { n: "🇱🇺 Luxembourg", t: "Europe/Luxembourg" },
+                { n: "🇲🇹 Malta", t: "Europe/Malta" },
+                { n: "🇲🇩 Moldova", t: "Europe/Chisinau" },
+                { n: "🇲🇨 Monaco", t: "Europe/Monaco" },
+                { n: "🇲🇪 Montenegro", t: "Europe/Podgorica" },
+                { n: "🇳🇱 Netherlands", t: "Europe/Amsterdam" },
+                { n: "🇲🇰 North Macedonia", t: "Europe/Skopje" },
+                { n: "🇳🇴 Norway", t: "Europe/Oslo" },
+                { n: "🇵🇱 Poland", t: "Europe/Warsaw" },
+                { n: "🇵🇹 Portugal", t: "Europe/Lisbon" },
+                { n: "🇷🇴 Romania", t: "Europe/Bucharest" },
+                { n: "🇷🇺 Russia (Moscow)", t: "Europe/Moscow" },
+                { n: "🇸🇲 San Marino", t: "Europe/San_Marino" },
+                { n: "🇷🇸 Serbia", t: "Europe/Belgrade" },
+                { n: "🇸🇰 Slovakia", t: "Europe/Bratislava" },
+                { n: "🇸🇮 Slovenia", t: "Europe/Ljubljana" },
+                { n: "🇪🇸 Spain", t: "Europe/Madrid" },
+                { n: "🇸🇪 Sweden", t: "Europe/Stockholm" },
+                { n: "🇨🇭 Switzerland", t: "Europe/Zurich" },
+                { n: "🇹🇷 Turkey (Istanbul)", t: "Europe/Istanbul" },
+                { n: "🇺🇦 Ukraine", t: "Europe/Kyiv" },
+                { n: "🇬🇧 United Kingdom", t: "Europe/London" },
+                { n: "🇻🇦 Vatican City", t: "Europe/Vatican" },
+                { n: "🇦🇷 Argentina (Buenos Aires)", t: "America/Argentina/Buenos_Aires" },
+                { n: "🇧🇷 Brazil (São Paulo)", t: "America/Sao_Paulo" },
+                { n: "🇧🇷 Brazil (Manaus)", t: "America/Manaus" },
+                { n: "🇨🇦 Canada (Toronto)", t: "America/Toronto" },
+                { n: "🇨🇦 Canada (Vancouver)", t: "America/Vancouver" },
+                { n: "🇨🇦 Canada (Calgary)", t: "America/Edmonton" },
+                { n: "🇨🇱 Chile (Santiago)", t: "America/Santiago" },
+                { n: "🇨🇴 Colombia (Bogotá)", t: "America/Bogota" },
+                { n: "🇲🇽 Mexico (Mexico City)", t: "America/Mexico_City" },
+                { n: "🇵🇪 Peru (Lima)", t: "America/Lima" },
+                { n: "🇺🇸 United States (New York)", t: "America/New_York" },
+                { n: "🇺🇸 United States (Chicago)", t: "America/Chicago" },
+                { n: "🇺🇸 United States (Denver)", t: "America/Denver" },
+                { n: "🇺🇸 United States (Los Angeles)", t: "America/Los_Angeles" },
+                { n: "🇺🇸 United States (Honolulu)", t: "Pacific/Honolulu" },
+                { n: "🇺🇾 Uruguay (Montevideo)", t: "America/Montevideo" },
+                { n: "🇻🇪 Venezuela (Caracas)", t: "America/Caracas" },
+                { n: "🇧🇩 Bangladesh (Dhaka)", t: "Asia/Dhaka" },
+                { n: "🇨🇳 China (Beijing)", t: "Asia/Shanghai" },
+                { n: "🇨🇳 China (Hong Kong)", t: "Asia/Hong_Kong" },
+                { n: "🇨🇳 China (Taipei)", t: "Asia/Taipei" },
+                { n: "🇮🇳 India (Mumbai / Delhi)", t: "Asia/Kolkata" },
+                { n: "🇮🇩 Indonesia (Jakarta)", t: "Asia/Jakarta" },
+                { n: "🇮🇱 Israel (Jerusalem)", t: "Asia/Jerusalem" },
+                { n: "🇯🇵 Japan (Tokyo)", t: "Asia/Tokyo" },
+                { n: "🇰🇿 Kazakhstan (Almaty)", t: "Asia/Almaty" },
+                { n: "🇲🇾 Malaysia (Kuala Lumpur)", t: "Asia/Kuala_Lumpur" },
+                { n: "🇵🇰 Pakistan (Karachi)", t: "Asia/Karachi" },
+                { n: "🇵🇭 Philippines (Manila)", t: "Asia/Manila" },
+                { n: "🇸🇦 Saudi Arabia (Riyadh)", t: "Asia/Riyadh" },
+                { n: "🇸🇬 Singapore", t: "Asia/Singapore" },
+                { n: "🇰🇷 South Korea (Seoul)", t: "Asia/Seoul" },
+                { n: "🇱🇰 Sri Lanka (Colombo)", t: "Asia/Colombo" },
+                { n: "🇹🇭 Thailand (Bangkok)", t: "Asia/Bangkok" },
+                { n: "🇦🇪 UAE (Dubai)", t: "Asia/Dubai" },
+                { n: "🇻🇳 Vietnam (Hanoi)", t: "Asia/Ho_Chi_Minh" },
+                { n: "🇦🇺 Australia (Sydney)", t: "Australia/Sydney" },
+                { n: "🇦🇺 Australia (Melbourne)", t: "Australia/Melbourne" },
+                { n: "🇦🇺 Australia (Perth)", t: "Australia/Perth" },
+                { n: "🇳🇿 New Zealand (Auckland)", t: "Pacific/Auckland" },
+                { n: "🇪🇬 Egypt (Cairo)", t: "Africa/Cairo" },
+                { n: "🇰🇪 Kenya (Nairobi)", t: "Africa/Nairobi" },
+                { n: "🇲🇦 Morocco (Casablanca)", t: "Africa/Casablanca" },
+                { n: "🇳🇬 Nigeria (Lagos)", t: "Africa/Lagos" },
+                { n: "🇿🇦 South Africa (Johannesburg)", t: "Africa/Johannesburg" }
+            ];
             const DEFAULT_CLOCKS = [
-                { id: 'card_local', city: 'My Local Time', timezone: 'LOCAL' },
-                { id: 'card_utc', city: 'UTC / GMT', timezone: 'UTC' },
-                { id: 'card_london', city: 'London (UK)', timezone: 'Europe/London' },
-                { id: 'card_paris', city: 'Paris (France)', timezone: 'Europe/Paris' },
-                { id: 'card_berlin', city: 'Berlin (Germany)', timezone: 'Europe/Berlin' },
-                { id: 'card_rome', city: 'Rome (Italy)', timezone: 'Europe/Rome' },
-                { id: 'card_madrid', city: 'Madrid (Spain)', timezone: 'Europe/Madrid' },
-                { id: 'card_athens', city: 'Athens (Greece)', timezone: 'Europe/Athens' }
+                { id: "local", city: "My Local Time", timezone: "LOCAL", isLocal: true },
+                { id: "uk", city: "🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland", timezone: "Europe/London" },
+                { id: "france", city: "🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary", timezone: "Europe/Paris" },
+                { id: "eet", city: "🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia", timezone: "Europe/Bucharest" }
             ];
-
-            const ALL_TIMEZONES = [
-                { label: 'Amsterdam (Netherlands)', tz: 'Europe/Amsterdam' },
-                { label: 'Athens (Greece)', tz: 'Europe/Athens' },
-                { label: 'Belgrade (Serbia)', tz: 'Europe/Belgrade' },
-                { label: 'Berlin (Germany)', tz: 'Europe/Berlin' },
-                { label: 'Brussels (Belgium)', tz: 'Europe/Brussels' },
-                { label: 'Bucharest (Romania)', tz: 'Europe/Bucharest' },
-                { label: 'Budapest (Hungary)', tz: 'Europe/Budapest' },
-                { label: 'Copenhagen (Denmark)', tz: 'Europe/Copenhagen' },
-                { label: 'Dublin (Ireland)', tz: 'Europe/Dublin' },
-                { label: 'Helsinki (Finland)', tz: 'Europe/Helsinki' },
-                { label: 'Istanbul (Turkey)', tz: 'Europe/Istanbul' },
-                { label: 'Kyiv (Ukraine)', tz: 'Europe/Kyiv' },
-                { label: 'Lisbon (Portugal)', tz: 'Europe/Lisbon' },
-                { label: 'Ljubljana (Slovenia)', tz: 'Europe/Ljubljana' },
-                { label: 'London (UK)', tz: 'Europe/London' },
-                { label: 'Luxembourg', tz: 'Europe/Luxembourg' },
-                { label: 'Madrid (Spain)', tz: 'Europe/Madrid' },
-                { label: 'Minsk (Belarus)', tz: 'Europe/Minsk' },
-                { label: 'Monaco', tz: 'Europe/Monaco' },
-                { label: 'Moscow (Russia)', tz: 'Europe/Moscow' },
-                { label: 'Oslo (Norway)', tz: 'Europe/Oslo' },
-                { label: 'Paris (France)', tz: 'Europe/Paris' },
-                { label: 'Prague (Czech Republic)', tz: 'Europe/Prague' },
-                { label: 'Riga (Latvia)', tz: 'Europe/Riga' },
-                { label: 'Rome (Italy)', tz: 'Europe/Rome' },
-                { label: 'Sofia (Bulgaria)', tz: 'Europe/Sofia' },
-                { label: 'Stockholm (Sweden)', tz: 'Europe/Stockholm' },
-                { label: 'Tallinn (Estonia)', tz: 'Europe/Tallinn' },
-                { label: 'Vienna (Austria)', tz: 'Europe/Vienna' },
-                { label: 'Vilnius (Lithuania)', tz: 'Europe/Vilnius' },
-                { label: 'Warsaw (Poland)', tz: 'Europe/Warsaw' },
-                { label: 'Zagreb (Croatia)', tz: 'Europe/Zagreb' },
-                { label: 'Zurich (Switzerland)', tz: 'Europe/Zurich' },
-                { label: 'New York (USA)', tz: 'America/New_York' },
-                { label: 'Tokyo (Japan)', tz: 'Asia/Tokyo' }
-            ];
-
-            const formatterCache = new Map();
-
-            function getFormatter(timezone, type) {
-                const key = `${timezone}_${type}`;
-                if (formatterCache.has(key)) return formatterCache.get(key);
-
-                let options = {};
-                if (type === 'time') {
-                    // 已移除 second: '2-digit'，只保留时和分
-                    options = { hour: '2-digit', minute: '2-digit', hour12: false };
-                } else if (type === 'date') {
-                    options = { weekday: 'short', month: 'short', day: 'numeric' };
-                }
-
-                if (timezone !== 'LOCAL' && timezone !== 'UTC') {
-                    options.timeZone = timezone;
-                }
-
-                const fmt = new Intl.DateTimeFormat('en-GB', options);
-                formatterCache.set(key, fmt);
-                return fmt;
-            }
-
-            let clocks = [...DEFAULT_CLOCKS];
-            
-            try {
-                const saved = localStorage.getItem('__user_clocks');
-                if (saved) {
-                    const parsed = JSON.parse(saved);
-                    if (Array.isArray(parsed) && parsed.length > 0) {
-                        clocks = parsed;
-                    }
-                }
-            } catch (e) {
-                console.warn('LocalStorage unavailable:', e);
-            }
-
+            let state = { offset: 0, clocks: JSON.parse(JSON.stringify(DEFAULT_CLOCKS)), hasCustom: false };
             const nodes = {
-                clocksGrid: document.getElementById('clocksGrid'),
-                selectTz: document.getElementById('selectTz'),
-                searchInp: document.getElementById('searchInp'),
-                addBtn: document.getElementById('addBtn'),
-                toast: document.getElementById('toast'),
-                toastMsg: document.getElementById('toastMsg')
+                grid: document.getElementById('clocksContainer'),
+                slider: document.getElementById('timeSlider'),
+                sliderVal: document.getElementById('sliderValue'),
+                resetBtn: document.getElementById('resetSliderBtn'),
+                themeBox: document.getElementById('themeToggle'),
+                searchInp: document.getElementById('searchTzInput'),
+                selectTz: document.getElementById('tzSelect'),
+                addBtn: document.getElementById('addTzBtn'),
+                toast: document.getElementById('toastContainer'),
+                toastMsg: document.getElementById('toastText')
             };
-
-            let toastTimer = null;
+            function initTheme() {
+                const saved = localStorage.getItem('__pref_theme') || CONFIG.themes.light;
+                document.documentElement.setAttribute('data-theme', saved);
+                nodes.themeBox.checked = (saved === CONFIG.themes.dark);
+                nodes.themeBox.addEventListener('change', () => {
+                    const target = nodes.themeBox.checked ? CONFIG.themes.dark : CONFIG.themes.light;
+                    document.documentElement.setAttribute('data-theme', target);
+                    localStorage.setItem('__pref_theme', target);
+                });
+            }
+            let toastLock;
             function notify(msg) {
                 nodes.toastMsg.textContent = msg;
-                nodes.toast.classList.remove('opacity-0', 'pointer-events-none');
-                nodes.toast.classList.add('opacity-100');
-                if (toastTimer) clearTimeout(toastTimer);
-                toastTimer = setTimeout(() => {
-                    nodes.toast.classList.remove('opacity-100');
-                    nodes.toast.classList.add('opacity-0', 'pointer-events-none');
-                }, 2500);
+                nodes.toast.classList.remove('hidden');
+                clearTimeout(toastLock);
+                toastLock = setTimeout(() => nodes.toast.classList.add('hidden'), 2200);
             }
-
-            function populateSelect(filter = '') {
-                nodes.selectTz.innerHTML = '';
-                const term = filter.toLowerCase();
-                const filtered = ALL_TIMEZONES.filter(item => 
-                    item.label.toLowerCase().includes(term) || item.tz.toLowerCase().includes(term)
-                );
-
-                if (filtered.length === 0) {
-                    const opt = document.createElement('option');
-                    opt.disabled = true;
-                    opt.textContent = 'No matching timezones';
-                    nodes.selectTz.appendChild(opt);
-                    return;
-                }
-
-                filtered.forEach(item => {
-                    const opt = document.createElement('option');
-                    opt.value = item.tz;
-                    opt.textContent = `${item.label}`;
-                    nodes.selectTz.appendChild(opt);
-                });
+            function getCardId(clock) {
+                if (clock.id) return 'card_' + clock.id;
+                return 'card_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
             }
-
-            function generateStructure() {
-                nodes.clocksGrid.innerHTML = '';
-                
-                clocks.forEach(c => {
-                    const card = document.createElement('div');
-                    card.id = c.id;
-                    card.className = "card clock-card-custom border border-base-300 shadow-sm transition-all duration-200 bg-base-100";
-                    card.setAttribute('role', 'article');
-                    card.setAttribute('aria-label', `Clock for ${c.city}`);
-
-                    const isDeletable = c.id.startsWith('custom_');
-
-                    card.innerHTML = `
-                        <div class="card-body p-4 flex flex-col justify-between h-full min-h-[160px]">
-                            <div class="flex justify-between items-start gap-2">
-                                <div>
-                                    <h2 class="city-name text-lg font-semibold text-base-content leading-tight">${c.city}</h2>
-                                    <p class="timezone-info mt-1 opacity-70 font-mono text-[10px] tracking-tight">${c.timezone}</p>
-                                </div>
-                                ${isDeletable ? `
-                                    <button class="btn btn-ghost btn-xs btn-circle text-error hover:bg-error/10 remove-btn" data-id="${c.id}" aria-label="Remove ${c.city} clock">
-                                        ✕
-                                    </button>
-                                ` : ''}
+            function renderClocks() {
+                nodes.grid.innerHTML = state.clocks.map(c => `
+                    <div id="${getCardId(c)}" class="card clock-card shadow-md border border-base-300 bg-base-100" role="article" aria-label="Clock for ${c.city}">
+                        <div class="card-body p-4 flex flex-col">
+                            <div>
+                                <h3 class="city-name">${c.city}</h3>
+                                <p class="timezone-label">${c.timezone === 'LOCAL' ? 'Local Time' : c.timezone}</p>
                             </div>
-                            <div class="text-right mt-auto pt-2">
-                                <time data-target="time" class="time block ${c.timezone === 'LOCAL' ? 'text-primary' : ''}" datetime="">--:--</time>
-                                <span data-target="date" class="date block mt-0.5 opacity-70">--</span>
+                            <div class="mt-auto pt-2 flex items-end justify-between gap-2">
+                                ${!c.isLocal
+                                    ? `<button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-id="${c.id}" aria-label="Remove ${c.city}">✕</button>`
+                                    : `<div class="w-6 shrink-0"></div>`}
+                                <div class="text-right">
+                                    <div class="time-display" data-time="${getCardId(c)}">--:--</div>
+                                    <div class="date-display" data-date="${getCardId(c)}">----/--/-- ---</div>
+                                </div>
                             </div>
                         </div>
-                    `;
-                    nodes.clocksGrid.appendChild(card);
-                });
-
-                nodes.clocksGrid.querySelectorAll('.remove-btn').forEach(btn => {
+                    </div>
+                `).join('');
+                nodes.grid.querySelectorAll('.remove-btn').forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        const idToRemove = e.currentTarget.getAttribute('data-id');
-                        clocks = clocks.filter(item => item.id !== idToRemove);
-                        try {
-                            localStorage.setItem('__user_clocks', JSON.stringify(clocks));
-                        } catch(err) {}
-                        generateStructure();
+                        const id = e.currentTarget.getAttribute('data-id');
+                        state.clocks = state.clocks.filter(c => c.id !== id);
+                        try { localStorage.setItem('__user_clocks', JSON.stringify(state.clocks)); } catch(_) {}
+                        renderClocks();
                         tick();
-                        notify("Clock removed.");
+                        notify("Removed.");
                     });
                 });
             }
-
             function tick() {
-                const now = new Date();
-
-                clocks.forEach(c => {
-                    const el = document.getElementById(c.id);
-                    if (!el) return;
-
-                    const timeEl = el.querySelector('[data-target="time"]');
-                    const dateEl = el.querySelector('[data-target="date"]');
-
-                    if (timeEl && dateEl) {
-                        try {
-                            const timeFmt = getFormatter(c.timezone, 'time');
-                            const dateFmt = getFormatter(c.timezone, 'date');
-
-                            const timeStr = timeFmt.format(now);
-                            const dateStr = dateFmt.format(now);
-
-                            if (timeEl.textContent !== timeStr) {
-                                timeEl.textContent = timeStr;
-                                timeEl.setAttribute('datetime', now.toISOString());
-                            }
-                            if (dateEl.textContent !== dateStr) {
-                                dateEl.textContent = dateStr;
-                            }
-                        } catch (err) {
-                            timeEl.textContent = "Error";
+                const baseMs = Date.now() + (state.offset * 3600000);
+                const baseDate = new Date(baseMs);
+                const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                state.clocks.forEach(c => {
+                    const card = document.getElementById(getCardId(c));
+                    if (!card) return;
+                    const tz = c.isLocal ? localTz : c.timezone;
+                    try {
+                        const timeStr = baseDate.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false });
+                        const dateStr = baseDate.toLocaleDateString('en-US', { timeZone: tz, weekday: 'short', day: '2-digit', month: 'short' });
+                        const offsetParts = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'shortOffset' }).formatToParts(baseDate);
+                        const offsetStr = (offsetParts.find(p => p.type === 'timeZoneName') || {}).value || '';
+                        const timeEl = card.querySelector('[data-time]');
+                        const dateEl = card.querySelector('[data-date]');
+                        if (timeEl) timeEl.textContent = timeStr;
+                        if (dateEl) dateEl.textContent = `${dateStr} (${offsetStr})`;
+                        const currentHour = parseInt(baseDate.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', hourCycle: 'h23' }), 10);
+                        const isWorkHour = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
+                        if (!c.isLocal && isWorkHour) {
+                            card.classList.add('is-working');
+                        } else {
+                            card.classList.remove('is-working');
                         }
-                    }
+                    } catch(e) {}
                 });
             }
-
-            // 轻量级定时器，每秒刷新一次检查分钟变更（低 CPU 占用）
-            let timerId = null;
-
-            function startTimer() {
-                tick();
-                if (!timerId) {
-                    timerId = setInterval(tick, 1000);
-                }
+            function populateSelect(filter = '') {
+                const query = filter.toLowerCase();
+                const matched = countryDB.filter(item => item.n.toLowerCase().includes(query));
+                nodes.selectTz.innerHTML = matched.map(i => `<option value="${i.t}">${i.n}</option>`).join('');
+                if (!matched.length) nodes.selectTz.innerHTML = '<option disabled>No variations found</option>';
             }
-
-            function stopTimer() {
-                if (timerId) {
-                    clearInterval(timerId);
-                    timerId = null;
-                }
+            function saveClocks() {
+                try { localStorage.setItem('__user_clocks', JSON.stringify(state.clocks)); } catch(_) {}
             }
-
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    stopTimer();
-                } else {
-                    startTimer();
+            function bootstrap() {
+                initTheme();
+                const cached = localStorage.getItem('__user_clocks');
+                if (cached) {
+                    try {
+                        const parsed = JSON.parse(cached);
+                        if (parsed && parsed.length) {
+                            state.clocks = parsed.map(c => ({
+                                id: c.id, city: c.city, timezone: c.timezone || c.zone, isLocal: c.isLocal
+                            }));
+                            state.hasCustom = true;
+                        }
+                    } catch(e){}
                 }
-            });
-
-            nodes.addBtn.addEventListener('click', () => {
-                const zone = nodes.selectTz.value;
-                if (!zone) return;
-
-                if (clocks.some(c => c.timezone === zone)) {
-                    notify("Timezone already added.");
-                    return;
+                if (state.hasCustom) {
+                    renderClocks();
                 }
-
-                const selectedOption = nodes.selectTz.options[nodes.selectTz.selectedIndex];
-                const optionText = selectedOption ? selectedOption.text : zone;
-
-                clocks.push({
-                    id: 'custom_' + Date.now(),
-                    city: optionText,
-                    timezone: zone
-                });
-
-                try {
-                    localStorage.setItem('__user_clocks', JSON.stringify(clocks));
-                } catch(e) {}
-
-                generateStructure();
-                tick();
-                notify("Timezone added.");
-
-                if (document.activeElement) {
-                    document.activeElement.blur();
-                }
-
-                nodes.searchInp.value = '';
                 populateSelect();
-            });
-
-            nodes.searchInp.addEventListener('input', (e) => {
-                populateSelect(e.target.value);
-            });
-
-            populateSelect();
-            
-            try {
-                if (localStorage.getItem('__user_clocks')) {
-                    generateStructure();
-                }
-            } catch(e) {}
-
-            startTimer();
-
+                tick();
+                setInterval(tick, 60000);
+                document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
+                nodes.slider.addEventListener('input', (e) => {
+                    state.offset = parseFloat(e.target.value);
+                    nodes.sliderVal.textContent = state.offset === 0 ? 'Live Time' : `${state.offset > 0 ? '+' : ''}${state.offset} hours`;
+                    state.offset === 0 ? nodes.resetBtn.classList.add('hidden') : nodes.resetBtn.classList.remove('hidden');
+                    tick();
+                });
+                nodes.resetBtn.addEventListener('click', () => {
+                    nodes.slider.value = 0; state.offset = 0;
+                    nodes.sliderVal.textContent = 'Live Time';
+                    nodes.resetBtn.classList.add('hidden');
+                    tick();
+                });
+                nodes.searchInp.addEventListener('input', (e) => populateSelect(e.target.value));
+                nodes.addBtn.addEventListener('click', () => {
+                    const zone = nodes.selectTz.value;
+                    if (!zone) return;
+                    if (state.clocks.some(c => c.timezone === zone)) return notify("Already exists.");
+                    const selectedOption = nodes.selectTz.options[nodes.selectTz.selectedIndex];
+                    if (!selectedOption || selectedOption.disabled) return;
+                    const optionText = selectedOption.text;
+                    state.clocks.push({ id: 'custom_' + Date.now(), city: optionText, timezone: zone, isLocal: false });
+                    saveClocks();
+                    renderClocks();
+                    tick();
+                    notify("Added.");
+                    if (document.activeElement) document.activeElement.blur();
+                    nodes.searchInp.value = '';
+                    populateSelect();
+                });
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', bootstrap);
+            } else {
+                bootstrap();
+            }
         })();
     </script>
 </body>
