@@ -94,7 +94,7 @@
             margin-top: 8px;
         }
 
-        /* ─── 时钟卡片（参照中文站写法：固定宽度） ─── */
+        /* ─── 时钟卡片 ─── */
         .clock-card {
             width: 280px;
             min-height: 180px;
@@ -114,7 +114,7 @@
         }
         .clock-card .timezone-label {
             font-size: 0.75rem;
-            opacity: 0.7;
+            opacity: 0.8;
             margin-top: 2px;
         }
         .clock-card .time-display {
@@ -126,7 +126,7 @@
         }
         .clock-card .date-display {
             font-size: 0.8rem;
-            opacity: 0.85;
+            opacity: 0.9;
             margin-top: 4px;
         }
 
@@ -182,7 +182,7 @@
                 <div id="card_local" class="card clock-card shadow-md border border-base-300 bg-base-200" data-tz="LOCAL" data-is-local="true">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h3 class="city-name">My Local Time</h3>
+                            <div class="city-name">My Local Time</div>
                             <p class="timezone-label">Local Time</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
@@ -199,7 +199,7 @@
                 <div id="card_uk" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/London">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h3 class="city-name">🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland</h3>
+                            <div class="city-name">🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland</div>
                             <p class="timezone-label">Europe/London</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
@@ -216,7 +216,7 @@
                 <div id="card_france" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/Paris">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h3 class="city-name">🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary</h3>
+                            <div class="city-name">🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary</div>
                             <p class="timezone-label">Europe/Paris</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
@@ -233,7 +233,7 @@
                 <div id="card_eet" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/Bucharest">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <h3 class="city-name">🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia</h3>
+                            <div class="city-name">🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia</div>
                             <p class="timezone-label">Europe/Bucharest</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
@@ -309,7 +309,7 @@
     </div>
     </noscript>
 
-    <footer class="w-full max-w-4xl text-xs opacity-70 leading-relaxed border-t border-base-200 pt-4 mt-auto">
+    <footer class="w-full max-w-4xl text-xs opacity-80 leading-relaxed border-t border-base-200 pt-4 mt-auto">
         <h2 class="font-semibold text-sm mb-3 text-base-content text-center">About Europe Time Zones</h2>
         <p class="mb-2">
             This real‑time converter helps you track exact local hours across all European time zones. Whether you need to synchronize business meetings with international clients or verify local working hours in Germany, France, and the UK, our live interface updates every minute to guarantee precision for your scheduling.
@@ -320,7 +320,7 @@
     </footer>
 
     <div class="mt-8 w-full max-w-4xl p-6 bg-base-200 rounded-2xl border border-base-300">
-        <h2 class="text-sm font-bold text-base-content mb-3">📖 Impact of Daylight Saving on <span class="text-primary">Europe time</span> and Cross‑Border Business</h2>
+        <h3 class="text-sm font-bold text-base-content mb-3">📖 Impact of Daylight Saving on <span class="text-primary">Europe time</span> and Cross‑Border Business</h3>
         <div class="text-xs text-base-content/70 leading-relaxed space-y-2">
             <p>For professionals working across e‑commerce, remote work, and international logistics, Europe's semi‑annual clock changes can create scheduling confusion when referencing Europe time.</p>
             <p>We recommend proactively confirming meeting times with your European partners during the transition weeks. Use our "Time Travel" simulation feature to verify local times across different zones to ensure seamless collaboration.</p>
@@ -328,7 +328,7 @@
         </div>
     </div>
 
-    <div class="w-full max-w-4xl text-center mt-8 pt-4 border-t border-base-200 text-xs opacity-70">
+    <div class="w-full max-w-4xl text-center mt-8 pt-4 border-t border-base-200 text-xs opacity-80">
         <p>
             Suggestions to improve experience?
             <a href="mailto:su@europetime.net?subject=Feedback%20for%20Europe%20Time" class="link link-primary font-medium hover:underline">Email me</a>
@@ -486,7 +486,7 @@
                     <div id="${getCardId(c)}" class="card clock-card shadow-md border border-base-300 bg-base-100" role="article" aria-label="Clock for ${c.city}">
                         <div class="card-body p-4 flex flex-col">
                             <div>
-                                <h3 class="city-name">${c.city}</h3>
+                                <div class="city-name">${c.city}</div>
                                 <p class="timezone-label">${c.timezone === 'LOCAL' ? 'Local Time' : c.timezone}</p>
                             </div>
                             <div class="mt-auto pt-2 flex items-end justify-between gap-2">
@@ -521,7 +521,17 @@
                     if (!card) return;
                     const tz = c.isLocal ? localTz : c.timezone;
                     try {
-                        const timeStr = baseDate.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false });
+                        /* ✅ 修复 24:xx 时间 bug：用 formatToParts 强制 00-23 小时制 */
+                        const timeParts = new Intl.DateTimeFormat('en-US', {
+                            timeZone: tz,
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hourCycle: 'h23'
+                        }).formatToParts(baseDate);
+                        const hh = (timeParts.find(p => p.type === 'hour') || {}).value || '--';
+                        const mm = (timeParts.find(p => p.type === 'minute') || {}).value || '--';
+                        const timeStr = `${hh}:${mm}`;
+
                         const dateStr = baseDate.toLocaleDateString('en-US', { timeZone: tz, weekday: 'short', day: '2-digit', month: 'short' });
                         const offsetParts = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'shortOffset' }).formatToParts(baseDate);
                         const offsetStr = (offsetParts.find(p => p.type === 'timeZoneName') || {}).value || '';
@@ -529,7 +539,7 @@
                         const dateEl = card.querySelector('[data-date]');
                         if (timeEl) timeEl.textContent = timeStr;
                         if (dateEl) dateEl.textContent = `${dateStr} (${offsetStr})`;
-                        const currentHour = parseInt(baseDate.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', hourCycle: 'h23' }), 10);
+                        const currentHour = parseInt(hh, 10);
                         const isWorkHour = (currentHour >= CONFIG.workHour.start && currentHour < CONFIG.workHour.end);
                         if (!c.isLocal && isWorkHour) {
                             card.classList.add('is-working');
