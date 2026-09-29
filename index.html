@@ -174,22 +174,28 @@
             </div>
         </div>
 
+        <!-- ============================================================
+        sr-only SEO 标题（屏幕阅读器/爬虫可读，视觉不占空间）
+        目的：为下方卡片建立 h2 → h3 的层级，避免 h1 → h3 跳跃
+        ============================================================ -->
+        <h2 class="sr-only">Live Europe time zone clocks for 37+ countries</h2>
+
         <!-- Clocks Grid -->
-        <section class="clocks-wrapper">
+        <section class="clocks-wrapper" aria-labelledby="clock-grid-heading">
             <div id="clocksContainer" class="flex flex-wrap justify-center gap-4 w-full">
 
                 <!-- Card 1 -->
                 <div id="card_local" class="card clock-card shadow-md border border-base-300 bg-base-200" data-tz="LOCAL" data-is-local="true">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <div class="city-name">My Local Time</div>
+                            <h3 class="city-name">My Local Time</h3>
                             <p class="timezone-label">Local Time</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
                             <div class="w-6 shrink-0"></div>
                             <div class="text-right">
-                                <div class="time-display" data-time="card_local">--:--</div>
-                                <div class="date-display" data-date="card_local">----/--/-- ---</div>
+                                <div class="time-display" data-time="card_local">12:00</div>
+                                <div class="date-display" data-date="card_local">Mon, 01 Jan</div>
                             </div>
                         </div>
                     </div>
@@ -199,14 +205,14 @@
                 <div id="card_uk" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/London">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <div class="city-name">🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland</div>
+                            <h3 class="city-name">🇬🇧 United Kingdom · 🇵🇹 Portugal · 🇮🇪 Ireland</h3>
                             <p class="timezone-label">Europe/London</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
-                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="1" aria-label="删除">✕</button>
+                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="1" aria-label="Remove clock">✕</button>
                             <div class="text-right">
-                                <div class="time-display" data-time="card_uk">--:--</div>
-                                <div class="date-display" data-date="card_uk">----/--/-- ---</div>
+                                <div class="time-display" data-time="card_uk">11:00</div>
+                                <div class="date-display" data-date="card_uk">Mon, 01 Jan</div>
                             </div>
                         </div>
                     </div>
@@ -216,14 +222,14 @@
                 <div id="card_france" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/Paris">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <div class="city-name">🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary</div>
+                            <h3 class="city-name">🇫🇷 France · 🇩🇪 Germany · 🇪🇸 Spain · 🇳🇱 Netherlands · 🇮🇹 Italy · 🇵🇱 Poland · 🇦🇹 Austria · 🇸🇪 Sweden · 🇭🇺 Hungary</h3>
                             <p class="timezone-label">Europe/Paris</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
-                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="2" aria-label="删除">✕</button>
+                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="2" aria-label="Remove clock">✕</button>
                             <div class="text-right">
-                                <div class="time-display" data-time="card_france">--:--</div>
-                                <div class="date-display" data-date="card_france">----/--/-- ---</div>
+                                <div class="time-display" data-time="card_france">12:00</div>
+                                <div class="date-display" data-date="card_france">Mon, 01 Jan</div>
                             </div>
                         </div>
                     </div>
@@ -233,14 +239,14 @@
                 <div id="card_eet" class="card clock-card shadow-md border border-base-300 bg-base-100" data-tz="Europe/Bucharest">
                     <div class="card-body p-4 flex flex-col">
                         <div>
-                            <div class="city-name">🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia</div>
+                            <h3 class="city-name">🇷🇴 Romania · 🇧🇬 Bulgaria · 🇬🇷 Greece · 🇫🇮 Finland · 🇨🇾 Cyprus · 🇱🇻 Latvia · 🇪🇪 Estonia</h3>
                             <p class="timezone-label">Europe/Bucharest</p>
                         </div>
                         <div class="mt-auto pt-2 flex items-end justify-between gap-2">
-                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="3" aria-label="删除">✕</button>
+                            <button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-index="3" aria-label="Remove clock">✕</button>
                             <div class="text-right">
-                                <div class="time-display" data-time="card_eet">--:--</div>
-                                <div class="date-display" data-date="card_eet">----/--/-- ---</div>
+                                <div class="time-display" data-time="card_eet">13:00</div>
+                                <div class="date-display" data-date="card_eet">Mon, 01 Jan</div>
                             </div>
                         </div>
                     </div>
@@ -486,7 +492,7 @@
                     <div id="${getCardId(c)}" class="card clock-card shadow-md border border-base-300 bg-base-100" role="article" aria-label="Clock for ${c.city}">
                         <div class="card-body p-4 flex flex-col">
                             <div>
-                                <div class="city-name">${c.city}</div>
+                                <h3 class="city-name">${c.city}</h3>
                                 <p class="timezone-label">${c.timezone === 'LOCAL' ? 'Local Time' : c.timezone}</p>
                             </div>
                             <div class="mt-auto pt-2 flex items-end justify-between gap-2">
@@ -494,8 +500,8 @@
                                     ? `<button class="btn btn-xs btn-ghost btn-circle text-error/70 hover:text-error shrink-0 remove-btn" data-id="${c.id}" aria-label="Remove ${c.city}">✕</button>`
                                     : `<div class="w-6 shrink-0"></div>`}
                                 <div class="text-right">
-                                    <div class="time-display" data-time="${getCardId(c)}">--:--</div>
-                                    <div class="date-display" data-date="${getCardId(c)}">----/--/-- ---</div>
+                                    <div class="time-display" data-time="${getCardId(c)}">12:00</div>
+                                    <div class="date-display" data-date="${getCardId(c)}">Mon, 01 Jan</div>
                                 </div>
                             </div>
                         </div>
@@ -521,7 +527,6 @@
                     if (!card) return;
                     const tz = c.isLocal ? localTz : c.timezone;
                     try {
-                        /* ✅ 修复 24:xx 时间 bug：用 formatToParts 强制 00-23 小时制 */
                         const timeParts = new Intl.DateTimeFormat('en-US', {
                             timeZone: tz,
                             hour: '2-digit',
