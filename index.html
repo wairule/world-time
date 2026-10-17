@@ -44,11 +44,13 @@
           "@type": "WebApplication",
           "@id": "https://www.europetime.net/#webapp",
           "name": "Europe Time",
+          "alternateName": ["Europe Time Now", "European Time", "Current Europe Time"],
           "url": "https://www.europetime.net/",
           "description": "A precise, lightweight tool tracking live Europe time and multiple European time zones for professional call scheduling in Germany, France, UK, and beyond.",
           "applicationCategory": "UtilitiesApplication",
           "operatingSystem": "All",
           "browserRequirements": "Requires JavaScript",
+          "datePublished": "2026-01-01",
           "dateModified": "2026-10-03",
           "inLanguage": "en-US",
           "keywords": "Europe time, Europe time now, current Europe time, Europe time converter, CET, GMT, EET, UK time, France time, Germany time",
@@ -60,13 +62,31 @@
             "Add or remove countries with one click, selection persists on next visit",
             "Free to use, no registration"
           ],
-          "provider": {"@type": "Organization","name": "Europe Time","url": "https://www.europetime.net/"},
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "screenshot": "https://www.europetime.net/og-image.png",
+          "provider": { "@id": "https://www.europetime.net/#organization" },
           "copyrightYear": "2026"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.europetime.net/#organization",
+          "name": "Europe Time",
+          "url": "https://www.europetime.net/",
+          "logo": "https://www.europetime.net/logo.png",
+          "email": "su@europetime.net",
+          "sameAs": [
+            "https://www.linkedin.com/company/europetime"
+          ]
         },
         {
           "@type": "FAQPage",
           "@id": "https://www.europetime.net/#faq",
           "mainEntity": [
+            {"@type": "Question","name": "What is the current Europe time now?","acceptedAnswer": {"@type": "Answer","text": "Europe time now refers to the current local time across European countries. This page shows live Europe time now for 37+ countries, automatically adjusted for Daylight Saving Time, so you can check the current time in the UK, France, Germany, Italy, Spain, and more at a glance."}},
             {"@type": "Question","name": "How does Daylight Saving Time affect European business meetings?","acceptedAnswer": {"@type": "Answer","text": "Europe's semi-annual clock changes can cause scheduling conflicts when working with Europe time. This minimalist Europe time tool automatically handles DST, allowing you to use the Time Travel simulation feature to verify local times across different European zones for seamless collaboration."}},
             {"@type": "Question","name": "What are the main time zones in Europe?","acceptedAnswer": {"@type": "Answer","text": "Europe spans four primary standard time zones: Western European Time (WET/GMT, UTC+0), Central European Time (CET, UTC+1), Eastern European Time (EET, UTC+2), and Moscow Time (MSK, UTC+3). Use this time tool to view Europe time for each zone."}},
             {"@type": "Question","name": "When does Europe switch to Daylight Saving Time?","acceptedAnswer": {"@type": "Answer","text": "Most European countries switch to Daylight Saving Time (Summer Time) on the last Sunday of March and return to Standard Time on the last Sunday of October each year, which shifts Europe time offsets."}},
@@ -410,6 +430,13 @@
 
             <div class="space-y-3">
                 <details class="collapse collapse-plus bg-base-200 border border-base-300 rounded-xl">
+                    <summary class="collapse-title text-sm font-medium">What is the current Europe time now?</summary>
+                    <div class="collapse-content text-xs leading-relaxed text-base-content/80">
+                        <p>Europe time now refers to the current local time across European countries. This page shows live Europe time now for 37+ countries, automatically adjusted for Daylight Saving Time, so you can check the current time in the UK, France, Germany, Italy, Spain, and more at a glance.</p>
+                    </div>
+                </details>
+
+                <details class="collapse collapse-plus bg-base-200 border border-base-300 rounded-xl">
                     <summary class="collapse-title text-sm font-medium">How does Daylight Saving Time affect European business meetings?</summary>
                     <div class="collapse-content text-xs leading-relaxed text-base-content/80">
                         <p>Europe's semi-annual clock changes can cause scheduling conflicts when working with Europe time. This minimalist Europe time tool automatically handles DST, allowing you to use the Time Travel simulation feature to verify local times across different European zones for seamless collaboration.</p>
@@ -533,6 +560,10 @@
             <a href="mailto:su@europetime.net?subject=Feedback%20for%20Europe%20Time" class="link link-primary font-medium hover:underline">Email me</a>
             <span class="mx-2">|</span>
             &copy; 2026 Europe Time
+            <span class="mx-2">|</span>
+            <a href="https://www.linkedin.com/company/europetime" target="_blank" rel="noopener noreferrer">
+  Follow us on LinkedIn
+            </a>
         </p>
     </div>
 
