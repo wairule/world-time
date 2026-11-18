@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-US" data-theme="cupcake">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+    <title>Methodology — How Europe Time Calculates Time Zones &amp; DST</title>
+    <meta name="author" content="Europe Time Maintainer Team">
+    <meta name="copyright" content="Europe Time">
+    <meta name="date" content="2026-11-18">
+    <meta name="description" content="How Europe Time calculates time zone offsets and DST: IANA Time Zone Database, browser-based calculation, NTP-synced device clock, EU DST policy status as of 2026, and what this tool does not do.">
+    <link rel="canonical" href="https://www.europetime.net/methodology" />
+    <link rel="alternate" hreflang="en" href="https://www.europetime.net/methodology" />
+    <link rel="alternate" hreflang="x-default" href="https://www.europetime.net/methodology" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Methodology — How Europe Time Calculates Time Zones & DST">
+    <meta property="og:description" content="IANA Time Zone Database, browser-based calculation, NTP-synced device clock, EU DST policy status as of 2026, and the boundaries of this tool.">
+    <meta property="og:url" content="https://www.europetime.net/methodology">
+    <meta property="og:site_name" content="Europe Time">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://www.europetime.net/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Methodology — How Europe Time Calculates Time Zones & DST">
+    <meta name="twitter:description" content="IANA Time Zone Database, browser-based calculation, NTP-synced device clock, EU DST policy status as of 2026, and the boundaries of this tool.">
+    <meta name="twitter:image" content="https://www.europetime.net/og-image.png">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.chinaqualityservice.com/#org",
+          "name": "China Quality Service",
+          "url": "https://www.chinaqualityservice.com"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.europetime.net/#maintainer-team",
+          "name": "Europe Time Maintainer Team",
+          "url": "https://www.europetime.net/methodology#maintainer",
+          "parentOrganization": { "@id": "https://www.chinaqualityservice.com/#org" }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://www.europetime.net/#webapp",
+          "name": "Europe Time",
+          "url": "https://www.europetime.net/",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.europetime.net/methodology#webpage",
+          "url": "https://www.europetime.net/methodology",
+          "name": "Methodology — How Europe Time Calculates Time Zones & DST",
+          "description": "How Europe Time calculates time zone offsets and DST: IANA Time Zone Database, browser-based calculation, NTP-synced device clock, EU DST policy status as of 2026, and what this tool does not do.",
+          "inLanguage": "en-US",
+          "datePublished": "2026-11-18",
+          "dateModified": "2026-11-18",
+          "isPartOf": { "@id": "https://www.europetime.net/#webapp" },
+          "author": { "@id": "https://www.europetime.net/#maintainer-team" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.europetime.net/methodology#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.europetime.net/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Methodology",
+              "item": "https://www.europetime.net/methodology"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            background-color: #FFFFFF;
+        }
+        .prose-block p { margin-bottom: 0.75rem; }
+        .prose-block ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+        .prose-block li { margin-bottom: 0.4rem; }
+        .prose-block code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.8em;
+            background: oklch(var(--b2));
+            padding: 0.1em 0.35em;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="w-full max-w-4xl flex flex-col">
+
+        <!-- Header -->
+        <header class="w-full flex justify-between items-center border-b border-base-200 pb-2 mb-6">
+            <a href="/" class="text-sm font-medium text-primary hover:underline">← Europe Time</a>
+            <span class="text-xs opacity-60">Methodology</span>
+        </header>
+
+        <article>
+
+            <h1 class="text-2xl font-bold tracking-tight text-base-content mb-3">
+                How Europe Time keeps its clocks accurate
+            </h1>
+            <p class="text-sm leading-relaxed text-base-content/80 mb-8">
+                This page explains where the time data comes from, how offsets and DST are calculated, what the current EU policy status is, and what this tool deliberately does not do. It is maintained alongside the live clock at <a href="/" class="link link-primary hover:underline">europetime.net</a>.
+            </p>
+
+            <!-- 1. Time zone rules -->
+            <section class="mb-8">
+                <h2 class="text-base font-bold text-base-content mb-2">1. Time zone rules: the IANA Time Zone Database</h2>
+                <div class="text-sm leading-relaxed text-base-content/80 prose-block">
+                    <p>All offsets and DST transitions are calculated from the <strong>IANA Time Zone Database</strong> (tzdata), referenced by IANA zone names such as <code>Europe/London</code>, <code>Europe/Paris</code>, and <code>Europe/Bucharest</code>.</p>
+                    <p>The calculation runs in your browser using the built-in <code>Intl.DateTimeFormat</code> API with a <code>timeZone</code> parameter. Browsers and operating systems ship with a copy of tzdata and update it periodically, so the page inherits those updates rather than relying on a hardcoded offset table.</p>
+                    <p>The database is revised several times a year. Recent releases (2025–2026) included changes affecting European and global zones. If your browser or operating system is significantly out of date, a recent legislative change may not yet be reflected — keeping the device updated is the most reliable way to get current rules.</p>
+                </div>
+            </section>
+
+            <!-- 2. Clock source & precision -->
+            <section class="mb-8">
+                <h2 class="text-base font-bold text-base-content mb-2">2. Clock source and precision</h2>
+                <div class="text-sm leading-relaxed text-base-content/80 prose-block">
+                    <p>The displayed clock starts from your device's system time (JavaScript <code>Date.now()</code>). Device clocks are normally synchronized to UTC via <strong>NTP</strong>. Under typical network conditions, system clock accuracy is within tens of milliseconds of UTC — more than sufficient for scheduling purposes.</p>
+                    <p>This is a browser-based clock, not an atomic-clock instrument. It does not claim sub-second traceability to a national metrology institute. If you need legally traceable time, use a certified time source.</p>
+                    <p>The Time Travel slider adds or subtracts hours from the current instant and re-renders every zone; it does not change the underlying clock source.</p>
+                </div>
+            </section>
+
+            <!-- 3. DST policy status -->
+            <section class="mb-8">
+                <h2 class="text-base font-bold text-base-content mb-2">3. DST policy status (as of November 2026)</h2>
+                <div class="text-sm leading-relaxed text-base-content/80 prose-block">
+                    <ul>
+                        <li><strong>Current law:</strong> Directive 2000/84/EC remains in force. Summer time begins on the last Sunday of March at 01:00 UTC and ends on the last Sunday of October at 01:00 UTC.</li>
+                        <li><strong>2019:</strong> The European Parliament voted in favour of a proposal to end seasonal clock changes, conditional on Council agreement.</li>
+                        <li><strong>2021:</strong> The proposal stalled in the Council; member states could not agree on whether to keep permanent summer or permanent winter time.</li>
+                        <li><strong>2025–2026:</strong> The Commission signalled it might withdraw the proposal, but in March 2026 it still published transition dates through 2031. As of August 2026, the Council had reached no final decision.</li>
+                        <li><strong>Practical implication:</strong> seasonal changes continue for the foreseeable future. This page applies the rules currently encoded in tzdata; it does not predict future legislation.</li>
+                        <li><strong>Non-EU exceptions:</strong> Iceland (UTC+0 year-round), Russia (UTC+3 year-round), Belarus (UTC+3 year-round), Turkey (UTC+3 year-round).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 4. Beyond the three zones -->
+            <section class="mb-8">
+                <h2 class="text-base font-bold text-base-content mb-2">4. Beyond the three zones</h2>
+                <div class="text-sm leading-relaxed text-base-content/80 prose-block">
+                    <p>The homepage groups countries into three cards (WET/London, CET/Paris, EET/Bucharest). That grouping is a usability simplification, not a complete model of European time.</p>
+                    <ul>
+                        <li><strong>Iceland:</strong> <code>Atlantic/Reykjavik</code>, UTC+0 year-round, no DST.</li>
+                        <li><strong>UK, Ireland, Portugal:</strong> WET (UTC+0) in winter; UK and Ireland move to BST (UTC+1), Portugal to WEST (UTC+1) in summer.</li>
+                        <li><strong>Turkey:</strong> <code>Europe/Istanbul</code>, UTC+3 year-round since 2016, no seasonal change.</li>
+                        <li><strong>Russia:</strong> <code>Europe/Moscow</code>, UTC+3 year-round since 2014.</li>
+                        <li><strong>Belarus:</strong> <code>Europe/Minsk</code>, UTC+3 year-round.</li>
+                        <li><strong>Cyprus:</strong> the IANA zone is <code>Asia/Nicosia</code> (geographically in Asia), grouped on the homepage with the EET card. The zone name reflects IANA's geographic naming convention, not political geography.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 5. What this page does not do -->
+            <section class="mb-8">
+                <h2 class="text-base font-bold text-base-content mb-2">5. What this page does not do</h2>
+                <div class="text-sm leading-relaxed text-base-content/80 prose-block">
+                    <ul>
+                        <li>It does not provide historical time zone lookup for past dates.</li>
+                        <li>It does not provide future-year DST projections beyond what the current tzdata release encodes.</li>
+                        <li>It does not provide legally traceable time for contracts or regulatory purposes.</li>
+                        <li>It does not cover every inhabited time zone; it focuses on Europe plus a set of commonly used comparison zones.</li>
+                    </ul>
+                    <p>For reference-grade historical and future data, consult the <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" class="link link-primary hover:underline">IANA Time Zone Database</a> directly or a dedicated time zone reference service.</p>
+                </div>
+            </section>
+
+            <!-- 6. Maintainer -->
+            <section id="maintainer" class="mt-10 p-5 bg-base-200 rounded-2xl border border-base-300 scroll-mt-6">
+                <h2 class="text-base font-bold text-base-content mb-2">6. Who maintains this tool</h2>
+                <div class="text-sm leading-relaxed text-base-content/80 prose-block">
+                    <p>This tool is maintained by the team at <a href="https://www.chinaqualityservice.com" target="_blank" rel="noopener noreferrer" class="link link-primary hover:underline">China Quality Service</a>, a third-party inspection company. Our daily work coordinating inspection windows with global importers — especially European buyers and factories — makes accurate local time a practical necessity. DST mismatches are not an abstract concern for us; they are a scheduling failure we have to avoid.</p>
+                    <p>We are not a time-zone standards body. We are daily users of the IANA data, and we take responsibility for updating this page when the underlying rules or policies change.</p>
+                    <p class="mt-3 text-xs text-base-content/70">
+                        <strong>Maintained by:</strong> China Quality Service<br>
+                        <strong>Contact:</strong> <a href="mailto:su@europetime.net" class="link link-primary hover:underline">su@europetime.net</a><br>
+                        <strong>Last reviewed:</strong> 18 November 2026
+                    </p>
+                </div>
+            </section>
+
+        </article>
+
+        <!-- Back links -->
+        <div class="w-full text-center mt-10 pt-4 border-t border-base-200 text-xs opacity-80">
+            <p>
+                <a href="/" class="link link-primary font-medium hover:underline">Live Europe time clocks</a>
+                <span class="mx-2">|</span>
+                <a href="/#faq" class="link link-primary font-medium hover:underline">FAQ</a>
+                <span class="mx-2">|</span>
+                <a href="mailto:su@europetime.net?subject=Feedback%20for%20Europe%20Time" class="link link-primary font-medium hover:underline">Email us</a>
+                <span class="mx-2">|</span>
+                &copy; 2026 Europe Time
+            </p>
+        </div>
+
+    </main>
+
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('__pref_theme') || 'cupcake';
+                document.documentElement.setAttribute('data-theme', saved);
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>
